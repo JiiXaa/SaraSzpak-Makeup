@@ -14,6 +14,8 @@ The site must meet all the requirements and goals as potential visitors will mos
 
 - [**User Experience**](#user-experience)
   - [**User Stories**](#user-stories)
+- [**Development**](#development)
+  - [**Technologies**](#technologies)
 
 ## **User Experience**
 
@@ -30,3 +32,13 @@ The site must meet all the requirements and goals as potential visitors will mos
 - Find information about prices
 - Be able to contact the business owner as I wish through social media, e-mail or a contact form.
 - Read terms and conditions.
+
+[Back to contents](#contents)
+
+## **Development**
+
+### **Technologies**
+
+-[SASS](https://sass-lang.com/) (for easier CSS development and better readability)
+
+[Back to contents](#contents)
