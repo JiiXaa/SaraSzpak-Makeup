@@ -1,0 +1,30 @@
+{
+  "name": "v001",
+  "version": "1.0.0",
+  "description": "Sara Szpak Website",
+  "main": "index.js",
+  "scripts": {
+    "watch:sass": "sass scss/main.scss css/style.css -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JiiXaa/SaraSzpak-Makeup.git"
+  },
+  "keywords": [
+    "html",
+    "css",
+    "scss",
+    "sass",
+    "node-sass",
+    "javascript"
+  ],
+  "author": "Tomasz Ostroga",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JiiXaa/SaraSzpak-Makeup/issues"
+  },
+  "homepage": "https://github.com/JiiXaa/SaraSzpak-Makeup#readme",
+  "dependencies": {
+    "node-sass": "^7.0.3"
+  }
+}
