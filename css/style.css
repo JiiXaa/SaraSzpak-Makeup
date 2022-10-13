@@ -1,3 +1,12 @@
+/**********************
+    COLORS
+**********************/
+/**********************
+    FONT PROPERTIES
+**********************/
+/********************
+    BREAKPOINTS
+**********************/
 /* Box sizing rules */
 *,
 *::before,
@@ -72,6 +81,7 @@ select {
   }
 }
 body {
+  font-size: 1rem;
   font-family: "aileron", Arial, sans-serif;
 }
 

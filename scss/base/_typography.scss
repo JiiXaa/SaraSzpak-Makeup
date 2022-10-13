@@ -1,7 +1,8 @@
-$main-font-sans: 'aileron', Arial, sans-serif;
-$logo-font: 'Great Vibes', cursive;
+@use '../abstracts/variables' as *;
 
 body {
+  // font-size: 16px
+  font-size: $font-base-size;
   font-family: $main-font-sans;
 }
 
