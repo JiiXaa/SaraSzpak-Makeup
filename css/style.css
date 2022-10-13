@@ -83,10 +83,55 @@ select {
 body {
   font-size: 1rem;
   font-family: "aileron", Arial, sans-serif;
+  font-weight: 400;
 }
 
 .logo-font {
   font-family: "Great Vibes", cursive;
+}
+
+.nav {
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%;
+  border-bottom: 1px solid #838383;
+}
+.nav__container {
+  height: 4rem;
+  margin: 0 auto;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav__logo {
+  border: 2px solid red;
+}
+.nav__list {
+  padding: 0;
+  width: 35%;
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+}
+.nav__list__link a {
+  letter-spacing: 0.5px;
+  font-weight: 300;
+  text-decoration: none;
+  color: #838383;
+}
+.nav__list__link a.link-active {
+  color: #2b2b2b;
+  font-weight: 400;
+}
+.nav__socials {
+  border: 2px solid red;
+  display: flex;
+  list-style-type: none;
+}
+.nav__socials__link a {
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=style.css.map */
