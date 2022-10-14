@@ -39,6 +39,7 @@ The site must meet all the requirements and goals as potential visitors will mos
 
 ### **Technologies**
 
--[SASS](https://sass-lang.com/) (for easier CSS development and better readability)
+-[SASS](https://sass-lang.com/) (for easier CSS development and better readability) </br>
+**Styles wrote with mobile first approach** as it does make the process much easier.
 
 [Back to contents](#contents)
