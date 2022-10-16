@@ -90,9 +90,24 @@ body {
   font-family: "Great Vibes", cursive;
 }
 
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes opacity-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
 #nav__toggle {
   position: absolute;
   left: 2rem;
+  cursor: pointer;
 }
 #nav__toggle i {
   color: #838383;
@@ -129,10 +144,64 @@ body {
   left: 130px;
 }
 .nav__list {
+  width: 100%;
+  padding: 0;
   display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 64px;
+  background-color: rgb(43, 43, 43);
+  padding: 2rem 0;
+}
+.nav__list ul {
+  padding: 0;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.nav__list__link {
+  padding: 0.5rem 0;
+  list-style: none;
+}
+.nav__list a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.8rem;
+}
+.nav__list.show {
+  display: flex;
 }
 .nav__socials {
+  display: flex;
+  justify-content: space-around;
+  padding: 0;
+}
+.nav__socials ul {
+  padding: 0;
+}
+.nav__socials__link {
+  list-style: none;
+}
+.nav__socials__link a {
+  color: #cf8d9a;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  background: #000;
+  opacity: 0.5;
+  z-index: 9;
   display: none;
+  transition: all 1s ease-in;
+}
+
+.show {
+  display: flex;
+  animation-name: opacity-in;
+  animation-duration: 0.3s;
 }
 
 .main {
