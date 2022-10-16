@@ -136,7 +136,6 @@ body {
 }
 
 .main {
-  border: 2px solid tomato;
   position: relative;
   margin-top: 50px;
 }
@@ -201,7 +200,7 @@ body {
   margin-bottom: 1rem;
 }
 .main .header__about__testimonials p {
-  color: rgb(43, 43, 43);
+  color: #585858;
   text-align: center;
   font-size: 1.1rem;
 }
@@ -220,16 +219,90 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  margin-bottom: 1.8rem;
 }
 .main .header__about__awards-item {
-  width: 120px;
+  width: 130px;
 }
 .main .header__about__awards-item:first-child {
-  width: 90px;
+  width: 100px;
 }
 .main .header__about__awards-item img {
   background-color: #fff;
   border-radius: 25px;
+}
+
+.services {
+  position: relative;
+  overflow: hidden;
+}
+.services__cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 2rem;
+}
+.services__cards-item {
+  width: 80%;
+  padding: 2rem;
+  border-radius: 20px;
+  background-color: #f4f4f4;
+}
+.services__cards-item img {
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+.services__cards-item h2 {
+  color: #585858;
+  margin-bottom: 0.6rem;
+}
+.services__cards-item p {
+  color: #838383;
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+}
+.services__cards-item:last-child {
+  margin-bottom: 6rem;
+}
+.services__texture-text {
+  position: absolute;
+  width: 185%;
+  bottom: 5px;
+  left: -20px;
+}
+.services__texture-text p {
+  font-size: 5rem;
+  color: #fff0f0;
+  font-family: "Great Vibes", cursive;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 1px solid #838383;
+  padding-top: 0.8rem;
+}
+.footer .footer-logo {
+  font-family: "Great Vibes", cursive;
+  font-size: 3rem;
+}
+.footer__contacts {
+  display: flex;
+  align-items: center;
+  height: 1rem;
+}
+.footer__contacts-email {
+  color: #cf8d9a;
+}
+.footer__contacts-divider {
+  height: 100%;
+  width: 1px;
+  background-color: rgb(43, 43, 43);
+  margin: 0 0.6rem;
+}
+.footer__contacts-mobile {
+  color: #cf8d9a;
 }
 
 /*# sourceMappingURL=style.css.map */
