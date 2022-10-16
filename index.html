@@ -24,48 +24,50 @@
   <body>
     <!-- Navigation -->
     <nav class="nav">
-      <div class="nav__container">
-        <p class="nav__logo">
+      <a href="index.html" class="nav__logo">
+        <p>
           Sara Szpak
           <span class="nav__logo__suffix">MakeUp & Hair Stylist</span>
         </p>
-        <ul class="nav__list">
-          <li class="nav__list__link nav__list__link--active">
-            <a class="link-active" href="index.html">Home</a>
-          </li>
-          <li class="nav__list__link">
-            <a href="index.html">Portfolio</a>
-          </li>
-          <li class="nav__list__link"><a href="index.html">Bridal</a></li>
-          <li class="nav__list__link"><a href="index.html">Services</a></li>
-          <li class="nav__list__link"><a href="index.html">Rates</a></li>
-          <li class="nav__list__link"><a href="index.html">Contact</a></li>
-        </ul>
-        <ul class="nav__socials">
-          <li class="nav__socials__link">
-            <a href="#"
-              ><i class="fa-brands fa-instagram nav__socials__link--icon"></i
-            ></a>
-          </li>
-          <li class="nav__socials__link">
-            <a href="#"
-              ><i class="fa-brands fa-facebook-f nav__socials__link--icon"></i
-            ></a>
-          </li>
-          <li class="nav__socials__link">
-            <a href="#"
-              ><i class="fa-regular fa-envelope nav__socials__link--icon"></i
-            ></a>
-          </li>
-        </ul>
+      </a>
+      <div id="nav__toggle">
+        <i class="fa-solid fa-bars"></i>
       </div>
+      <ul class="nav__list">
+        <li class="nav__list__link nav__list__link--active">
+          <a class="link-active" href="index.html">Home</a>
+        </li>
+        <li class="nav__list__link">
+          <a href="index.html">Portfolio</a>
+        </li>
+        <li class="nav__list__link"><a href="index.html">Bridal</a></li>
+        <li class="nav__list__link"><a href="index.html">Services</a></li>
+        <li class="nav__list__link"><a href="index.html">Rates</a></li>
+        <li class="nav__list__link"><a href="index.html">Contact</a></li>
+      </ul>
+      <ul class="nav__socials">
+        <li class="nav__socials__link">
+          <a href="#"
+            ><i class="fa-brands fa-instagram nav__socials__link--icon"></i
+          ></a>
+        </li>
+        <li class="nav__socials__link">
+          <a href="#"
+            ><i class="fa-brands fa-facebook-f nav__socials__link--icon"></i
+          ></a>
+        </li>
+        <li class="nav__socials__link">
+          <a href="#"
+            ><i class="fa-regular fa-envelope nav__socials__link--icon"></i
+          ></a>
+        </li>
+      </ul>
     </nav>
 
     <!-- End Navigation -->
     <!-- Main (with Header) -->
 
     <main class="main">
-      <img src="./img/main-bride.jpg" alt="bride with flowers" />
       <header class="header__about">
         <div class="header__about__card">
           <p>
@@ -87,14 +89,36 @@
         </div>
         <a class="header__about__cta" href="#">Contact Me</a>
         <div class="header__about__testimonials">
-          <p>Sliding or Fading Customer Testimonials comes here</p>
+          <p class="testimonials-text">
+            “Thanks so much for the hair and make-up trial a few weekends ago.
+            The make-up had great staying power, even when I’d fallen asleep on
+            the sofa that evening!”
+          </p>
+          <p class="testimonials-name">Gee Delonnette</p>
         </div>
         <div class="divider__line"></div>
         <div class="header__about__awards">
-          <div class="header__about__awards-item"><img src="" alt="" /></div>
-          <div class="header__about__awards-item"><img src="" alt="" /></div>
-          <div class="header__about__awards-item"><img src="" alt="" /></div>
+          <div class="header__about__awards-item">
+            <img
+              src="./img/official-makeup-award2019.jpg"
+              alt="Creative Make Up Artist of the Year 2019 award"
+            />
+          </div>
+          <div class="header__about__awards-item">
+            <img
+              src="./img/finalist-wbia-2022.jpg"
+              alt="Welsh Beauty Awards 2022 Finalist"
+            />
+          </div>
+          <div class="header__about__awards-item">
+            <img src="./img/psa-award.jpg" alt="PSA Exhibition Award" />
+          </div>
         </div>
+        <img
+          class="header__about__image"
+          src="./img/main-bride.jpg"
+          alt="bride with flowers"
+        />
       </header>
     </main>
 
