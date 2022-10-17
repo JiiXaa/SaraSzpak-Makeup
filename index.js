@@ -1,13 +1,9 @@
-// Mobile Menu
-
 const navigationMainList = document.querySelector('.nav__list');
 const navigationSocials = document.querySelector('.nav__socials');
 const overlay = document.querySelector('.overlay');
 const menuBtn = document.querySelector('#nav__toggle');
 
-console.log(menuBtn);
-console.log(overlay);
-console.log(navigationMainList);
+const socialsColorChange = document.querySelectorAll('[data-color-id]');
 
 //////////////////////
 /// Mobile Menu Logic
@@ -34,3 +30,25 @@ function showMenu() {
   navigationMainList.classList.toggle('show');
   navigationSocials.classList.toggle('show');
 }
+
+// Socials icons change color of others on hover
+socialsColorChange.forEach((socialIcon) => {
+  socialIcon.addEventListener('mouseover', () => {
+    socialsColorChange.forEach((icon) => {
+      icon.classList.remove('socials-change-color');
+      // icon.classList.add('default--color');
+      if (icon.dataset.colorId !== socialIcon.dataset.colorId) {
+        icon.classList.add('socials-change-color');
+      }
+    });
+  });
+});
+
+socialsColorChange.forEach((socialIcon) => {
+  socialIcon.addEventListener('mouseout', () => {
+    socialsColorChange.forEach((icon) => {
+      icon.classList.remove('socials-change-color');
+      // icon.classList.add('default-color');
+    });
+  });
+});

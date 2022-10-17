@@ -162,6 +162,18 @@ body {
   padding: 0.5rem 0;
   list-style: none;
 }
+.nav__list__link .link-active {
+  position: relative;
+}
+.nav__list__link .link-active::before {
+  content: "";
+  position: absolute;
+  background-color: #cf8d9a;
+  height: 1px;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+}
 .nav__list a {
   text-decoration: none;
   color: #fff;
@@ -183,6 +195,11 @@ body {
 }
 .nav__socials__link a {
   color: #cf8d9a;
+  transition: all 0.6s ease;
+}
+.nav__socials__link .socials-change-color {
+  color: rgba(116, 66, 73, 0.7529411765);
+  transition: all 0.6s ease;
 }
 
 .overlay {
@@ -201,6 +218,25 @@ body {
   display: flex;
   animation-name: opacity-in;
   animation-duration: 0.3s;
+}
+
+.anim-to-left {
+  position: relative;
+}
+.anim-to-left::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: 0;
+  right: 0;
+  background-color: #cf8d9a;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+.anim-to-left:hover::before {
+  visibility: visible;
+  width: 100%;
 }
 
 .main {

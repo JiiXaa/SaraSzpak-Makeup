@@ -135,6 +135,19 @@
     &__link {
       padding: 0.5rem 0;
       list-style: none;
+
+      .link-active {
+        position: relative;
+        &::before {
+          content: '';
+          position: absolute;
+          background-color: $primary-color;
+          height: 1px;
+          bottom: 0;
+          right: 0;
+          width: 100%;
+        }
+      }
     }
 
     a {
@@ -163,6 +176,12 @@
 
       a {
         color: $primary-color;
+        transition: all 0.6s ease;
+      }
+
+      .socials-change-color {
+        color: $dark-pink;
+        transition: all 0.6s ease;
       }
     }
   }
@@ -187,6 +206,28 @@
   display: flex;
   animation-name: opacity-in;
   animation-duration: 0.3s;
+}
+
+// Animation link underline from right to left
+
+.anim-to-left {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: 0;
+    right: 0;
+    background-color: $primary-color;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &:hover::before {
+    visibility: visible;
+    width: 100%;
+  }
 }
 
 //////////////////////////////////////////
