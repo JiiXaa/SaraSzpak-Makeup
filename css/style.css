@@ -5,6 +5,9 @@
     FONT PROPERTIES
 **********************/
 /********************
+    UTILS
+**********************/
+/********************
     BREAKPOINTS
 **********************/
 /* Box sizing rules */
@@ -239,6 +242,11 @@ body {
   width: 100%;
 }
 
+@media screen and (min-width: 768px) {
+  .nav {
+    background-color: pink;
+  }
+}
 .main {
   position: relative;
   margin-top: 50px;
@@ -263,12 +271,13 @@ body {
   line-height: 1.4rem;
   padding: 1rem;
   border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 .main .header__about__card:first-child {
   width: 60%;
   transform: translateX(50%);
-  margin-top: 3rem;
   padding: 1.5rem 1.1rem;
+  margin-top: 3rem;
   margin-bottom: 1.6rem;
 }
 .main .header__about__card:nth-child(2) {
@@ -295,17 +304,17 @@ body {
 }
 .main .header__about__testimonials {
   margin: 0 auto;
-  padding: 2rem 0.5rem 1.5rem;
+  padding: 2rem 1.5rem 1.5rem;
   background-color: #f4f4f4;
   width: 90%;
   font-size: 0.9rem;
   line-height: 1.4rem;
   border-radius: 20px;
   margin-bottom: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 .main .header__about__testimonials p {
   color: #585858;
-  text-align: center;
   font-size: 1.1rem;
 }
 .main .header__about__testimonials .testimonials-text {
@@ -336,6 +345,60 @@ body {
   border-radius: 25px;
 }
 
+@media screen and (min-width: 768px) {
+  .main .header__about__image {
+    height: 450px;
+    left: -140px;
+    top: 30px;
+    overflow: hidden;
+    z-index: -1;
+  }
+  .main .header__about {
+    row-gap: 0.8rem;
+  }
+  .main .header__about__card {
+    font-size: 1rem;
+    line-height: 1.6rem;
+    padding: 1rem;
+  }
+  .main .header__about__card:first-child {
+    width: 50%;
+    transform: translateX(70%);
+    padding: 2rem;
+    margin-top: 5rem;
+    margin-bottom: 2.6rem;
+  }
+  .main .header__about__card:nth-child(2) {
+    width: 70%;
+    transform: translateX(10%);
+    padding: 1.8rem 1.6rem;
+    margin: 0 auto;
+    margin-bottom: 2.6rem;
+  }
+  .main .header__about__cta {
+    font-size: 1.8rem;
+    border-radius: 10px;
+    width: 30%;
+    height: 4rem;
+    margin-bottom: 2.6rem;
+    transition: 0.3s background-color ease-in;
+  }
+  .main .header__about__cta:hover {
+    background-color: #dd9fab;
+  }
+  .main .header__about__testimonials {
+    margin: 0 auto;
+    padding: 2rem;
+    width: 70%;
+    line-height: 1.8rem;
+    margin-bottom: 2.6rem;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  }
+  .main .header__about__testimonials p {
+    color: #585858;
+    font-size: 1.2rem;
+  }
+}
 .services {
   position: relative;
   overflow: hidden;
@@ -351,6 +414,7 @@ body {
   padding: 2rem;
   border-radius: 20px;
   background-color: #f4f4f4;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 .services__cards-item img {
   border-radius: 6px;
@@ -395,9 +459,11 @@ body {
   display: flex;
   align-items: center;
   height: 1rem;
+  margin-bottom: 0.6rem;
 }
 .footer__contacts-email {
   color: #cf8d9a;
+  text-decoration: none;
 }
 .footer__contacts-divider {
   height: 100%;
@@ -407,6 +473,7 @@ body {
 }
 .footer__contacts-mobile {
   color: #cf8d9a;
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=style.css.map */

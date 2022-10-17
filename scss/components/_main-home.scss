@@ -2,7 +2,6 @@
 
 .main {
   position: relative;
-  // height: calc(100vh - 50px);
   margin-top: 50px;
 
   .header__about__image {
@@ -26,28 +25,20 @@
       line-height: 1.4rem;
       padding: 1rem;
       border-radius: 20px;
+      box-shadow: $card-shadow;
 
       &:first-child {
-        // position: absolute;
-        // right: 30px;
-        // top: 50px;
         width: 60%;
         transform: translateX(50%);
-        margin-top: 3rem;
         padding: 1.5rem 1.1rem;
+        margin-top: 3rem;
         margin-bottom: 1.6rem;
       }
 
       &:nth-child(2) {
-        // position: absolute;
         width: 90%;
         margin: 0 auto;
         margin-bottom: 2rem;
-        // position: absolute;
-        // bottom: 0%;
-        // left: 50%;
-        // -webkit-transform: translateX(-50%);
-        // transform: translateX(-50%);
       }
 
       p {
@@ -72,17 +63,18 @@
 
     &__testimonials {
       margin: 0 auto;
-      padding: 2rem 0.5rem 1.5rem;
+      padding: 2rem 1.5rem 1.5rem;
       background-color: $of-grey;
       width: 90%;
       font-size: 0.9rem;
       line-height: 1.4rem;
       border-radius: 20px;
       margin-bottom: 1rem;
+      box-shadow: $card-shadow;
 
       p {
         color: $text-grey;
-        text-align: center;
+        // text-align: center;
         font-size: 1.1rem;
       }
 
@@ -117,6 +109,71 @@
         }
 
         width: 130px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $tablet) {
+  .main {
+    .header__about__image {
+      height: 450px;
+      left: -140px;
+      top: 30px;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .header__about {
+      row-gap: 0.8rem;
+
+      &__card {
+        font-size: 1rem;
+        line-height: 1.6rem;
+        padding: 1rem;
+
+        &:first-child {
+          width: 50%;
+          transform: translateX(70%);
+          padding: 2rem;
+          margin-top: 5rem;
+          margin-bottom: 2.6rem;
+        }
+
+        &:nth-child(2) {
+          width: 70%;
+          transform: translateX(10%);
+          padding: 1.8rem 1.6rem;
+          margin: 0 auto;
+          margin-bottom: 2.6rem;
+        }
+      }
+
+      &__cta {
+        font-size: 1.8rem;
+        border-radius: 10px;
+        width: 30%;
+        height: 4rem;
+        margin-bottom: 2.6rem;
+        transition: 0.3s background-color ease-in;
+
+        &:hover {
+          background-color: $light-pink;
+        }
+      }
+
+      &__testimonials {
+        margin: 0 auto;
+        padding: 2rem;
+        width: 70%;
+        line-height: 1.8rem;
+        margin-bottom: 2.6rem;
+        box-shadow: $card-shadow;
+
+        p {
+          color: $text-grey;
+          font-size: 1.2rem;
+        }
       }
     }
   }

@@ -10,6 +10,7 @@ $primary-color: #cf8d9a;
 $of-grey: #f4f4f4;
 $of-pink: #fff0f0;
 $dark-pink: #744249c0;
+$light-pink: #dd9fab;
 $text-grey: #585858;
 // Other Colors
 
@@ -25,6 +26,12 @@ $regular: 400;
 $medium: 500;
 $spacing-2: 2px;
 $spacing-5: 5px;
+
+/********************
+    UTILS
+**********************/
+$card-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+  rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 
 /********************
     BREAKPOINTS
