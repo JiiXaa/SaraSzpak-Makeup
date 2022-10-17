@@ -1,0 +1,123 @@
+@use '../abstracts/variables' as *;
+
+.main {
+  position: relative;
+  // height: calc(100vh - 50px);
+  margin-top: 50px;
+
+  .header__about__image {
+    height: 320px;
+    object-fit: cover;
+    position: absolute;
+    left: -115px;
+    top: 30px;
+    overflow: hidden;
+    z-index: -1;
+  }
+
+  .header__about {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+
+    &__card {
+      background-color: $of-grey;
+      font-size: 0.9rem;
+      line-height: 1.4rem;
+      padding: 1rem;
+      border-radius: 20px;
+
+      &:first-child {
+        // position: absolute;
+        // right: 30px;
+        // top: 50px;
+        width: 60%;
+        transform: translateX(50%);
+        margin-top: 3rem;
+        padding: 1.5rem 1.1rem;
+        margin-bottom: 1.6rem;
+      }
+
+      &:nth-child(2) {
+        // position: absolute;
+        width: 90%;
+        margin: 0 auto;
+        margin-bottom: 2rem;
+        // position: absolute;
+        // bottom: 0%;
+        // left: 50%;
+        // -webkit-transform: translateX(-50%);
+        // transform: translateX(-50%);
+      }
+
+      p {
+        color: $primary-grey;
+      }
+    }
+
+    &__cta {
+      background-color: $primary-color;
+      color: #fff;
+      font-size: 1.4rem;
+      border-radius: 5px;
+      width: 40%;
+      height: 3rem;
+      text-decoration: none;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    &__testimonials {
+      margin: 0 auto;
+      padding: 2rem 0.5rem 1.5rem;
+      background-color: $of-grey;
+      width: 90%;
+      font-size: 0.9rem;
+      line-height: 1.4rem;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+
+      p {
+        color: $text-grey;
+        text-align: center;
+        font-size: 1.1rem;
+      }
+
+      .testimonials-text {
+        margin-bottom: 0.5rem;
+        font-style: italic;
+      }
+
+      .testimonials-name {
+        text-align: end;
+        font-weight: bold;
+        padding-right: 1rem;
+      }
+    }
+
+    &__awards {
+      width: 80%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      margin-bottom: 1.8rem;
+
+      &-item {
+        &:first-child {
+          width: 100px;
+        }
+
+        img {
+          background-color: #fff;
+          border-radius: 25px;
+        }
+
+        width: 130px;
+      }
+    }
+  }
+}

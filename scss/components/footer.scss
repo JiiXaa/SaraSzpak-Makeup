@@ -1,0 +1,35 @@
+@use '../abstracts/variables' as *;
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 1px solid $primary-grey;
+  padding-top: 0.8rem;
+
+  .footer-logo {
+    font-family: $logo-font;
+    font-size: 3rem;
+  }
+
+  &__contacts {
+    display: flex;
+    align-items: center;
+    height: 1rem;
+
+    &-email {
+      color: $primary-color;
+    }
+
+    &-divider {
+      height: 100%;
+      width: 1px;
+      background-color: $primary-black;
+      margin: 0 0.6rem;
+    }
+
+    &-mobile {
+      color: $primary-color;
+    }
+  }
+}
