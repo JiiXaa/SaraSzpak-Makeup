@@ -444,6 +444,93 @@ body {
   font-family: "Great Vibes", cursive;
 }
 
+.contact-form {
+  margin-bottom: 2.6rem;
+}
+.contact-form .contact-form__container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  color: #838383;
+  border-radius: 20px;
+  background-color: #f4f4f4;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+.contact-form .contact-form__description {
+  padding: 1rem 0.4rem;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+.contact-form .contact-form__description li {
+  color: #585858;
+}
+.contact-form .contact-form__inputs .form__group {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+}
+.contact-form .contact-form__inputs .form__group label {
+  font-size: 0.7rem;
+  letter-spacing: 0.1rem;
+  margin-bottom: 0.1rem;
+}
+.contact-form .contact-form__inputs .form__group input {
+  font-size: 0.8rem;
+  height: 2rem;
+  padding-left: 10px;
+  border: none;
+  border-radius: 4px;
+  color: #838383;
+}
+.contact-form .contact-form__inputs .form__group input:focus {
+  outline: 1px solid #dd9fab;
+}
+.contact-form .contact-form__item:nth-child(2) {
+  order: -1;
+}
+.contact-form .form__group--message {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.contact-form .form__group--message label {
+  font-size: 0.7rem;
+  letter-spacing: 0.1rem;
+  margin-bottom: 0.1rem;
+}
+.contact-form .form__group--message textarea {
+  width: 100%;
+  height: 10rem;
+  font-size: 0.8rem;
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: none;
+  color: #838383;
+  resize: vertical;
+  margin-bottom: 1.6rem;
+}
+.contact-form .form__group--message textarea:focus {
+  outline: 1px solid #dd9fab;
+}
+.contact-form input[type=submit] {
+  background-color: #cf8d9a;
+  border: none;
+  padding: 0.6rem 0;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: 0.3s background-color ease-in;
+}
+.contact-form input[type=submit]:hover {
+  background-color: #dd9fab;
+}
+.contact-form input[type=submit]:focus {
+  outline: 1px solid rgba(116, 66, 73, 0.7529411765);
+}
+
 .footer {
   display: flex;
   flex-direction: column;

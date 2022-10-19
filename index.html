@@ -169,39 +169,75 @@
     <!-- Contact Form -->
     <form class="contact-form" action="#">
       <div class="contact-form__container">
-        <div class="contact-form__inputs">
+        <div class="contact-form__inputs contact-form__item">
           <div class="form__group">
             <label id="name-label" for="name">Your full name:</label>
-            <input name="name" id="name" type="text" required />
+            <input
+              name="name"
+              id="name"
+              type="text"
+              required
+              autocomplete="off"
+            />
           </div>
           <div class="form__group">
             <label id="email-label" for="email">Your email address:</label>
-            <input name="email" id="email" type="email" required />
+            <input
+              name="email"
+              id="email"
+              type="email"
+              required
+              autocomplete="off"
+            />
           </div>
           <div class="form__group">
             <label id="occasion-label" for="occasion"
               >What occasion is it?</label
             >
-            <input name="occasion" id="occasion" type="text" required />
+            <input
+              name="occasion"
+              id="occasion"
+              type="text"
+              required
+              autocomplete="off"
+            />
           </div>
           <div class="form__group">
             <label id="services-label" for="manyServices"
               >How many services required?</label
             >
-            <input name="manyServices" id="manyServices" type="text" required />
+            <input
+              name="manyServices"
+              id="manyServices"
+              type="text"
+              required
+              autocomplete="off"
+            />
           </div>
           <div class="form__group">
             <label id="location-label" for="location">Location</label>
-            <input name="location" id="location" type="text" required />
+            <input
+              name="location"
+              id="location"
+              type="text"
+              required
+              autocomplete="off"
+            />
           </div>
           <div class="form__group">
             <label id="readyFor-label" for="readyFor"
               >What time do you need to be ready for?</label
             >
-            <input name="readyFor" id="readyFor" type="text" required />
+            <input
+              name="readyFor"
+              id="readyFor"
+              type="text"
+              required
+              autocomplete="off"
+            />
           </div>
         </div>
-        <div class="contact-form__description">
+        <div class="contact-form__description contact-form__item">
           <p>
             If you would like to contact me, please choose one of the following:
           </p>
@@ -222,12 +258,12 @@
             £10/pp not-refundable deposit to book your special occasion date
           </p>
         </div>
+        <div class="form__group--message">
+          <label for="your-message">Your Message</label>
+          <textarea name="your-message" id="your-message"></textarea>
+        </div>
+        <input type="submit" value="Submit" />
       </div>
-      <div class="form__group">
-        <label for="your-message">Your Message</label>
-        <textarea name="your-message" id="your-message"></textarea>
-      </div>
-      <input type="submit" value="Submit" />
     </form>
     <!-- End Contact Form -->
 
