@@ -175,6 +175,18 @@
           font-size: 1.2rem;
         }
       }
+
+      &__awards {
+        margin-bottom: 2.2rem;
+
+        &-item {
+          &:first-child {
+            width: 150px;
+          }
+
+          width: 200px;
+        }
+      }
     }
   }
 }

@@ -53,3 +53,35 @@
     }
   }
 }
+
+@media screen and (min-width: $tablet) {
+  .services {
+    .services__cards {
+      width: 60%;
+      margin: 0 auto;
+      row-gap: 3rem;
+      &-item {
+        &:last-child {
+          margin-bottom: 10rem;
+        }
+        img {
+          margin: 0 auto;
+        }
+      }
+    }
+
+    &__texture-text {
+      position: absolute;
+      width: 185%;
+      bottom: -10px;
+      left: -30px;
+      z-index: -1;
+
+      p {
+        font-size: 20vw;
+        color: $of-pink;
+        font-family: $logo-font;
+      }
+    }
+  }
+}

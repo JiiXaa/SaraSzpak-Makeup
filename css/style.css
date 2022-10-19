@@ -242,11 +242,6 @@ body {
   width: 100%;
 }
 
-@media screen and (min-width: 768px) {
-  .nav {
-    background-color: pink;
-  }
-}
 .main {
   position: relative;
   margin-top: 50px;
@@ -398,6 +393,15 @@ body {
     color: #585858;
     font-size: 1.2rem;
   }
+  .main .header__about__awards {
+    margin-bottom: 2.2rem;
+  }
+  .main .header__about__awards-item {
+    width: 200px;
+  }
+  .main .header__about__awards-item:first-child {
+    width: 150px;
+  }
 }
 .services {
   position: relative;
@@ -444,6 +448,31 @@ body {
   font-family: "Great Vibes", cursive;
 }
 
+@media screen and (min-width: 768px) {
+  .services .services__cards {
+    width: 60%;
+    margin: 0 auto;
+    row-gap: 3rem;
+  }
+  .services .services__cards-item:last-child {
+    margin-bottom: 10rem;
+  }
+  .services .services__cards-item img {
+    margin: 0 auto;
+  }
+  .services__texture-text {
+    position: absolute;
+    width: 185%;
+    bottom: -10px;
+    left: -30px;
+    z-index: -1;
+  }
+  .services__texture-text p {
+    font-size: 20vw;
+    color: #fff0f0;
+    font-family: "Great Vibes", cursive;
+  }
+}
 .contact-form {
   margin-bottom: 2.6rem;
 }
