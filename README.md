@@ -35,11 +35,59 @@ The site must meet all the requirements and goals as potential visitors will mos
 
 [Back to contents](#contents)
 
-## **Development**
+## **Design**
 
-### **Technologies**
+### **Mockup**
 
--[SASS](https://sass-lang.com/) (for easier CSS development and better readability) </br>
-**Styles wrote with mobile first approach** as it does make the process much easier.
+- Mockup were created using [Figma](https://developer.mozilla.org/en-US/docs/Web/HTML/)
+
+  - Website designed myself: [Tomasz Ostroga](www.linkedin.com/in/tomasz-ostroga/)
+  - [Desktop/Mobile Mockups](https://www.figma.com/file/NlJh8F2Up7ozcChWUJTWQ1/Sara-Szpak-Makeup-Artist?node-id=0%3A1/)
+
+### **Imagery**
+
+Images provided by business owner Sara Szpak. All images were compressed for faster loading speeds, with focus on preserving overall quality
+
+## **Technologies**
+
+### **Languages**
+
+- [HTML5](https://developer.mozilla.org/en-US/docs/Web/HTML/)
+
+  - Used for the creation of the markup for the website content.
+
+- [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS/)
+
+  - Cascading Style Sheets language used to style individual pages.
+
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/)
+  - Scripting language used mainly for making website interactive (Logic for mobile menu (show/hide toggle), controlling styles addition/removal based on 'mouse' events)
+
+### **Libraries / Frameworks**
+
+- [SASS](https://sass-lang.com/)
+  - helps with easier CSS development and better readability
+  - **Styles wrote with mobile first approach** as it does make the process of writing styles simpler.
 
 [Back to contents](#contents)
+
+### **Other Tools**
+
+- [Git](https://git-scm.com/)
+
+  - Version control tool for tracking changes in code.
+
+- [GitHub](https://github.com/)
+
+  - Hosting service for software development and version control using Git.
+
+- [FontAwesome](https://fontawesome.com/)
+
+  - Icon library and toolkit
+
+- [Google Fonts](https://fonts.google.com/)
+
+  - Used 'Great Vibes' font for the logo.
+
+- [Adobe Fonts](https://fonts.adobe.com/)
+  - Used 'Aileron' as a main font.
