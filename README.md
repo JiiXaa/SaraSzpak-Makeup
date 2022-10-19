@@ -14,8 +14,15 @@ The site must meet all the requirements and goals as potential visitors will mos
 
 - [**User Experience**](#user-experience)
   - [**User Stories**](#user-stories)
-- [**Development**](#development)
-  - [**Technologies**](#technologies)
+- [**Design**](#design)
+
+  - [**Mockup**](#mockup)
+  - [**Imagery**](#imagery)
+
+- [**Technologies**](#technologies)
+  - [**Languages**](#languages)
+  - [**Libraries**](#libraries)
+  - [**Other Tools**](#other-tools)
 
 ## **User Experience**
 
@@ -46,7 +53,7 @@ The site must meet all the requirements and goals as potential visitors will mos
 
 ### **Imagery**
 
-Images provided by business owner Sara Szpak. All images were compressed for faster loading speeds, with focus on preserving overall quality
+Images provided by business owner Sara Szpak. All images were compressed for faster loading speeds, with focus on preserving overall quality.
 
 ## **Technologies**
 
@@ -61,9 +68,9 @@ Images provided by business owner Sara Szpak. All images were compressed for fas
   - Cascading Style Sheets language used to style individual pages.
 
 - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/)
-  - Scripting language used mainly for making website interactive (Logic for mobile menu (show/hide toggle), controlling styles addition/removal based on 'mouse' events)
+  - Scripting language used mainly for making website interactive (Logic for mobile menu (show/hide toggle), controlling styles addition/removal based on 'mouse' events).
 
-### **Libraries / Frameworks**
+### **Libraries**
 
 - [SASS](https://sass-lang.com/)
   - helps with easier CSS development and better readability
