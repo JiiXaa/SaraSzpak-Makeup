@@ -1,5 +1,32 @@
 @use '../abstracts/variables' as *;
 
+.contact-header {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 8rem;
+  display: flex;
+  justify-content: end;
+  padding-right: 2rem;
+  padding-bottom: 1rem;
+
+  h1 {
+    font-family: $logo-font;
+    letter-spacing: 1rem;
+    font-size: 3rem;
+    color: $of-pink;
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      bottom: 8px;
+      height: 2px;
+      width: 120%;
+      background-color: $of-grey;
+    }
+  }
+}
+
 .contact-form {
   margin-bottom: 2.6rem;
 

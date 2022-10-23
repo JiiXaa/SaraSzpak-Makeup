@@ -733,6 +733,32 @@ body {
     margin-bottom: 0;
   }
 }
+.contact-header {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 8rem;
+  display: flex;
+  justify-content: end;
+  padding-right: 2rem;
+  padding-bottom: 1rem;
+}
+.contact-header h1 {
+  font-family: "Great Vibes", cursive;
+  letter-spacing: 1rem;
+  font-size: 3rem;
+  color: #fff0f0;
+  position: relative;
+}
+.contact-header h1::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 8px;
+  height: 2px;
+  width: 120%;
+  background-color: #f4f4f4;
+}
+
 .contact-form {
   margin-bottom: 2.6rem;
 }
