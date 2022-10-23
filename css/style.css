@@ -596,12 +596,12 @@ body {
     margin-bottom: 5rem;
   }
   .services__cards {
-    width: 80%;
+    width: 70%;
     display: flex;
     flex-direction: row;
     align-items: normal;
-    justify-content: space-around;
-    row-gap: 2rem;
+    justify-content: space-between;
+    row-gap: 2rem 0rem;
   }
   .services__cards-item {
     width: 25%;
@@ -656,6 +656,16 @@ body {
   background-color: #f4f4f4;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
+.contact-form .contact-form__container .contact-form__main-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.contact-form .contact-form__container .contact-form__main-wrapper .contact-form__item {
+  border: 3px sold green;
+}
+.contact-form .contact-form__container .contact-form__main-wrapper .contact-form__item:nth-child(2) {
+  order: -1;
+}
 .contact-form .contact-form__description {
   padding: 1rem 0.4rem;
   font-size: 0.9rem;
@@ -684,9 +694,6 @@ body {
 }
 .contact-form .contact-form__inputs .form__group input:focus {
   outline: 1px solid #dd9fab;
-}
-.contact-form .contact-form__item:nth-child(2) {
-  order: -1;
 }
 .contact-form .form__group--message {
   width: 100%;
@@ -721,6 +728,7 @@ body {
   font-size: 1.2rem;
   cursor: pointer;
   transition: 0.3s background-color ease-in;
+  letter-spacing: 3px;
 }
 .contact-form input[type=submit]:hover {
   background-color: #dd9fab;
@@ -729,6 +737,109 @@ body {
   outline: 1px solid rgba(116, 66, 73, 0.7529411765);
 }
 
+@media screen and (min-width: 1440px) {
+  .contact-form .contact-form__container {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 0 auto;
+    padding: 3rem 1rem;
+    color: #838383;
+    border-radius: 20px;
+    background-color: #f4f4f4;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  }
+  .contact-form .contact-form__container .contact-form__main-wrapper {
+    display: flex;
+    flex-direction: row;
+  }
+  .contact-form .contact-form__container .contact-form__main-wrapper .contact-form__item:first-child {
+    width: 40%;
+    padding-left: 4rem;
+  }
+  .contact-form .contact-form__container .contact-form__main-wrapper .contact-form__item:nth-child(2) {
+    order: 0;
+    width: 40%;
+    margin: 0 auto;
+  }
+  .contact-form .contact-form__description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  .contact-form .contact-form__description ul {
+    padding-left: 1.5rem;
+  }
+  .contact-form .contact-form__description li {
+    color: #585858;
+  }
+  .contact-form .contact-form__inputs .form__group {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1rem;
+  }
+  .contact-form .contact-form__inputs .form__group label {
+    font-size: 0.7rem;
+    letter-spacing: 0.1rem;
+    margin-bottom: 0.1rem;
+  }
+  .contact-form .contact-form__inputs .form__group input {
+    font-size: 0.8rem;
+    height: 2rem;
+    padding-left: 10px;
+    border: none;
+    border-radius: 4px;
+    color: #838383;
+  }
+  .contact-form .contact-form__inputs .form__group input:focus {
+    outline: 1px solid #dd9fab;
+  }
+  .contact-form .form__group--message {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding-left: 4rem;
+  }
+  .contact-form .form__group--message label {
+    font-size: 0.7rem;
+    letter-spacing: 0.1rem;
+    margin-bottom: 0.1rem;
+  }
+  .contact-form .form__group--message textarea {
+    width: 100%;
+    height: 10rem;
+    font-size: 0.8rem;
+    padding: 6px 10px;
+    border-radius: 4px;
+    border: none;
+    color: #838383;
+    resize: vertical;
+    margin-bottom: 1.6rem;
+  }
+  .contact-form .form__group--message textarea:focus {
+    outline: 1px solid #dd9fab;
+  }
+  .contact-form input[type=submit] {
+    width: 12%;
+    background-color: #cf8d9a;
+    border: none;
+    padding: 0.4rem 0;
+    margin-left: 4rem;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.3s background-color ease-in;
+  }
+  .contact-form input[type=submit]:hover {
+    background-color: #dd9fab;
+  }
+  .contact-form input[type=submit]:focus {
+    outline: 1px solid rgba(116, 66, 73, 0.7529411765);
+  }
+}
 .footer {
   display: flex;
   flex-direction: column;
