@@ -17,9 +17,7 @@
     .contact-form__main-wrapper {
       display: flex;
       flex-direction: column;
-      .contact-form__item {
-        border: 3px sold green;
-      }
+
       .contact-form__item:nth-child(2) {
         order: -1;
       }
@@ -236,6 +234,80 @@
       &:focus {
         outline: 1px solid $dark-pink;
       }
+    }
+  }
+}
+
+@media screen and (min-width: $desktop-large) {
+  .contact-form {
+    .contact-form__container {
+      padding: 2rem 0 3.5rem 1rem;
+      .contact-form__main-wrapper {
+        .contact-form__item:first-child {
+          width: 45%;
+          padding-left: 4rem;
+        }
+        .contact-form__item:nth-child(2) {
+          width: 40%;
+        }
+      }
+    }
+
+    .contact-form__description {
+      font-size: 1.1rem;
+      padding-top: 8rem;
+      padding-left: 4rem;
+
+      ul {
+        padding-left: 1.8rem;
+      }
+    }
+
+    .contact-form__inputs {
+      padding-top: 2rem;
+      .form__group {
+        padding-left: 2rem;
+
+        label {
+          font-size: 0.8rem;
+          letter-spacing: 0.1rem;
+          margin-bottom: 0.2rem;
+        }
+
+        input {
+          font-size: 1rem;
+          height: 2.4rem;
+          padding-left: 12px;
+        }
+
+        &:last-child {
+          margin-bottom: 0.6rem;
+        }
+      }
+    }
+
+    // styles for text area, named: your-message
+    .form__group--message {
+      width: 45%;
+      padding-left: 6rem;
+
+      label {
+        font-size: 0.8rem;
+        padding-bottom: 0.1rem;
+      }
+
+      textarea {
+        font-size: 1rem;
+        padding: 12px 12px;
+        margin-bottom: 1.8rem;
+      }
+    }
+
+    input[type='submit'] {
+      width: 13%;
+      padding: 0.5rem 0;
+      margin-left: 6rem;
+      font-size: 1.4rem;
     }
   }
 }

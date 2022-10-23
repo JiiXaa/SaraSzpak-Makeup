@@ -148,3 +148,52 @@
     }
   }
 }
+
+@media screen and (min-width: $desktop-large) {
+  .services__texture-text {
+    p {
+      position: absolute;
+      top: -50px;
+      left: -60px;
+      font-size: 18vw;
+    }
+  }
+
+  .services__cards {
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    align-items: normal;
+    justify-content: space-between;
+    margin-top: 15rem;
+
+    &-item {
+      width: 30%;
+      padding: 2rem;
+      padding-bottom: 1rem;
+      border-radius: 20px;
+      background-color: $of-grey;
+      box-shadow: $card-shadow;
+
+      img {
+        border-radius: 6px;
+        margin-bottom: 1rem;
+      }
+
+      h2 {
+        color: $text-grey;
+        margin-bottom: 0.6rem;
+      }
+
+      p {
+        color: $primary-grey;
+        font-size: 1.2rem;
+        line-height: 1.5rem;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
