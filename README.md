@@ -14,6 +14,7 @@ The site must meet all the requirements and goals as potential visitors will mos
 
 - [**User Experience**](#user-experience)
   - [**User Stories**](#user-stories)
+  - [**Responsive Web Design**](#responsive-web-design)
 - [**Design**](#design)
 
   - [**Mockup**](#mockup)
@@ -39,6 +40,15 @@ The site must meet all the requirements and goals as potential visitors will mos
 - Find information about prices
 - Be able to contact the business owner as I wish through social media, e-mail or a contact form.
 - Read terms and conditions.
+
+### **Responsive Web Design**
+
+#### Website is fully responsive, with use of 4 breakpoints:
+
+- 375px - mobile size,
+- 768px - tablet size,
+- 1440px - desktop size,
+- 1950px - desktop-large.
 
 [Back to contents](#contents)
 
