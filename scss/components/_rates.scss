@@ -50,12 +50,6 @@ table tr:last-child td:last-child {
   border-bottom-right-radius: 8px;
 }
 
-tr {
-  &:nth-child(2) {
-    // background-color: $light-pink;
-  }
-}
-
 /* Utility classes */
 .r-border-remove {
   border-right: none;
