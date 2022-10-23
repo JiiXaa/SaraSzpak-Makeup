@@ -1,24 +1,23 @@
 @use '../abstracts/variables' as *;
 
 .contact-header {
-  width: 70%;
+  width: 80%;
   margin: 0 auto;
-  margin-top: 8rem;
+  margin-top: 5rem;
   display: flex;
-  justify-content: end;
-  padding-right: 2rem;
-  padding-bottom: 1rem;
+  justify-content: start;
 
   h1 {
     font-family: $logo-font;
     letter-spacing: 1rem;
-    font-size: 3rem;
+    font-size: 2rem;
     color: $of-pink;
     position: relative;
+    margin-bottom: 0.4rem;
     &::after {
       content: '';
       position: absolute;
-      right: 0;
+      left: -10px;
       bottom: 8px;
       height: 2px;
       width: 120%;
@@ -263,6 +262,33 @@
       }
     }
   }
+
+  // .contact-header {
+  //   width: 70%;
+  //   margin: 0 auto;
+  //   margin-top: 8rem;
+  //   display: flex;
+  //   justify-content: end;
+  //   padding-right: 2rem;
+  //   padding-bottom: 1rem;
+
+  //   h1 {
+  //     font-family: $logo-font;
+  //     letter-spacing: 1rem;
+  //     font-size: 3rem;
+  //     color: $of-pink;
+  //     position: relative;
+  //     &::after {
+  //       content: '';
+  //       position: absolute;
+  //       right: 0;
+  //       bottom: 8px;
+  //       height: 2px;
+  //       width: 120%;
+  //       background-color: $of-grey;
+  //     }
+  //   }
+  // }
 }
 
 @media screen and (min-width: $desktop-large) {

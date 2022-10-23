@@ -734,25 +734,24 @@ body {
   }
 }
 .contact-header {
-  width: 70%;
+  width: 80%;
   margin: 0 auto;
-  margin-top: 8rem;
+  margin-top: 5rem;
   display: flex;
-  justify-content: end;
-  padding-right: 2rem;
-  padding-bottom: 1rem;
+  justify-content: start;
 }
 .contact-header h1 {
   font-family: "Great Vibes", cursive;
   letter-spacing: 1rem;
-  font-size: 3rem;
+  font-size: 2rem;
   color: #fff0f0;
   position: relative;
+  margin-bottom: 0.4rem;
 }
 .contact-header h1::after {
   content: "";
   position: absolute;
-  right: 0;
+  left: -10px;
   bottom: 8px;
   height: 2px;
   width: 120%;
@@ -1115,6 +1114,59 @@ table tr:last-child td:last-child {
 }
 .rates-asterisk small {
   padding: 0.1rem;
+}
+
+.terms-conds {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+  padding: 2rem 1rem;
+  border: 1px solid #f4f4f4;
+  border-radius: 15px;
+  color: #585858;
+  font-size: 0.8rem;
+}
+.terms-conds h2 {
+  text-align: center;
+  color: #585858;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+.terms-conds h3 {
+  text-align: center;
+  color: #838383;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  width: 80%;
+  margin: 0 auto;
+}
+.terms-conds small {
+  display: block;
+  text-align: center;
+  font-size: 0.7rem;
+  color: #838383;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+.terms-conds ol {
+  margin-bottom: 1rem;
+}
+
+/* Utility classes */
+.remove-list-style {
+  list-style: none;
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.pinky {
+  color: #cf8d9a;
+}
+
+.bold {
+  font-weight: bold;
 }
 
 /*# sourceMappingURL=style.css.map */

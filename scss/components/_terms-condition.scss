@@ -1,0 +1,58 @@
+@use '../abstracts/variables' as *;
+
+.terms-conds {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+  padding: 2rem 1rem;
+  border: 1px solid $of-grey;
+  border-radius: 15px;
+  color: $text-grey;
+  font-size: 0.8rem;
+
+  h2 {
+    text-align: center;
+    color: $text-grey;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    text-align: center;
+    color: $primary-grey;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  small {
+    display: block;
+    text-align: center;
+    font-size: 0.7rem;
+    color: $primary-grey;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+  }
+
+  ol {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Utility classes */
+.remove-list-style {
+  list-style: none;
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.pinky {
+  color: $primary-color;
+}
+
+.bold {
+  font-weight: bold;
+}
