@@ -733,14 +733,14 @@ body {
     margin-bottom: 0;
   }
 }
-.contact-header {
+.contact__header {
   width: 80%;
   margin: 0 auto;
   margin-top: 5rem;
   display: flex;
   justify-content: start;
 }
-.contact-header h1 {
+.contact__header h1 {
   font-family: "Great Vibes", cursive;
   letter-spacing: 1rem;
   font-size: 2rem;
@@ -748,7 +748,7 @@ body {
   position: relative;
   margin-bottom: 0.4rem;
 }
-.contact-header h1::after {
+.contact__header h1::after {
   content: "";
   position: absolute;
   left: -10px;
@@ -1049,7 +1049,7 @@ table {
   border-collapse: separate;
   border-spacing: 0;
   width: 80%;
-  margin: 4rem auto 3rem;
+  margin: 0 auto 3rem;
 }
 
 table tr th,
@@ -1070,7 +1070,11 @@ table tr td:first-child {
 }
 
 table tr th {
-  text-align: left;
+  text-align: center;
+  font-size: 1.1rem;
+  letter-spacing: 0.1rem;
+  color: #838383;
+  padding: 1rem 0;
   border-top: solid 1px #bbb;
 }
 
@@ -1092,6 +1096,38 @@ table tr:last-child td:first-child {
 /* bottom-right border-radius */
 table tr:last-child td:last-child {
   border-bottom-right-radius: 8px;
+}
+
+.rates__header {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 5rem;
+  display: flex;
+  justify-content: start;
+}
+.rates__header h1 {
+  font-family: "Great Vibes", cursive;
+  letter-spacing: 1rem;
+  font-size: 2rem;
+  color: #fff0f0;
+  position: relative;
+  margin-bottom: 0.4rem;
+}
+.rates__header h1::after {
+  content: "";
+  position: absolute;
+  left: -10px;
+  bottom: 8px;
+  height: 2px;
+  width: 120%;
+  background-color: #f4f4f4;
+}
+
+/* table styles */
+td h3 {
+  color: #585858;
+  font-size: 1.1rem;
+  font-style: italic;
 }
 
 /* Utility classes */
@@ -1125,6 +1161,7 @@ table tr:last-child td:last-child {
   border-radius: 15px;
   color: #585858;
   font-size: 0.8rem;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 .terms-conds h2 {
   text-align: center;
@@ -1152,6 +1189,35 @@ table tr:last-child td:last-child {
   margin-bottom: 1rem;
 }
 
+@media screen and (min-width: 1440px) {
+  .terms-conds {
+    width: 70%;
+    margin-bottom: 2rem;
+    padding: 3rem 1rem 2rem;
+    font-size: 1rem;
+  }
+  .terms-conds div {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .terms-conds h2 {
+    font-size: 1.7rem;
+    margin-bottom: 1.4rem;
+  }
+  .terms-conds h3 {
+    letter-spacing: 2px;
+    width: 100%;
+    margin: 3rem 0 1rem;
+  }
+  .terms-conds small {
+    font-size: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+  .terms-conds ol {
+    margin-bottom: 1rem;
+    line-height: 1.8rem;
+  }
+}
 /* Utility classes */
 .remove-list-style {
   list-style: none;
@@ -1167,6 +1233,10 @@ table tr:last-child td:last-child {
 
 .bold {
   font-weight: bold;
+}
+
+.social-links-reset {
+  line-height: 0.5rem;
 }
 
 /*# sourceMappingURL=style.css.map */

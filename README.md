@@ -48,7 +48,7 @@ The site must meet all the requirements and goals as potential visitors will mos
 - 375px - mobile size,
 - 768px - tablet size,
 - 1440px - desktop size,
-- 1950px - desktop-large.
+- 1950px - desktop large size.
 
 [Back to contents](#contents)
 

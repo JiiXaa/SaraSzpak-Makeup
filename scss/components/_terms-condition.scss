@@ -9,6 +9,7 @@
   border-radius: 15px;
   color: $text-grey;
   font-size: 0.8rem;
+  box-shadow: $card-shadow;
 
   h2 {
     text-align: center;
@@ -40,6 +41,41 @@
   }
 }
 
+@media screen and (min-width: $desktop) {
+  .terms-conds {
+    width: 70%;
+    margin-bottom: 2rem;
+    padding: 3rem 1rem 2rem;
+    font-size: 1rem;
+
+    div {
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-size: 1.7rem;
+      margin-bottom: 1.4rem;
+    }
+
+    h3 {
+      letter-spacing: 2px;
+      width: 100%;
+      margin: 3rem 0 1rem;
+    }
+
+    small {
+      font-size: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    ol {
+      margin-bottom: 1rem;
+      line-height: 1.8rem;
+    }
+  }
+}
+
 /* Utility classes */
 .remove-list-style {
   list-style: none;
@@ -55,4 +91,8 @@
 
 .bold {
   font-weight: bold;
+}
+
+.social-links-reset {
+  line-height: 0.5rem;
 }
