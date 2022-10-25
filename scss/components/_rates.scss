@@ -11,7 +11,6 @@ table {
 }
 table tr th,
 table tr td {
-  box-shadow: $card-shadow;
   border-right: 1px solid #bbb;
   border-bottom: 1px solid #bbb;
   padding: 5px;
@@ -83,16 +82,55 @@ table tr:last-child td:last-child {
 
 /* table styles */
 
+table tr td:not(:has(p)) {
+  font-size: 0.8;
+  color: $text-grey;
+  padding: 0.5rem 1rem;
+}
+
+td {
+  position: relative;
+  &:nth-child(2) {
+    padding: 0;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-align: left;
+  }
+}
+
 td h3 {
   color: $text-grey;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-style: italic;
   padding: 1rem;
 }
 
-// p {
-//   padding: 1rem;
-// }
+td p {
+  color: $primary-grey;
+  padding: 1.4rem;
+
+  &:last-child {
+    padding-bottom: 2rem;
+  }
+}
+
+.rates-desc {
+  color: $primary-grey;
+  border-bottom: 1px solid $light-pink;
+  border-top: 1px solid $light-pink;
+  padding: 1rem 0;
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 3rem;
+}
+
+.rates-asterisk {
+}
+
+.travel__info {
+  color: $text-grey;
+  padding: 1rem;
+}
 
 /* Utility classes */
 .r-border-remove {
@@ -114,4 +152,17 @@ td h3 {
   small {
     padding: 0.1rem;
   }
+}
+
+.to-top {
+  position: absolute;
+  top: 2px;
+}
+
+.mb-05 {
+  margin-bottom: 0.5rem;
+}
+
+.text-sm {
+  font-size: 0.9rem;
 }
