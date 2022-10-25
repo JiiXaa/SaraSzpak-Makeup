@@ -33,6 +33,10 @@ table tr th {
   border-top: solid 1px #bbb;
 }
 
+table tr th.clear-border {
+  border-top: none;
+}
+
 /* top-left border-radius */
 table tr:first-child th:first-child {
   border-top-left-radius: 8px;
@@ -165,4 +169,80 @@ td p {
 
 .text-sm {
   font-size: 0.9rem;
+}
+
+@media screen and (min-width: $desktop) {
+  .rates__header {
+    width: 40%;
+  }
+
+  table {
+    width: 40%;
+    margin: 0 auto 4rem;
+  }
+
+  table tr td:not(:has(p)) {
+    font-size: 1rem;
+  }
+
+  td {
+    position: relative;
+    &:nth-child(2) {
+      font-size: 1.1rem;
+    }
+  }
+
+  td h3 {
+    font-size: 1.2rem;
+    padding: 1rem;
+  }
+
+  td p {
+    padding: 1.4rem;
+  }
+
+  .rates-desc {
+    padding: 1rem 0;
+    width: 40%;
+    margin-bottom: 5rem;
+  }
+
+  /* Utility classes */
+
+  .w-mid {
+    width: 4rem;
+  }
+}
+
+@media screen and (min-width: $desktop-large) {
+  .rates__header {
+    width: 30%;
+  }
+
+  table {
+    width: 30%;
+    margin: 0 auto 4rem;
+  }
+
+  table tr td:not(:has(p)) {
+    font-size: 1.1rem;
+    padding-left: 1.4rem;
+  }
+
+  td:nth-child(2) {
+    font-size: 1.1rem;
+  }
+
+  td h3 {
+    font-size: 1.6rem;
+  }
+
+  td p {
+    padding: 1.8rem;
+  }
+
+  .rates-desc {
+    padding: 2rem 0;
+    width: 30%;
+  }
 }
