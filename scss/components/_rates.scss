@@ -11,6 +11,7 @@ table {
 }
 table tr th,
 table tr td {
+  box-shadow: $card-shadow;
   border-right: 1px solid #bbb;
   border-bottom: 1px solid #bbb;
   padding: 5px;
@@ -86,7 +87,12 @@ td h3 {
   color: $text-grey;
   font-size: 1.1rem;
   font-style: italic;
+  padding: 1rem;
 }
+
+// p {
+//   padding: 1rem;
+// }
 
 /* Utility classes */
 .r-border-remove {

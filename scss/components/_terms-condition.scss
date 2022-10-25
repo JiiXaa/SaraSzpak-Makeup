@@ -4,7 +4,7 @@
   width: 80%;
   margin: 0 auto;
   margin-bottom: 2rem;
-  padding: 2rem 1rem;
+  padding: 2rem 1rem 2rem 0;
   border: 1px solid $of-grey;
   border-radius: 15px;
   color: $text-grey;
@@ -38,6 +38,8 @@
 
   ol {
     margin-bottom: 1rem;
+    padding-left: 2.2rem;
+    line-height: 1.4rem;
   }
 }
 
@@ -45,7 +47,7 @@
   .terms-conds {
     width: 70%;
     margin-bottom: 2rem;
-    padding: 3rem 1rem 2rem;
+    padding: 3rem 1rem;
     font-size: 1rem;
 
     div {

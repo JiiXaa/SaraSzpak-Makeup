@@ -140,6 +140,10 @@
 }
 
 @media screen and (min-width: $desktop) {
+  .contact__header {
+    width: 70%;
+  }
+
   .contact-form {
     .contact-form__container {
       display: flex;

@@ -851,6 +851,9 @@ body {
 }
 
 @media screen and (min-width: 1440px) {
+  .contact__header {
+    width: 70%;
+  }
   .contact-form .contact-form__container {
     display: flex;
     flex-direction: column;
@@ -1054,6 +1057,7 @@ table {
 
 table tr th,
 table tr td {
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   border-right: 1px solid #bbb;
   border-bottom: 1px solid #bbb;
   padding: 5px;
@@ -1128,6 +1132,7 @@ td h3 {
   color: #585858;
   font-size: 1.1rem;
   font-style: italic;
+  padding: 1rem;
 }
 
 /* Utility classes */
@@ -1156,7 +1161,7 @@ td h3 {
   width: 80%;
   margin: 0 auto;
   margin-bottom: 2rem;
-  padding: 2rem 1rem;
+  padding: 2rem 1rem 2rem 0;
   border: 1px solid #f4f4f4;
   border-radius: 15px;
   color: #585858;
@@ -1187,13 +1192,15 @@ td h3 {
 }
 .terms-conds ol {
   margin-bottom: 1rem;
+  padding-left: 2.2rem;
+  line-height: 1.4rem;
 }
 
 @media screen and (min-width: 1440px) {
   .terms-conds {
     width: 70%;
     margin-bottom: 2rem;
-    padding: 3rem 1rem 2rem;
+    padding: 3rem 1rem;
     font-size: 1rem;
   }
   .terms-conds div {
