@@ -98,6 +98,14 @@ body {
   margin: 0;
   padding: 0;
 }
+body h1::selection,
+body h1::selection,
+body h2::selection,
+body h3::selection,
+body h4::selection,
+body p::selection {
+  background: #fff0f0;
+}
 
 @keyframes opacity-in {
   from {
@@ -1359,6 +1367,83 @@ td p:last-child {
 
 .social-links-reset {
   line-height: 0.5rem;
+}
+
+.services-page {
+  margin-bottom: 2rem;
+}
+
+.learn-more {
+  text-align: center;
+  font-style: italic;
+  font-size: 0.7rem;
+  color: #838383;
+  margin-bottom: 0.2rem;
+}
+
+.services__header {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 5rem;
+  display: flex;
+  justify-content: start;
+}
+.services__header h1 {
+  font-family: "Great Vibes", cursive;
+  letter-spacing: 1rem;
+  font-size: 2rem;
+  color: #fff0f0;
+  position: relative;
+  margin-bottom: 0.4rem;
+}
+.services__header h1::after {
+  content: "";
+  position: absolute;
+  left: -10px;
+  bottom: 8px;
+  height: 2px;
+  width: 120%;
+  background-color: #f4f4f4;
+}
+
+.services__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 2rem;
+  margin: 0 auto;
+}
+
+.services-link {
+  text-decoration: none;
+  padding: 2rem;
+  width: 70%;
+  border-radius: 20px;
+  background-color: #f4f4f4;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+
+.services-link__item img {
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+.services-link__item h2 {
+  color: #585858;
+  margin-bottom: 0.6rem;
+}
+.services-link__item p {
+  color: #838383;
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+}
+
+@media screen and (min-width: 768px) {
+  .services-page {
+    height: calc(100vh - 112px);
+    padding: 0;
+    margin: 0;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

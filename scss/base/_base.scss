@@ -1,5 +1,16 @@
+@use '../abstracts/variables' as *;
+
 body {
   position: relative;
   margin: 0;
   padding: 0;
+
+  h1::selection,
+  h2::selection,
+  h3::selection,
+  h4::selection,
+  p::selection {
+    background: $of-pink;
+    // color: #ff0000;
+  }
 }
