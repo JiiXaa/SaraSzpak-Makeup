@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <!-- adobe fonts Aileron import -->
+    <link rel="stylesheet" href="https://use.typekit.net/nax6ups.css" />
+    <!-- google fonts Great Vibes import -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome Icons import -->
+    <script
+      src="https://kit.fontawesome.com/733177767a.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Sara Szpak Make-Up Artist and Hair Stylist</title>
+  </head>
+  <body>
+    <!-- OVERLAY MOBILE MENU -->
+    <div class="overlay"></div>
+    <!-- Navigation -->
+    <nav class="nav">
+      <a href="index.html" class="nav__logo">
+        <p>
+          Sara Szpak
+          <span class="nav__logo__suffix">MakeUp & Hair Stylist</span>
+        </p>
+      </a>
+      <div id="nav__toggle">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+      <div class="nav__list">
+        <ul class="nav__links">
+          <li class="nav__list__link">
+            <a class="anim-to-left" href="index.html">Home</a>
+          </li>
+          <li class="nav__list__link">
+            <a class="anim-to-left" href="index.html">Portfolio</a>
+          </li>
+          <li class="nav__list__link">
+            <a class="anim-to-left" href="index.html">Bridal</a>
+          </li>
+          <li class="nav__list__link">
+            <a class="link-active" href="services.html">Services</a>
+          </li>
+          <li class="nav__list__link">
+            <a class="anim-to-left" href="rates.html">Rates</a>
+          </li>
+          <li class="nav__list__link">
+            <a class="anim-to-left" href="contact.html">Contact</a>
+          </li>
+        </ul>
+        <ul class="nav__socials">
+          <li class="nav__socials__link">
+            <a href="#" data-color-id="color-1"
+              ><i class="fa-brands fa-instagram nav__socials__link--icon"></i
+            ></a>
+          </li>
+          <li class="nav__socials__link">
+            <a href="#" data-color-id="color-2"
+              ><i class="fa-brands fa-facebook-f nav__socials__link--icon"></i
+            ></a>
+          </li>
+          <li class="nav__socials__link">
+            <a href="#" data-color-id="color-3"
+              ><i class="fa-regular fa-envelope nav__socials__link--icon"></i
+            ></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- End Navigation -->
+
+    <!-- Services Main -->
+
+    <main class="other">
+      <header class="other__header">
+        <h1>Makeup Services</h1>
+      </header>
+
+      <div class="other__wrapper">
+        <section class="other-option">
+          <h2>Makeup Application Services</h2>
+          <p>
+            I am available for all your makeup artistry needs. From one-on-one
+            makeup lessons, a photoshoot/videoshoot, your birthday, prom,
+            graduation, to your wedding day, all special occasions, or even to
+            get dolled up for a great night out. I am involved with every client
+            I work with, and I enjoy making long-term relationships with all of
+            my clients. Know that you will have a fantastic experience, and I
+            will do whatever I can to achieve your perfect look for whatever the
+            occasion may be.
+          </p>
+        </section>
+        <section class="other-option">
+          <h2>A Night Out | Special Occasion Makeup</h2>
+          <small>(Time is approximately 1 hour)</small>
+          <p>
+            Do you have a special occasion, an event, a night of fun in the
+            city, or attending a party? Then, get dressed in your best and leave
+            the makeup to me! I do travel to my clients to help them get ready
+            in the comfort of their own homes or hotel. Makeup application
+            includes full face, contouring, eyes, cheeks, lips, brow sculpting,
+            and lashes.
+          </p>
+        </section>
+        <section class="other-option">
+          <h2>Makeup For Graduation | Prom</h2>
+          <small>(Time is approximately 1 hour)</small>
+          <p>
+            Luxury full-face bridal makeup application with high-quality skin
+            and makeup products complete with eyelashes. Bridal makeup
+            applications are long-lasting and made to photograph well.
+            Traditional and airbrush makeup is available. Providing makeup
+            services for the bride, bridesmaids, bridal party, family members,
+            and attendants.
+          </p>
+        </section>
+        <section class="other-option">
+          <h2>Photoshoots | Engagement | Maternity | Glamour</h2>
+          <small>(Time is approximately 1 hour)</small>
+          <p>
+            Photoshoot makeup is a complete long-wearing and shine-free makeup
+            application with eyelashes that enhance your natural beauty and
+            translate flawlessly on camera. Makeup applications can be in your
+            home, hotel or on-location.
+          </p>
+        </section>
+        <section class="other-option">
+          <h2>Gift Cards</h2>
+          <p>
+            Gift cards can be purchased to be used for any makeup/hair services.
+          </p>
+        </section>
+      </div>
+    </main>
+
+    <!-- End Services Main -->
+
+    <!-- Contact Form -->
+    <form class="contact-form" action="#">
+      <div class="contact-form__container">
+        <div class="contact-form__main-wrapper">
+          <div class="contact-form__inputs contact-form__item">
+            <div class="form__group">
+              <label id="name-label" for="name">Your full name:</label>
+              <input
+                name="name"
+                id="name"
+                type="text"
+                required
+                autocomplete="off"
+              />
+            </div>
+            <div class="form__group">
+              <label id="email-label" for="email">Your email address:</label>
+              <input
+                name="email"
+                id="email"
+                type="email"
+                required
+                autocomplete="off"
+              />
+            </div>
+            <div class="form__group">
+              <label id="occasion-label" for="occasion"
+                >What occasion is it?</label
+              >
+              <input
+                name="occasion"
+                id="occasion"
+                type="text"
+                required
+                autocomplete="off"
+              />
+            </div>
+            <div class="form__group">
+              <label id="services-label" for="manyServices"
+                >How many services required?</label
+              >
+              <input
+                name="manyServices"
+                id="manyServices"
+                type="text"
+                required
+                autocomplete="off"
+              />
+            </div>
+            <div class="form__group">
+              <label id="location-label" for="location">Location</label>
+              <input
+                name="location"
+                id="location"
+                type="text"
+                required
+                autocomplete="off"
+              />
+            </div>
+            <div class="form__group">
+              <label id="readyFor-label" for="readyFor"
+                >What time do you need to be ready for?</label
+              >
+              <input
+                name="readyFor"
+                id="readyFor"
+                type="text"
+                required
+                autocomplete="off"
+              />
+            </div>
+          </div>
+          <div class="contact-form__description contact-form__item">
+            <p>
+              If you would like to contact me, please choose one of the
+              following:
+            </p>
+            <ul>
+              <li>You can email me at “saraszpak@hotmail.com“, or</li>
+              <li>You can text me on +44 7783 109 453, or</li>
+              <li>
+                You can also use the contact form below to send me a message.
+              </li>
+              <br />
+              <li>
+                <b><i>Please note</i></b> – I am happy to travel any distance to
+                a wedding or function, locations over 3 miles away will incur an
+                additional charge.
+              </li>
+            </ul>
+            <p>£50 not-refundable deposit to book your wedding date</p>
+            <p>
+              £10/pp not-refundable deposit to book your special occasion date
+            </p>
+          </div>
+        </div>
+        <div class="form__group--message">
+          <label for="your-message">Your Message</label>
+          <textarea name="your-message" id="your-message"></textarea>
+        </div>
+        <input type="submit" value="Submit" />
+      </div>
+    </form>
+    <!-- End Contact Form -->
+
+    <!-- Footer -->
+
+    <footer class="footer">
+      <p class="footer-logo">Sara Szpak</p>
+      <div class="footer__contacts">
+        <a href="mailto:saraszpak@hotmail.com" class="footer__contacts-email"
+          >saraszpak@hotmail.com</a
+        >
+        <div class="footer__contacts-divider"></div>
+        <a href="tel:+447783109453" class="footer__contacts-mobile"
+          >+44 7783 109 453</a
+        >
+      </div>
+    </footer>
+
+    <!-- End Footer -->
+
+    <script src="./index.js"></script>
+  </body>
+</html>
