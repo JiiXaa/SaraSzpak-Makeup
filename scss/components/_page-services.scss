@@ -51,7 +51,7 @@
 .services-link {
   text-decoration: none;
   padding: 2rem;
-  width: 70%;
+  width: 80%;
   border-radius: 20px;
   background-color: $of-grey;
   box-shadow: $card-shadow;
@@ -75,236 +75,137 @@
   }
 }
 
-// .services__page {
-//   position: relative;
-//   overflow: hidden;
-
-//   &__cards {
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     justify-content: center;
-//     row-gap: 2rem;
-
-//     &-item {
-//       width: 80%;
-//       padding: 2rem;
-//       border-radius: 20px;
-//       background-color: $of-grey;
-//       box-shadow: $card-shadow;
-
-//       img {
-//         border-radius: 6px;
-//         margin-bottom: 1rem;
-//       }
-
-//       h2 {
-//         color: $text-grey;
-//         margin-bottom: 0.6rem;
-//       }
-
-//       p {
-//         color: $primary-grey;
-//         font-size: 1.2rem;
-//         line-height: 1.5rem;
-//       }
-
-//       &:last-child {
-//         margin-bottom: 6rem;
-//       }
-//     }
-//   }
-
-//   &__texture-text {
-//     position: absolute;
-//     width: 185%;
-//     bottom: 5px;
-//     left: -20px;
-
-//     p {
-//       font-size: 5rem;
-//       color: $of-pink;
-//       font-family: $logo-font;
-//     }
-//   }
-// }
-
 @media screen and (min-width: $tablet) {
+  .page-wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
   .services-page {
-    // 112px subtracting a height of the footer makes view full height without scrollbar
-    height: calc(100vh - 112px);
-    padding: 0;
-    margin: 0;
-    // &__cards {
-    //   width: 60%;
-    //   margin: 0 auto;
-    //   row-gap: 3rem;
-    //   &-item {
-    //     &:last-child {
-    //       margin-bottom: 15rem;
-    //     }
-    //     img {
-    //       margin: 0 auto;
-    //     }
-    //   }
-    // }
+    margin-top: 1rem;
+  }
 
-    // &__texture-text {
-    //   position: absolute;
-    //   width: 185%;
-    //   bottom: -10px;
-    //   left: -30px;
-    //   z-index: -1;
+  .learn-more {
+    font-size: 0.6rem;
+  }
 
-    //   p {
-    //     font-size: 20vw;
-    //     color: $of-pink;
-    //     font-family: $logo-font;
-    //   }
-    // }
+  .services__header {
+    width: 75%;
+
+    h1 {
+      letter-spacing: 0.7rem;
+      font-size: 1.5rem;
+      margin-bottom: 0.1rem;
+    }
+  }
+
+  .services__container {
+    display: flex;
+    flex-direction: row;
+    align-items: normal;
+    justify-content: space-around;
+    row-gap: 2rem;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .services-link {
+    width: 30%;
+  }
+
+  .services-link__item {
+    h2 {
+      font-size: 1rem;
+      margin-bottom: 0.6rem;
+    }
+
+    p {
+      font-size: 0.7rem;
+      line-height: 1rem;
+    }
   }
 }
 
-// @media screen and (min-width: $tablet) {
-//   .services__page {
-//     background-color: red;
-//     &__cards {
-//       width: 60%;
-//       margin: 0 auto;
-//       row-gap: 3rem;
-//       &-item {
-//         &:last-child {
-//           margin-bottom: 15rem;
-//         }
-//         img {
-//           margin: 0 auto;
-//         }
-//       }
-//     }
+@media screen and (min-width: $desktop) {
+  .page-wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 
-//     &__texture-text {
-//       position: absolute;
-//       width: 185%;
-//       bottom: -10px;
-//       left: -30px;
-//       z-index: -1;
+  .services-page {
+    margin-top: 2rem;
+  }
 
-//       p {
-//         font-size: 20vw;
-//         color: $of-pink;
-//         font-family: $logo-font;
-//       }
-//     }
-//   }
-// }
+  .learn-more {
+    font-size: 0.7rem;
+  }
 
-// @media screen and (min-width: $desktop) {
-//   .services {
-//     position: relative;
-//     overflow: visible;
-//     margin-bottom: 5rem;
+  .services__header {
+    h1 {
+      letter-spacing: 1rem;
+      font-size: 2rem;
+      margin-bottom: 0.4rem;
+    }
+  }
 
-//     &__cards {
-//       width: 70%;
-//       display: flex;
-//       flex-direction: row;
-//       align-items: normal;
-//       justify-content: space-between;
+  .services-link__item {
+    img {
+      border-radius: 6px;
+      margin-bottom: 1rem;
+    }
 
-//       row-gap: 2rem 0rem;
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.6rem;
+    }
 
-//       &-item {
-//         width: 25%;
-//         padding: 2rem;
-//         padding-bottom: 1rem;
-//         border-radius: 20px;
-//         background-color: $of-grey;
-//         box-shadow: $card-shadow;
+    p {
+      font-size: 1.2rem;
+      line-height: 1.5rem;
+    }
+  }
+}
 
-//         img {
-//           border-radius: 6px;
-//           margin-bottom: 1rem;
-//         }
+@media screen and (min-width: $desktop-large) {
+  .page-wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 
-//         h2 {
-//           color: $text-grey;
-//           margin-bottom: 0.6rem;
-//         }
+  .services-page {
+    margin-top: 5rem;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 
-//         p {
-//           color: $primary-grey;
-//           font-size: 1.2rem;
-//           line-height: 1.5rem;
-//         }
+  .learn-more {
+    font-size: 0.7rem;
+  }
 
-//         &:last-child {
-//           margin-bottom: 0;
-//         }
-//       }
-//     }
+  .services__header {
+    h1 {
+      font-size: 2.5rem;
+    }
+  }
 
-//     &__texture-text {
-//       position: absolute;
-//       width: 100%;
-//       top: -250px;
-//       left: 0;
-//       overflow: hidden;
-//       p {
-//         width: 200%;
-//         font-size: 17vw;
-//         letter-spacing: 10px;
-//         color: $of-pink;
-//         font-family: $logo-font;
-//       }
-//     }
-//   }
-// }
+  .services-link__item {
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: 0.6rem;
+    }
 
-// @media screen and (min-width: $desktop-large) {
-//   .services__texture-text {
-//     p {
-//       position: absolute;
-//       top: -50px;
-//       left: -60px;
-//       font-size: 18vw;
-//     }
-//   }
-
-//   .services__cards {
-//     width: 70%;
-//     display: flex;
-//     flex-direction: row;
-//     align-items: normal;
-//     justify-content: space-between;
-//     margin-top: 15rem;
-
-//     &-item {
-//       width: 30%;
-//       padding: 2rem;
-//       padding-bottom: 1rem;
-//       border-radius: 20px;
-//       background-color: $of-grey;
-//       box-shadow: $card-shadow;
-
-//       img {
-//         border-radius: 6px;
-//         margin-bottom: 1rem;
-//       }
-
-//       h2 {
-//         color: $text-grey;
-//         margin-bottom: 0.6rem;
-//       }
-
-//       p {
-//         color: $primary-grey;
-//         font-size: 1.2rem;
-//         line-height: 1.5rem;
-//       }
-
-//       &:last-child {
-//         margin-bottom: 0;
-//       }
-//     }
-//   }
-// }
+    p {
+      font-size: 1.3rem;
+      line-height: 1.5rem;
+    }
+  }
+}

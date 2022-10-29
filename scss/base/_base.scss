@@ -11,6 +11,11 @@ body {
   h4::selection,
   p::selection {
     background: $of-pink;
-    // color: #ff0000;
   }
 }
+
+body::selection {
+  background: $of-pink;
+}
+
+/* utility classes */
