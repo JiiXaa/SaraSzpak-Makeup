@@ -602,12 +602,12 @@ body::selection {
   margin-bottom: 1rem;
 }
 .services__cards-item h2 {
-  color: #585858;
+  font-size: 1.1rem;
   margin-bottom: 0.6rem;
 }
 .services__cards-item p {
   color: #838383;
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 1.5rem;
 }
 .services__cards-item:last-child {
@@ -1435,11 +1435,12 @@ td p:last-child {
 }
 .services-link__item h2 {
   color: #585858;
+  font-size: 1.1rem;
   margin-bottom: 0.6rem;
 }
 .services-link__item p {
   color: #838383;
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 1.5rem;
 }
 
@@ -1545,6 +1546,52 @@ td p:last-child {
     font-size: 1.3rem;
     line-height: 1.5rem;
   }
+}
+.bridal {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 6rem;
+}
+.bridal h2 {
+  color: rgb(43, 43, 43);
+  font-size: 1.1rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+.bridal p {
+  color: #585858;
+  font-size: 0.9rem;
+}
+.bridal img {
+  height: 80%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.bridal-option {
+  margin-bottom: 2rem;
+}
+.bridal-option small {
+  display: block;
+  margin-bottom: 0.7rem;
+  text-align: center;
+  color: #838383;
+  font-style: italic;
+}
+
+/* Utility Classes */
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.divider {
+  height: 0.1px;
+  width: 100%;
+  background-color: #838383;
+  margin-bottom: 1.5rem;
+}
+.divider:last-child {
+  margin-bottom: 3rem;
 }
 
 /*# sourceMappingURL=style.css.map */
