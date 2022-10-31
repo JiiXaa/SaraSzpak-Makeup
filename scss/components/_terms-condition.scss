@@ -78,6 +78,14 @@
   }
 }
 
+@media screen and (min-width: $desktop-large) {
+  .terms-conds {
+    width: 50%;
+    margin-bottom: 4rem;
+    font-size: 1.1rem;
+  }
+}
+
 /* Utility classes */
 .remove-list-style {
   list-style: none;

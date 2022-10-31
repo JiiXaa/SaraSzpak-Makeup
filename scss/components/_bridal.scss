@@ -36,6 +36,125 @@
   }
 }
 
+@media screen and (min-width: $tablet) {
+  .bridal {
+    width: 80%;
+    margin-top: 6rem;
+
+    h2 {
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+      line-height: 1.5rem;
+    }
+
+    img {
+      width: 49%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .bridal-option {
+    .option-images {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
+
+@media screen and (min-width: $desktop) {
+  .bridal {
+    width: 60%;
+    margin-top: 7rem;
+
+    h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+
+    img {
+      width: 42%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .bridal-option {
+    margin-bottom: 2rem;
+
+    .option-images {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    small {
+      display: block;
+      margin-bottom: 0.7rem;
+      text-align: center;
+      color: $primary-grey;
+      font-style: italic;
+    }
+  }
+
+  .bridal-contact {
+    width: 88%;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: $desktop-large) {
+  .bridal {
+    width: 45%;
+    margin-top: 7rem;
+
+    h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1.2rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 3rem;
+    }
+
+    img {
+      width: 42%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+
+    /* Utility Classes Large Desktop */
+    .divider {
+      margin-bottom: 2rem;
+
+      &:last-child {
+        margin-bottom: 5rem;
+      }
+    }
+  }
+
+  .bridal-option {
+    margin-bottom: 2rem;
+
+    small {
+      margin-bottom: 1.2rem;
+    }
+  }
+
+  .bridal-contact {
+    width: 92%;
+    margin: 0 auto;
+  }
+}
+
 /* Utility Classes */
 .mb-1 {
   margin-bottom: 1rem;
