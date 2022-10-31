@@ -2012,4 +2012,63 @@ td p:last-child {
   margin-bottom: 3rem;
 }
 
+.error-page__wrapper {
+  width: 80%;
+  margin: 0 auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.error-page__wrapper h1 {
+  font-family: "Great Vibes", cursive;
+  font-size: 5rem;
+  color: rgb(43, 43, 43);
+}
+.error-page__wrapper h2 {
+  font-size: 0.9rem;
+  color: #585858;
+  font-style: italic;
+  margin-bottom: 2rem;
+}
+.error-page__wrapper a {
+  text-decoration: none;
+}
+.error-page__wrapper .btn-errorpage {
+  background-color: #cf8d9a;
+  color: #fff;
+  font-size: 1.4rem;
+  border: none;
+  border-radius: 5px;
+  height: 3rem;
+  width: 100%;
+  padding: 0 1.5rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (min-width: 768px) {
+  .error-page__wrapper h1 {
+    font-size: 7rem;
+  }
+  .error-page__wrapper h2 {
+    font-size: 1.4rem;
+    margin-bottom: 3rem;
+  }
+  .error-page__wrapper a {
+    text-decoration: none;
+  }
+  .error-page__wrapper .btn-errorpage {
+    cursor: pointer;
+    background-color: #cf8d9a;
+    color: #fff;
+    font-size: 1.6rem;
+    height: 3.5rem;
+    padding: 0 3rem;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */
