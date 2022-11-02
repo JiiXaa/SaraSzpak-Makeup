@@ -1,0 +1,61 @@
+@use '../abstracts/variables' as *;
+
+.portfolio__header {
+  // TODO: could use mixins as code snippet is exactly same in contact-form.scss
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 5rem;
+  display: flex;
+  justify-content: start;
+
+  h1 {
+    font-family: $logo-font;
+    letter-spacing: 1rem;
+    font-size: 2rem;
+    color: $of-pink;
+    position: relative;
+    margin-bottom: 0.4rem;
+    &::after {
+      content: '';
+      position: absolute;
+      left: -10px;
+      bottom: 8px;
+      height: 2px;
+      width: 120%;
+      background-color: $of-grey;
+    }
+  }
+}
+
+.portfolio-gallery {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  // FIX FOR FLEXBOX LAST TWO ITEMS GROW TO FILL UP THREE COLUMNS (now last one or two items stay same size as the rest of the images)
+  &::after {
+    content: '';
+    flex-grow: 999;
+  }
+
+  .img-group {
+    flex-grow: 1;
+    height: 300px;
+    cursor: pointer;
+    position: relative;
+
+    &:first-child > img {
+      object-position: 50% 0%;
+    }
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      vertical-align: middle;
+      border-radius: 5px;
+    }
+  }
+}

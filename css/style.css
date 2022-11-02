@@ -2070,5 +2070,57 @@ td p:last-child {
     padding: 0 3rem;
   }
 }
+.portfolio__header {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 5rem;
+  display: flex;
+  justify-content: start;
+}
+.portfolio__header h1 {
+  font-family: "Great Vibes", cursive;
+  letter-spacing: 1rem;
+  font-size: 2rem;
+  color: #fff0f0;
+  position: relative;
+  margin-bottom: 0.4rem;
+}
+.portfolio__header h1::after {
+  content: "";
+  position: absolute;
+  left: -10px;
+  bottom: 8px;
+  height: 2px;
+  width: 120%;
+  background-color: #f4f4f4;
+}
+
+.portfolio-gallery {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.portfolio-gallery::after {
+  content: "";
+  flex-grow: 999;
+}
+.portfolio-gallery .img-group {
+  flex-grow: 1;
+  height: 300px;
+  cursor: pointer;
+  position: relative;
+}
+.portfolio-gallery .img-group:first-child > img {
+  object-position: 50% 0%;
+}
+.portfolio-gallery .img-group img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+  border-radius: 5px;
+}
 
 /*# sourceMappingURL=style.css.map */
