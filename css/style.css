@@ -2117,9 +2117,6 @@ td p:last-child {
   height: 300px;
   position: relative;
 }
-.portfolio-gallery .img-group:first-child > img {
-  object-position: 50% 0%;
-}
 .portfolio-gallery .img-group:last-child {
   margin-bottom: 2rem;
 }
@@ -2129,6 +2126,9 @@ td p:last-child {
   height: 100%;
   vertical-align: middle;
   border-radius: 5px;
+}
+.portfolio-gallery .img-group .y-offset {
+  object-position: 50% 0%;
 }
 
 /* Gallery image overlay on hover */
