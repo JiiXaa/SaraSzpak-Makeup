@@ -2109,7 +2109,6 @@ td p:last-child {
 .portfolio-gallery .img-group {
   flex-grow: 1;
   height: 300px;
-  cursor: pointer;
   position: relative;
 }
 .portfolio-gallery .img-group:first-child > img {
@@ -2124,6 +2123,37 @@ td p:last-child {
   height: 100%;
   vertical-align: middle;
   border-radius: 5px;
+}
+
+/* Gallery image overlay on hover */
+@media screen and (min-width: 768px) {
+  .img-group > a {
+    position: relative;
+    cursor: pointer;
+    /* image overlay on hover */
+  }
+  .img-group > a:hover .overlay {
+    height: 100%;
+    opacity: 1;
+  }
+  .img-group .overlay {
+    position: absolute;
+    width: 100%;
+    height: 0;
+    opacity: 0;
+    background: rgba(57, 57, 57, 0.5);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: all 0.3s 0.1s ease-in-out;
+    color: #fff;
+    border-radius: 5px;
+    /* center overlay text */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
