@@ -34,6 +34,11 @@
     color: $primary-grey;
     font-style: italic;
   }
+
+  // gift card paragraph margin bottom clear:
+  .mb-reset {
+    margin-bottom: 1.5rem;
+  }
 }
 
 @media screen and (min-width: $tablet) {
@@ -146,6 +151,11 @@
 
     small {
       margin-bottom: 1.2rem;
+    }
+
+    // gift card paragraph margin bottom clear:
+    .mb-reset {
+      margin-bottom: 1.5rem;
     }
   }
 

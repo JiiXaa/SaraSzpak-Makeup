@@ -1759,6 +1759,9 @@ td p:last-child {
   color: #838383;
   font-style: italic;
 }
+.other-option .mb-reset {
+  margin-bottom: 1.5rem;
+}
 
 @media screen and (min-width: 768px) {
   .other {
@@ -1849,6 +1852,9 @@ td p:last-child {
   }
   .other-option small {
     margin-bottom: 1.2rem;
+  }
+  .other-option .mb-reset {
+    margin-bottom: 1.5rem;
   }
   .other-contact {
     width: 92%;
