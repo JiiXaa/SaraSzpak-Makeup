@@ -2115,6 +2115,9 @@ td p:last-child {
 .portfolio-gallery .img-group:first-child > img {
   object-position: 50% 0%;
 }
+.portfolio-gallery .img-group:last-child {
+  margin-bottom: 2rem;
+}
 .portfolio-gallery .img-group img {
   object-fit: cover;
   width: 100%;
