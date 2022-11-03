@@ -292,10 +292,14 @@
         }
         .contact-form__item:nth-child(2) {
           width: 40%;
-          // padding: 0;
           margin-left: 5rem;
         }
       }
+    }
+
+    /* Fix for contact form in the index.html, it needs bigger size to match the design. */
+    .contact-form__container.main {
+      width: 70%;
     }
 
     .contact-form__description {

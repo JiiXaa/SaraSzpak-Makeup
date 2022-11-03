@@ -1,66 +1,6 @@
 @use '../abstracts/variables' as *;
 @use '../abstracts/animations' as *;
 
-// .nav {
-//   // nav turned off temporarily !!!
-//   display: none;
-//   // overflow: hidden;
-
-//   // background-color: #333;
-//   position: fixed; /* Set the navbar to fixed position */
-//   top: 0; /* Position the navbar at the top of the page */
-//   width: 100%;
-//   border-bottom: 1px solid $primary-grey;
-
-//   &__container {
-//     height: 4rem;
-//     margin: 0 auto;
-//     width: 90%;
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: space-between;
-//     align-items: center;
-//   }
-
-//   &__logo {
-//     border: 2px solid red;
-//   }
-
-//   &__list {
-//     padding: 0;
-//     width: 35%;
-//     display: flex;
-
-//     justify-content: space-between;
-
-//     // padding: 0 10rem;
-//     list-style-type: none;
-
-//     &__link {
-//       a {
-//         letter-spacing: 0.5px;
-//         font-weight: $thin;
-//         text-decoration: none;
-//         color: $primary-grey;
-//         &.link-active {
-//           color: $primary-black;
-//           font-weight: $regular;
-//         }
-//       }
-//     }
-//   }
-
-//   &__socials {
-//     border: 2px solid red;
-//     display: flex;
-//     list-style-type: none;
-
-//     &__link a {
-//       text-decoration: none;
-//     }
-//   }
-// }
-
 // Mobile Navigation Icon
 #nav__toggle {
   position: absolute;

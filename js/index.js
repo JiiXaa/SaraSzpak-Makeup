@@ -36,7 +36,6 @@ socialsColorChange.forEach((socialIcon) => {
   socialIcon.addEventListener('mouseover', () => {
     socialsColorChange.forEach((icon) => {
       icon.classList.remove('socials-change-color');
-      // icon.classList.add('default--color');
       if (icon.dataset.colorId !== socialIcon.dataset.colorId) {
         icon.classList.add('socials-change-color');
       }
@@ -44,11 +43,18 @@ socialsColorChange.forEach((socialIcon) => {
   });
 });
 
+// Socials icons color go back to the default state/color
 socialsColorChange.forEach((socialIcon) => {
   socialIcon.addEventListener('mouseout', () => {
     socialsColorChange.forEach((icon) => {
       icon.classList.remove('socials-change-color');
-      // icon.classList.add('default-color');
     });
+  });
+});
+
+// When social icon is clicked, it closes mobile menu
+socialsColorChange.forEach((socialIcon) => {
+  socialIcon.addEventListener('click', () => {
+    showMenu();
   });
 });
