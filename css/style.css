@@ -1253,6 +1253,8 @@ td p:last-child {
 .travel__info {
   color: #585858;
   padding: 1rem;
+  font-size: 1rem;
+  font-weight: normal;
 }
 
 /* Utility classes */
