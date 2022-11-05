@@ -2170,7 +2170,7 @@ td p:last-child {
 }
 .form-submitted__wrapper h1 {
   font-family: "Great Vibes", cursive;
-  font-size: 4.5rem;
+  font-size: 3.5rem;
   color: rgb(43, 43, 43);
 }
 .form-submitted__wrapper h2 {
@@ -2196,9 +2196,8 @@ td p:last-child {
   font-size: 1.4rem;
   border: none;
   border-radius: 5px;
-  height: 3rem;
-  width: 100%;
-  padding: 0 1.5rem;
+  height: 2.8rem;
+  width: 140px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -2216,7 +2215,6 @@ td p:last-child {
   .form-submitted__wrapper .btn-custom {
     font-size: 1.3rem;
     height: 2.8rem;
-    padding: 0 2.2rem;
   }
 }
 @media screen and (min-width: 1440px) {
@@ -2233,8 +2231,8 @@ td p:last-child {
   }
   .form-submitted__wrapper .btn-custom {
     font-size: 1.4rem;
-    height: 3rem;
-    padding: 0 2.5rem;
+    height: 2.9rem;
+    width: 180px;
   }
 }
 @media screen and (min-width: 1950px) {
@@ -2249,7 +2247,8 @@ td p:last-child {
     margin-bottom: 2rem;
   }
   .form-submitted__wrapper .btn-custom {
-    font-size: 1.6rem;
+    font-size: 1.7rem;
+    width: 210px;
     height: 3.5rem;
     padding: 0 3rem;
   }
