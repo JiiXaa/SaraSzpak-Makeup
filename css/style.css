@@ -144,15 +144,17 @@ body::selection {
 }
 .nav__logo {
   text-decoration: none;
-  font-family: "Great Vibes", cursive;
   color: rgb(43, 43, 43);
+  font-family: "Great Vibes", cursive;
 }
 .nav__logo p {
   font-size: 2.3rem;
+  font-family: inherit;
   position: relative;
   top: 5px;
 }
 .nav__logo p span {
+  font-family: inherit;
   width: 100%;
   font-size: 0.8rem;
   position: absolute;
