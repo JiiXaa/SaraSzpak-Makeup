@@ -12,14 +12,15 @@
 
 @use 'components/navbar';
 @use 'components/main-home';
-@use 'components/main-services.scss';
-@use 'components/contact-form.scss';
-@use 'components/footer.scss';
+@use 'components/main-services';
+@use 'components/contact-form';
+@use 'components/footer';
 @use 'components/rates';
 @use 'components/terms-condition';
 @use 'components/page-services';
 @use 'components/bridal';
 @use 'components/other';
 @use 'components/lessons';
-@use 'components/error-page.scss';
 @use 'components/portfolio';
+@use 'components/form-submitted';
+@use 'components/error-page';
