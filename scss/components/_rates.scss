@@ -86,11 +86,11 @@ table tr:last-child td:last-child {
 
 /* table styles */
 
-table tr td:not(:has(p)) {
-  font-size: 0.8;
-  color: $text-grey;
-  padding: 0.5rem 1rem;
+table tr td.f-1 {
+  font-size: 0.8rem;
+  padding: 0.5rem;
 }
+
 
 td {
   position: relative;
@@ -180,8 +180,10 @@ td p {
     margin: 0 auto 4rem;
   }
 
-  table tr td:not(:has(p)) {
+  table tr td.f-1 {
     font-size: 1rem;
+    color: $text-grey;
+    padding: 0.5rem 2rem;
   }
 
   td {
@@ -223,9 +225,10 @@ td p {
     margin: 0 auto 4rem;
   }
 
-  table tr td:not(:has(p)) {
+
+  table tr td.f-1 {
     font-size: 1.1rem;
-    padding-left: 1.4rem;
+    padding: .5rem 0 .5rem .4rem;
   }
 
   td:nth-child(2) {
