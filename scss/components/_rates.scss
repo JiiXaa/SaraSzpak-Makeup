@@ -72,7 +72,7 @@ table tr:last-child td:last-child {
     color: $primary-color;
     position: relative;
     margin-bottom: 0.4rem;
-    opacity: .4;
+    opacity: 1;
     &::after {
       content: '';
       position: absolute;

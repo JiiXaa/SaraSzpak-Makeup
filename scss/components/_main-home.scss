@@ -98,23 +98,16 @@
       margin-bottom: 1.8rem;
 
       &-item {
+        width: 100px;
+        height: 100px;
+        // border: 2px solid red;
+        border-radius: 25px;
+        overflow: hidden;
         img {
           background-color: #fff;
-          border-radius: 25px;
-          width: 100px;
-          height: 100px;
-        }
-
-        /* FIX for middle awards image, as it feels smaller than rest */
-        img.sxl {
-          width: 140px;
-          height: 140px;
-        }
-
-        /* FIX for third image as it is not square */
-        img.notsquare {
-          width: 110px;
-          height: 100px;
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
         }
       }
     }
@@ -192,24 +185,8 @@
         width: 70%;
 
         &-item {
-          img {
-            background-color: #fff;
-            border-radius: 25px;
-            width: 110px;
-            height: 110px;
-          }
-
-          /* FIX for middle awards image, as it feels smaller than rest */
-          img.sxl {
-            width: 150px;
-            height: 150px;
-          }
-
-          /* FIX for third image as it is not square */
-          img.notsquare {
-            width: 130px;
-            height: 110px;
-          }
+          width: 120px;
+          height: 120px;
         }
       }
     }
@@ -279,27 +256,6 @@
         transform: translateX(45%);
 
         margin-bottom: 4rem;
-
-        &-item {
-          img {
-            background-color: #fff;
-            border-radius: 25px;
-            width: 120px;
-            height: 120px;
-          }
-
-          /* FIX for middle awards image, as it feels smaller than rest */
-          img.sxl {
-            width: 160px;
-            height: 160px;
-          }
-
-          /* FIX for third image as it is not square */
-          img.notsquare {
-            width: 140px;
-            height: 120px;
-          }
-        }
       }
     }
   }
@@ -365,24 +321,8 @@
         margin-bottom: 4rem;
 
         &-item {
-          img {
-            background-color: #fff;
-            border-radius: 25px;
-            width: 140px;
-            height: 140px;
-          }
-
-          /* FIX for middle awards image, as it feels smaller than rest */
-          img.sxl {
-            width: 180px;
-            height: 180px;
-          }
-
-          /* FIX for third image as it is not square */
-          img.notsquare {
-            width: 160px;
-            height: 140px;
-          }
+          width: 160px;
+          height: 160px;
         }
       }
     }

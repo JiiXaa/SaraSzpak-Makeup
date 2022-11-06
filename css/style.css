@@ -111,7 +111,7 @@ body::selection {
 }
 
 *:focus {
-  outline: 1px solid rgba(116, 66, 73, 0.7529411765);
+  outline: 1px solid rgba(99, 56, 61, 0.7529411765);
 }
 
 /* utility classes */
@@ -220,7 +220,7 @@ body::selection {
   transition: all 0.6s ease;
 }
 .nav__socials__link .socials-change-color {
-  color: rgba(116, 66, 73, 0.7529411765);
+  color: rgba(99, 56, 61, 0.7529411765);
   transition: all 0.6s ease;
 }
 
@@ -395,22 +395,16 @@ body::selection {
   margin-bottom: 1.8rem;
 }
 .main .header__about__awards-item {
-  /* FIX for middle awards image, as it feels smaller than rest */
-  /* FIX for third image as it is not square */
+  width: 100px;
+  height: 100px;
+  border-radius: 25px;
+  overflow: hidden;
 }
 .main .header__about__awards-item img {
   background-color: #fff;
-  border-radius: 25px;
-  width: 100px;
-  height: 100px;
-}
-.main .header__about__awards-item img.sxl {
-  width: 140px;
-  height: 140px;
-}
-.main .header__about__awards-item img.notsquare {
-  width: 110px;
-  height: 100px;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
 @media screen and (min-width: 768px) {
@@ -455,7 +449,7 @@ body::selection {
     background-color: #dd9fab;
   }
   .main .header__about__cta:focus {
-    outline: 1px solid rgba(116, 66, 73, 0.7529411765);
+    outline: 1px solid rgba(99, 56, 61, 0.7529411765);
   }
   .main .header__about__testimonials {
     margin: 0 auto;
@@ -474,22 +468,8 @@ body::selection {
     width: 70%;
   }
   .main .header__about__awards-item {
-    /* FIX for middle awards image, as it feels smaller than rest */
-    /* FIX for third image as it is not square */
-  }
-  .main .header__about__awards-item img {
-    background-color: #fff;
-    border-radius: 25px;
-    width: 110px;
-    height: 110px;
-  }
-  .main .header__about__awards-item img.sxl {
-    width: 150px;
-    height: 150px;
-  }
-  .main .header__about__awards-item img.notsquare {
-    width: 130px;
-    height: 110px;
+    width: 120px;
+    height: 120px;
   }
 }
 @media screen and (min-width: 1440px) {
@@ -545,24 +525,6 @@ body::selection {
     transform: translateX(45%);
     margin-bottom: 4rem;
   }
-  .main .header__about__awards-item {
-    /* FIX for middle awards image, as it feels smaller than rest */
-    /* FIX for third image as it is not square */
-  }
-  .main .header__about__awards-item img {
-    background-color: #fff;
-    border-radius: 25px;
-    width: 120px;
-    height: 120px;
-  }
-  .main .header__about__awards-item img.sxl {
-    width: 160px;
-    height: 160px;
-  }
-  .main .header__about__awards-item img.notsquare {
-    width: 140px;
-    height: 120px;
-  }
 }
 @media screen and (min-width: 1950px) {
   .main .header__about__image {
@@ -614,22 +576,8 @@ body::selection {
     margin-bottom: 4rem;
   }
   .main .header__about__awards-item {
-    /* FIX for middle awards image, as it feels smaller than rest */
-    /* FIX for third image as it is not square */
-  }
-  .main .header__about__awards-item img {
-    background-color: #fff;
-    border-radius: 25px;
-    width: 140px;
-    height: 140px;
-  }
-  .main .header__about__awards-item img.sxl {
-    width: 180px;
-    height: 180px;
-  }
-  .main .header__about__awards-item img.notsquare {
     width: 160px;
-    height: 140px;
+    height: 160px;
   }
 }
 .services {
@@ -655,6 +603,8 @@ body::selection {
 .services__cards-item img {
   border-radius: 6px;
   margin-bottom: 1rem;
+  height: 70%;
+  object-fit: cover;
 }
 .services__cards-item h2 {
   font-size: 1.1rem;
@@ -678,7 +628,7 @@ body::selection {
   font-size: 5rem;
   color: #b97e8a;
   font-family: "Great Vibes", cursive;
-  opacity: 0.4;
+  opacity: 1;
 }
 
 @media screen and (min-width: 768px) {
@@ -695,6 +645,7 @@ body::selection {
   }
   .services__cards-item img {
     margin: 0 auto;
+    margin-bottom: 0.7rem;
   }
   .services__texture-text {
     position: absolute;
@@ -731,8 +682,8 @@ body::selection {
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   }
   .services__cards-item img {
-    border-radius: 6px;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
+    height: 60%;
   }
   .services__cards-item h2 {
     color: #585858;
@@ -758,6 +709,7 @@ body::selection {
     font-size: 17vw;
     letter-spacing: 10px;
     font-family: "Great Vibes", cursive;
+    opacity: 0.7;
   }
 }
 @media screen and (min-width: 1950px) {
@@ -814,7 +766,7 @@ body::selection {
   color: #b97e8a;
   position: relative;
   margin-bottom: 0.4rem;
-  opacity: 0.4;
+  opacity: 1;
 }
 .contact__header h1::after {
   content: "";
@@ -927,7 +879,7 @@ body::selection {
     background-color: #dd9fab;
   }
   .contact-form input[type=submit]:focus {
-    outline: 1px solid rgba(116, 66, 73, 0.7529411765);
+    outline: 1px solid rgba(99, 56, 61, 0.7529411765);
   }
 }
 @media screen and (min-width: 1440px) {
@@ -1114,7 +1066,7 @@ body::selection {
 }
 .footer__contacts-email {
   font-size: 1.1rem;
-  color: rgba(116, 66, 73, 0.7529411765);
+  color: rgba(99, 56, 61, 0.7529411765);
   text-decoration: none;
 }
 .footer__contacts-divider {
@@ -1125,7 +1077,7 @@ body::selection {
 }
 .footer__contacts-mobile {
   font-size: 1.1rem;
-  color: rgba(116, 66, 73, 0.7529411765);
+  color: rgba(99, 56, 61, 0.7529411765);
   text-decoration: none;
 }
 
@@ -1220,7 +1172,7 @@ table tr:last-child td:last-child {
   color: #b97e8a;
   position: relative;
   margin-bottom: 0.4rem;
-  opacity: 0.4;
+  opacity: 1;
 }
 .rates__header h1::after {
   content: "";
@@ -1463,7 +1415,7 @@ td p:last-child {
 }
 
 .pinky {
-  color: rgba(116, 66, 73, 0.7529411765);
+  color: rgba(99, 56, 61, 0.7529411765);
 }
 
 .bold {
@@ -1500,7 +1452,7 @@ td p:last-child {
   color: #b97e8a;
   position: relative;
   margin-bottom: 0.4rem;
-  opacity: 0.4;
+  opacity: 1;
 }
 .services__header h1::after {
   content: "";
@@ -2116,7 +2068,7 @@ td p:last-child {
   color: #b97e8a;
   position: relative;
   margin-bottom: 0.4rem;
-  opacity: 0.4;
+  opacity: 1;
 }
 .portfolio__header h1::after {
   content: "";

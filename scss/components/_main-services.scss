@@ -23,6 +23,8 @@
       img {
         border-radius: 6px;
         margin-bottom: 1rem;
+        height: 70%;
+        object-fit: cover;
       }
 
       h2 {
@@ -52,7 +54,7 @@
       font-size: 5rem;
       color: $primary-color;
       font-family: $logo-font;
-      opacity: 0.4;
+      opacity: 1;
     }
   }
 }
@@ -70,6 +72,7 @@
         }
         img {
           margin: 0 auto;
+          margin-bottom: .7rem;
         }
       }
     }
@@ -113,8 +116,8 @@
         box-shadow: $card-shadow;
 
         img {
-          border-radius: 6px;
-          margin-bottom: 1rem;
+          margin-bottom: .5rem;
+          height: 60%;
         }
 
         h2 {
@@ -145,6 +148,7 @@
         font-size: 17vw;
         letter-spacing: 10px;
         font-family: $logo-font;
+        opacity: .7;
       }
     }
   }
