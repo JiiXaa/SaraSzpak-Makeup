@@ -73,6 +73,8 @@ The site must meet all the requirements and goals as potential visitors will mos
   - Website designed myself: [Tomasz Ostroga](www.linkedin.com/in/tomasz-ostroga/)
   - [Desktop/Mobile Mockups](https://www.figma.com/file/NlJh8F2Up7ozcChWUJTWQ1/Sara-Szpak-Makeup-Artist?node-id=0%3A1/)
 
+[Back to contents](#contents)
+
 ### Imagery
 
 Images provided by business owner Sara Szpak. All images were compressed for faster loading speeds, with focus on preserving overall quality.
@@ -85,6 +87,8 @@ Images provided by business owner Sara Szpak. All images were compressed for fas
 
 - [Adobe Fonts](https://fonts.adobe.com/)
   - Used 'Aileron' as a main font because its natural design brings the user clean reading.
+
+[Back to contents](#contents)
 
 ## Technologies
 
@@ -100,6 +104,8 @@ Images provided by business owner Sara Szpak. All images were compressed for fas
 
 - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/)
   - Scripting language used mainly for making website interactive (Logic for mobile menu (show/hide toggle), controlling styles addition/removal based on 'mouse' events).
+
+[Back to contents](#contents)
 
 ### Libraries
 
@@ -147,6 +153,8 @@ Images provided by business owner Sara Szpak. All images were compressed for fas
 
   - Online tool validates CSS files as CSS level 3 + SVG.
 
+[Back to contents](#contents)
+
 ## Testing
 
 Full testing process and results can be found [here](https://github.com/JiiXaa/SaraSzpak-Makeup/blob/master/docs/TESTING.md).
@@ -164,6 +172,8 @@ For website deployment I have decided to go with [Vercel](https://vercel.com/) b
 
 After deployment your project is connected to the repository you have selected, and is automatically deployed every time when repository changes.
 
+[Back to contents](#contents)
+
 ## Credits
 
 ### Articles
@@ -175,8 +185,12 @@ After deployment your project is connected to the repository you have selected, 
 - Portfolio gallery is based on the article how to create a responsive image gallery with CSS flexbox. Examples presented are straightforward and taught me how to build image gallery maintaining image aspect ratios (fully responsive) <br>
   https://blog.logrocket.com/responsive-image-gallery-css-flexbox/
 
+[Back to contents](#contents)
+
 ### Acknowledgements
 
 - My mentor Dick Vlaanderen for his advice and guidance during this project.
 - Google search engine for limitless information about web development
 - [Stackoverflow](https://stackoverflow.com/) community for general advices and solution to problems I have encountered
+
+[Back to contents](#contents)
