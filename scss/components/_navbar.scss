@@ -163,12 +163,64 @@
   }
 }
 
-@media screen and (min-width: $desktop) {
+@media screen and (min-width: $tablet) {
   // Mobile Navigation Icon
   #nav__toggle {
     display: none;
   }
 
+  .nav {
+    box-shadow: $card-shadow;
+    &__logo {
+      display: flex;
+      justify-content: center;
+      width: 25%;
+    }
+
+    &__list {
+      width: 70%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      position: static;
+      background-color: transparent;
+      margin-left: auto;
+
+      ul {
+        align-items: center;
+      }
+
+      .nav__links {
+        display: flex;
+        justify-content: space-around;
+        width: 50%;
+
+        a {
+          color: $primary-grey;
+          font-size: 1rem;
+          letter-spacing: 1px;
+        }
+      }
+
+      .nav__socials {
+        width: 15%;
+
+        a {
+          font-size: 1.3rem;
+        }
+      }
+    }
+
+    &__list.show {
+      display: none;
+    }
+
+    .socials-change-color {
+      color: $of-pink;
+    }
+  }
+}
+@media screen and (min-width: $desktop) {
   .nav {
     box-shadow: $card-shadow;
     &__logo {
