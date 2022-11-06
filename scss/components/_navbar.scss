@@ -175,6 +175,17 @@
       display: flex;
       justify-content: center;
       width: 25%;
+      p {
+        font-size: 1.8rem;
+        span {
+          font-family: inherit;
+          width: 100%;
+          font-size: 0.7rem;
+          position: absolute;
+          bottom: -2px;
+          left: 105px;
+        }
+      }
     }
 
     &__list {
@@ -193,11 +204,11 @@
       .nav__links {
         display: flex;
         justify-content: space-around;
-        width: 50%;
+        width: 60%;
 
         a {
           color: $primary-grey;
-          font-size: 1rem;
+          font-size: 0.8rem;
           letter-spacing: 1px;
         }
       }
@@ -206,7 +217,7 @@
         width: 15%;
 
         a {
-          font-size: 1.3rem;
+          font-size: 1.1rem;
         }
       }
     }

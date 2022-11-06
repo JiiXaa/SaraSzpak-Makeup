@@ -273,6 +273,17 @@ body::selection {
     justify-content: center;
     width: 25%;
   }
+  .nav__logo p {
+    font-size: 1.8rem;
+  }
+  .nav__logo p span {
+    font-family: inherit;
+    width: 100%;
+    font-size: 0.7rem;
+    position: absolute;
+    bottom: -2px;
+    left: 105px;
+  }
   .nav__list {
     width: 70%;
     display: flex;
@@ -288,18 +299,18 @@ body::selection {
   .nav__list .nav__links {
     display: flex;
     justify-content: space-around;
-    width: 50%;
+    width: 60%;
   }
   .nav__list .nav__links a {
     color: #707070;
-    font-size: 1rem;
+    font-size: 0.8rem;
     letter-spacing: 1px;
   }
   .nav__list .nav__socials {
     width: 15%;
   }
   .nav__list .nav__socials a {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
   }
   .nav__list.show {
     display: none;
