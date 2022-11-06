@@ -50,8 +50,9 @@
 
     p {
       font-size: 5rem;
-      color: $of-pink;
+      color: $primary-color;
       font-family: $logo-font;
+      opacity: 0.4;
     }
   }
 }
@@ -82,7 +83,6 @@
 
       p {
         font-size: 20vw;
-        color: $of-pink;
         font-family: $logo-font;
       }
     }
@@ -144,7 +144,6 @@
         width: 200%;
         font-size: 17vw;
         letter-spacing: 10px;
-        color: $of-pink;
         font-family: $logo-font;
       }
     }

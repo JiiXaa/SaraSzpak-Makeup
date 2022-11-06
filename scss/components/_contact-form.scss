@@ -131,17 +131,24 @@
     padding: 0.6rem 0;
     border-radius: 4px;
     color: #fff;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     cursor: pointer;
     transition: 0.3s background-color ease-in;
     letter-spacing: 3px;
+  }
+}
 
-    &:hover {
-      background-color: $light-pink;
-    }
+@media screen and (min-width: $tablet) {
+  .contact-form {
+    input[type='submit'] {
+      font-size: 1.6rem;
+      &:hover {
+        background-color: $light-pink;
+      }
 
-    &:focus {
-      outline: 1px solid $dark-pink;
+      &:focus {
+        outline: 1px solid $dark-pink;
+      }
     }
   }
 }
@@ -255,23 +262,11 @@
 
     input[type='submit'] {
       width: 12%;
-      background-color: $primary-color;
-      border: none;
       padding: 0.4rem 0;
       margin-left: 4rem;
       border-radius: 4px;
       color: #fff;
-      font-size: 1.2rem;
-      cursor: pointer;
-      transition: 0.3s background-color ease-in;
-
-      &:hover {
-        background-color: $light-pink;
-      }
-
-      &:focus {
-        outline: 1px solid $dark-pink;
-      }
+      font-size: 1.5rem;
     }
   }
 }
@@ -355,8 +350,8 @@
     input[type='submit'] {
       width: 13%;
       padding: 0.5rem 0;
-      margin-left: 6rem;
-      font-size: 1.4rem;
+      margin-left: 4rem;
+      font-size: 1.6rem;
     }
   }
 }

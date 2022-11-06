@@ -125,7 +125,7 @@ body::selection {
   cursor: pointer;
 }
 #nav__toggle i {
-  color: #838383;
+  color: #707070;
   font-size: 1.5rem;
 }
 
@@ -133,7 +133,7 @@ body::selection {
   width: 100%;
   position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
-  border-bottom: 1px solid #838383;
+  border-bottom: 1px solid #707070;
   background-color: #fff;
   height: 4rem;
   display: flex;
@@ -186,7 +186,7 @@ body::selection {
 .nav__list__link .link-active::before {
   content: "";
   position: absolute;
-  background-color: #cf8d9a;
+  background-color: #b97e8a;
   height: 1px;
   bottom: 0;
   right: 0;
@@ -212,7 +212,7 @@ body::selection {
   list-style: none;
 }
 .nav__socials__link a {
-  color: #cf8d9a;
+  color: #b97e8a;
   transition: all 0.6s ease;
 }
 .nav__socials__link .socials-change-color {
@@ -248,7 +248,7 @@ body::selection {
   height: 1px;
   bottom: 0;
   right: 0;
-  background-color: #cf8d9a;
+  background-color: #b97e8a;
   visibility: hidden;
   transition: all 0.3s ease-in-out;
 }
@@ -286,7 +286,7 @@ body::selection {
     width: 40%;
   }
   .nav__list .nav__links a {
-    color: #838383;
+    color: #707070;
     font-size: 1rem;
     letter-spacing: 1px;
   }
@@ -342,12 +342,12 @@ body::selection {
   margin-bottom: 2rem;
 }
 .main .header__about__card p {
-  color: #838383;
+  color: #707070;
 }
 .main .header__about__cta {
-  background-color: #cf8d9a;
+  background-color: #b97e8a;
   color: #fff;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   border-radius: 5px;
   width: 40%;
   height: 3rem;
@@ -440,7 +440,7 @@ body::selection {
     margin-bottom: 2.6rem;
   }
   .main .header__about__cta {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     border-radius: 10px;
     width: 30%;
     height: 4rem;
@@ -449,6 +449,9 @@ body::selection {
   }
   .main .header__about__cta:hover {
     background-color: #dd9fab;
+  }
+  .main .header__about__cta:focus {
+    outline: 1px solid rgba(116, 66, 73, 0.7529411765);
   }
   .main .header__about__testimonials {
     margin: 0 auto;
@@ -513,7 +516,7 @@ body::selection {
   }
   .main .header__about__cta {
     transform: translateX(130%);
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     width: 12%;
     height: 4rem;
     margin-bottom: 3rem;
@@ -654,7 +657,7 @@ body::selection {
   margin-bottom: 0.6rem;
 }
 .services__cards-item p {
-  color: #838383;
+  color: #707070;
   font-size: 1rem;
   line-height: 1.5rem;
 }
@@ -669,8 +672,9 @@ body::selection {
 }
 .services__texture-text p {
   font-size: 5rem;
-  color: #fff0f0;
+  color: #b97e8a;
   font-family: "Great Vibes", cursive;
+  opacity: 0.4;
 }
 
 @media screen and (min-width: 768px) {
@@ -697,7 +701,6 @@ body::selection {
   }
   .services__texture-text p {
     font-size: 20vw;
-    color: #fff0f0;
     font-family: "Great Vibes", cursive;
   }
 }
@@ -732,7 +735,7 @@ body::selection {
     margin-bottom: 0.6rem;
   }
   .services__cards-item p {
-    color: #838383;
+    color: #707070;
     font-size: 1.2rem;
     line-height: 1.5rem;
   }
@@ -750,7 +753,6 @@ body::selection {
     width: 200%;
     font-size: 17vw;
     letter-spacing: 10px;
-    color: #fff0f0;
     font-family: "Great Vibes", cursive;
   }
 }
@@ -786,7 +788,7 @@ body::selection {
     margin-bottom: 0.6rem;
   }
   .services__cards-item p {
-    color: #838383;
+    color: #707070;
     font-size: 1.2rem;
     line-height: 1.5rem;
   }
@@ -828,7 +830,7 @@ body::selection {
   width: 80%;
   margin: 0 auto;
   padding: 2rem 1rem;
-  color: #838383;
+  color: #707070;
   border-radius: 20px;
   background-color: #f4f4f4;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
@@ -869,7 +871,7 @@ body::selection {
   padding-left: 10px;
   border: none;
   border-radius: 4px;
-  color: #838383;
+  color: #707070;
   letter-spacing: 1px;
 }
 .contact-form .contact-form__inputs .form__group input:focus {
@@ -892,7 +894,7 @@ body::selection {
   padding: 6px 10px;
   border-radius: 4px;
   border: none;
-  color: #838383;
+  color: #707070;
   resize: vertical;
   margin-bottom: 1.6rem;
 }
@@ -900,23 +902,28 @@ body::selection {
   outline: 1px solid #dd9fab;
 }
 .contact-form input[type=submit] {
-  background-color: #cf8d9a;
+  background-color: #b97e8a;
   border: none;
   padding: 0.6rem 0;
   border-radius: 4px;
   color: #fff;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   cursor: pointer;
   transition: 0.3s background-color ease-in;
   letter-spacing: 3px;
 }
-.contact-form input[type=submit]:hover {
-  background-color: #dd9fab;
-}
-.contact-form input[type=submit]:focus {
-  outline: 1px solid rgba(116, 66, 73, 0.7529411765);
-}
 
+@media screen and (min-width: 768px) {
+  .contact-form input[type=submit] {
+    font-size: 1.6rem;
+  }
+  .contact-form input[type=submit]:hover {
+    background-color: #dd9fab;
+  }
+  .contact-form input[type=submit]:focus {
+    outline: 1px solid rgba(116, 66, 73, 0.7529411765);
+  }
+}
 @media screen and (min-width: 1440px) {
   .contact__header {
     width: 70%;
@@ -927,7 +934,7 @@ body::selection {
     width: 70%;
     margin: 0 auto;
     padding: 3rem 1rem;
-    color: #838383;
+    color: #707070;
     border-radius: 20px;
     background-color: #f4f4f4;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
@@ -974,7 +981,7 @@ body::selection {
     padding-left: 10px;
     border: none;
     border-radius: 4px;
-    color: #838383;
+    color: #707070;
   }
   .contact-form .contact-form__inputs .form__group input:focus {
     outline: 1px solid #dd9fab;
@@ -997,7 +1004,7 @@ body::selection {
     padding: 6px 10px;
     border-radius: 4px;
     border: none;
-    color: #838383;
+    color: #707070;
     resize: vertical;
     margin-bottom: 1.6rem;
   }
@@ -1006,21 +1013,11 @@ body::selection {
   }
   .contact-form input[type=submit] {
     width: 12%;
-    background-color: #cf8d9a;
-    border: none;
     padding: 0.4rem 0;
     margin-left: 4rem;
     border-radius: 4px;
     color: #fff;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: 0.3s background-color ease-in;
-  }
-  .contact-form input[type=submit]:hover {
-    background-color: #dd9fab;
-  }
-  .contact-form input[type=submit]:focus {
-    outline: 1px solid rgba(116, 66, 73, 0.7529411765);
+    font-size: 1.5rem;
   }
 }
 @media screen and (min-width: 1950px) {
@@ -1088,29 +1085,30 @@ body::selection {
   .contact-form input[type=submit] {
     width: 13%;
     padding: 0.5rem 0;
-    margin-left: 6rem;
-    font-size: 1.4rem;
+    margin-left: 4rem;
+    font-size: 1.6rem;
   }
 }
 .footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-top: 1px solid #838383;
+  border-top: 1px solid #707070;
   padding-top: 0.8rem;
 }
 .footer .footer-logo {
   font-family: "Great Vibes", cursive;
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 .footer__contacts {
   display: flex;
   align-items: center;
   height: 1rem;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.8rem;
 }
 .footer__contacts-email {
-  color: #cf8d9a;
+  font-size: 1.1rem;
+  color: rgba(116, 66, 73, 0.7529411765);
   text-decoration: none;
 }
 .footer__contacts-divider {
@@ -1120,10 +1118,29 @@ body::selection {
   margin: 0 0.6rem;
 }
 .footer__contacts-mobile {
-  color: #cf8d9a;
+  font-size: 1.1rem;
+  color: rgba(116, 66, 73, 0.7529411765);
   text-decoration: none;
 }
 
+@media screen and (min-width: 1440px) {
+  .footer .footer-logo {
+    font-family: "Great Vibes", cursive;
+    font-size: 3rem;
+  }
+  .footer__contacts {
+    margin-bottom: 1rem;
+  }
+  .footer__contacts-email {
+    font-size: 1.3rem;
+  }
+  .footer__contacts-divider {
+    margin: 0 0.8rem;
+  }
+  .footer__contacts-mobile {
+    font-size: 1.3rem;
+  }
+}
 /* Solution for rounded corners found on StackOverflow:
     https://stackoverflow.com/questions/628301/css3s-border-radius-property-and-border-collapsecollapse-dont-mix-how-can-i */
 table {
@@ -1154,7 +1171,7 @@ table tr th {
   text-align: center;
   font-size: 1.1rem;
   letter-spacing: 0.1rem;
-  color: #838383;
+  color: #707070;
   padding: 1rem 0;
   border-top: solid 1px #bbb;
 }
@@ -1232,7 +1249,7 @@ td h3 {
 }
 
 td p {
-  color: #838383;
+  color: #707070;
   padding: 1.4rem;
 }
 td p:last-child {
@@ -1240,7 +1257,7 @@ td p:last-child {
 }
 
 .rates-desc {
-  color: #838383;
+  color: #707070;
   border-bottom: 1px solid #dd9fab;
   border-top: 1px solid #dd9fab;
   padding: 1rem 0;
@@ -1372,7 +1389,7 @@ td p:last-child {
 }
 .terms-conds h3 {
   text-align: center;
-  color: #838383;
+  color: #707070;
   text-transform: uppercase;
   letter-spacing: 2px;
   width: 80%;
@@ -1382,7 +1399,7 @@ td p:last-child {
   display: block;
   text-align: center;
   font-size: 0.7rem;
-  color: #838383;
+  color: #707070;
   font-style: italic;
   margin-bottom: 1.5rem;
 }
@@ -1438,7 +1455,7 @@ td p:last-child {
 }
 
 .pinky {
-  color: #cf8d9a;
+  color: #b97e8a;
 }
 
 .bold {
@@ -1457,7 +1474,7 @@ td p:last-child {
   text-align: center;
   font-style: italic;
   font-size: 0.7rem;
-  color: #838383;
+  color: #707070;
   margin-bottom: 0.2rem;
 }
 
@@ -1514,7 +1531,7 @@ td p:last-child {
   margin-bottom: 0.6rem;
 }
 .services-link__item p {
-  color: #838383;
+  color: #707070;
   font-size: 1rem;
   line-height: 1.5rem;
 }
@@ -1671,7 +1688,7 @@ td p:last-child {
   display: block;
   margin-bottom: 0.7rem;
   text-align: center;
-  color: #838383;
+  color: #707070;
   font-style: italic;
 }
 
@@ -1726,7 +1743,7 @@ td p:last-child {
     display: block;
     margin-bottom: 0.7rem;
     text-align: center;
-    color: #838383;
+    color: #707070;
     font-style: italic;
   }
   .bridal-contact {
@@ -1778,7 +1795,7 @@ td p:last-child {
 .divider {
   height: 0.1px;
   width: 100%;
-  background-color: #838383;
+  background-color: #707070;
   margin-bottom: 1.5rem;
 }
 .divider:last-child {
@@ -1813,7 +1830,7 @@ td p:last-child {
   display: block;
   margin-bottom: 0.7rem;
   text-align: center;
-  color: #838383;
+  color: #707070;
   font-style: italic;
 }
 .other-option .mb-reset {
@@ -1871,7 +1888,7 @@ td p:last-child {
     display: block;
     margin-bottom: 0.7rem;
     text-align: center;
-    color: #838383;
+    color: #707070;
     font-style: italic;
   }
   .other-contact {
@@ -1926,7 +1943,7 @@ td p:last-child {
 .divider {
   height: 0.1px;
   width: 100%;
-  background-color: #838383;
+  background-color: #707070;
   margin-bottom: 1.5rem;
 }
 .divider:last-child {
@@ -1961,7 +1978,7 @@ td p:last-child {
   display: block;
   margin-bottom: 0.7rem;
   text-align: center;
-  color: #838383;
+  color: #707070;
   font-style: italic;
 }
 
@@ -2016,7 +2033,7 @@ td p:last-child {
     display: block;
     margin-bottom: 0.7rem;
     text-align: center;
-    color: #838383;
+    color: #707070;
     font-style: italic;
   }
   .lessons-contact {
@@ -2068,7 +2085,7 @@ td p:last-child {
 .divider {
   height: 0.1px;
   width: 100%;
-  background-color: #838383;
+  background-color: #707070;
   margin-bottom: 1.5rem;
 }
 .divider:last-child {
@@ -2179,7 +2196,7 @@ td p:last-child {
   color: #585858;
   font-style: italic;
   margin-bottom: 2rem;
-  border-bottom: 1px dashed #cf8d9a;
+  border-bottom: 1px dashed #b97e8a;
 }
 .form-submitted__wrapper p {
   font-size: 0.9rem;
@@ -2192,7 +2209,7 @@ td p:last-child {
 }
 .form-submitted__wrapper .btn-custom {
   cursor: pointer;
-  background-color: #cf8d9a;
+  background-color: #b97e8a;
   color: #fff;
   font-size: 1.4rem;
   border: none;
@@ -2274,7 +2291,7 @@ td p:last-child {
   color: #585858;
   font-style: italic;
   margin-bottom: 2rem;
-  border-bottom: 1px dashed #cf8d9a;
+  border-bottom: 1px dashed #b97e8a;
 }
 .error-page__wrapper p {
   font-size: 0.9rem;
@@ -2287,7 +2304,7 @@ td p:last-child {
 }
 .error-page__wrapper .btn-errorpage {
   cursor: pointer;
-  background-color: #cf8d9a;
+  background-color: #b97e8a;
   color: #fff;
   font-size: 1.4rem;
   border: none;
