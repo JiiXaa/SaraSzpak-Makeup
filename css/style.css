@@ -110,6 +110,10 @@ body::selection {
   background: #fff0f0;
 }
 
+*:focus {
+  outline: 1px solid rgba(116, 66, 73, 0.7529411765);
+}
+
 /* utility classes */
 @keyframes opacity-in {
   from {
@@ -2158,7 +2162,6 @@ td p:last-child {
 /* Gallery image overlay on hover */
 @media screen and (min-width: 768px) {
   .img-group > a {
-    position: relative;
     cursor: pointer;
     /* image overlay on hover */
   }
@@ -2177,6 +2180,9 @@ td p:last-child {
     bottom: 0;
     left: 0;
     transition: all 0.3s 0.1s ease-in-out;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
     color: #fff;
     border-radius: 5px;
     /* center overlay text */

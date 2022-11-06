@@ -18,4 +18,8 @@ body::selection {
   background: $of-pink;
 }
 
+*:focus {
+  outline: 1px solid $dark-pink;
+}
+
 /* utility classes */

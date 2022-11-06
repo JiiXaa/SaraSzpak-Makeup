@@ -69,7 +69,7 @@
 @media screen and (min-width: $tablet) {
   .img-group {
     > a {
-      position: relative;
+      // position: relative;
       cursor: pointer;
 
       /* image overlay on hover */
@@ -91,6 +91,9 @@
       left: 0;
 
       transition: all 0.3s 0.1s ease-in-out;
+      -webkit-transition: all .3s;
+      -moz-transition: all .3s;
+      -o-transition: all .3s;
       color: #fff;
       border-radius: 5px;
       /* center overlay text */
