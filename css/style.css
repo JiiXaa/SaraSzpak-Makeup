@@ -807,9 +807,10 @@ body::selection {
   font-family: "Great Vibes", cursive;
   letter-spacing: 1rem;
   font-size: 2rem;
-  color: #fff0f0;
+  color: #b97e8a;
   position: relative;
   margin-bottom: 0.4rem;
+  opacity: 0.4;
 }
 .contact__header h1::after {
   content: "";
@@ -818,7 +819,8 @@ body::selection {
   bottom: 8px;
   height: 2px;
   width: 120%;
-  background-color: #f4f4f4;
+  background-color: #b97e8a;
+  z-index: -1;
 }
 
 .contact-form {
@@ -1211,9 +1213,10 @@ table tr:last-child td:last-child {
   font-family: "Great Vibes", cursive;
   letter-spacing: 1rem;
   font-size: 2rem;
-  color: #fff0f0;
+  color: #b97e8a;
   position: relative;
   margin-bottom: 0.4rem;
+  opacity: 0.4;
 }
 .rates__header h1::after {
   content: "";
@@ -1222,7 +1225,8 @@ table tr:last-child td:last-child {
   bottom: 8px;
   height: 2px;
   width: 120%;
-  background-color: #f4f4f4;
+  background-color: #b97e8a;
+  z-index: -1;
 }
 
 /* table styles */
@@ -1455,7 +1459,7 @@ td p:last-child {
 }
 
 .pinky {
-  color: #b97e8a;
+  color: rgba(116, 66, 73, 0.7529411765);
 }
 
 .bold {
@@ -1489,9 +1493,10 @@ td p:last-child {
   font-family: "Great Vibes", cursive;
   letter-spacing: 1rem;
   font-size: 2rem;
-  color: #fff0f0;
+  color: #b97e8a;
   position: relative;
   margin-bottom: 0.4rem;
+  opacity: 0.4;
 }
 .services__header h1::after {
   content: "";
@@ -1500,7 +1505,8 @@ td p:last-child {
   bottom: 8px;
   height: 2px;
   width: 120%;
-  background-color: #f4f4f4;
+  background-color: #b97e8a;
+  z-index: -1;
 }
 
 .services__container {
@@ -2103,9 +2109,10 @@ td p:last-child {
   font-family: "Great Vibes", cursive;
   letter-spacing: 1rem;
   font-size: 2rem;
-  color: #fff0f0;
+  color: #b97e8a;
   position: relative;
   margin-bottom: 0.4rem;
+  opacity: 0.4;
 }
 .portfolio__header h1::after {
   content: "";
@@ -2114,7 +2121,8 @@ td p:last-child {
   bottom: 8px;
   height: 2px;
   width: 120%;
-  background-color: #f4f4f4;
+  background-color: #b97e8a;
+  z-index: -1;
 }
 
 .portfolio-gallery {
@@ -2163,7 +2171,7 @@ td p:last-child {
     width: 100%;
     height: 0;
     opacity: 0;
-    background: rgba(57, 57, 57, 0.5);
+    background: rgba(41, 41, 41, 0.5);
     top: 0;
     right: 0;
     bottom: 0;

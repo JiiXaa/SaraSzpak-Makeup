@@ -69,9 +69,10 @@ table tr:last-child td:last-child {
     font-family: $logo-font;
     letter-spacing: 1rem;
     font-size: 2rem;
-    color: $of-pink;
+    color: $primary-color;
     position: relative;
     margin-bottom: 0.4rem;
+    opacity: .4;
     &::after {
       content: '';
       position: absolute;
@@ -79,7 +80,8 @@ table tr:last-child td:last-child {
       bottom: 8px;
       height: 2px;
       width: 120%;
-      background-color: $of-grey;
+      background-color: $primary-color;
+      z-index: -1;
     }
   }
 }

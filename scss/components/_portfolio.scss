@@ -12,9 +12,10 @@
     font-family: $logo-font;
     letter-spacing: 1rem;
     font-size: 2rem;
-    color: $of-pink;
+    color: $primary-color;
     position: relative;
     margin-bottom: 0.4rem;
+    opacity: 0.4;
     &::after {
       content: '';
       position: absolute;
@@ -22,7 +23,8 @@
       bottom: 8px;
       height: 2px;
       width: 120%;
-      background-color: $of-grey;
+      background-color: $primary-color;
+      z-index: -1;
     }
   }
 }
@@ -82,7 +84,7 @@
       width: 100%;
       height: 0;
       opacity: 0;
-      background: rgba(57, 57, 57, 0.5);
+      background: rgba(41, 41, 41, 0.5);
       top: 0;
       right: 0;
       bottom: 0;
