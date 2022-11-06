@@ -1,8 +1,5 @@
 @use '../abstracts/variables' as *;
 
-/* Solution for rounded corners found on StackOverflow:
-    https://stackoverflow.com/questions/628301/css3s-border-radius-property-and-border-collapsecollapse-dont-mix-how-can-i */
-
 table {
   border-collapse: separate;
   border-spacing: 0;
@@ -92,7 +89,6 @@ table tr td.f-1 {
   font-size: 0.8rem;
   padding: 0.5rem;
 }
-
 
 td {
   position: relative;
@@ -227,10 +223,9 @@ td p {
     margin: 0 auto 4rem;
   }
 
-
   table tr td.f-1 {
     font-size: 1.1rem;
-    padding: .5rem 0 .5rem .4rem;
+    padding: 0.5rem 0 0.5rem 0.4rem;
   }
 
   td:nth-child(2) {

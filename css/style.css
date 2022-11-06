@@ -328,6 +328,20 @@ body::selection {
     justify-content: center;
     width: 30%;
   }
+  .nav__logo p {
+    font-size: 2.3rem;
+    font-family: inherit;
+    position: relative;
+    top: 5px;
+  }
+  .nav__logo p span {
+    font-family: inherit;
+    width: 100%;
+    font-size: 0.8rem;
+    position: absolute;
+    bottom: -2px;
+    left: 130px;
+  }
   .nav__list {
     width: 80%;
     display: flex;
@@ -353,7 +367,7 @@ body::selection {
     width: 10%;
   }
   .nav__list .nav__socials a {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
   }
   .nav__list.show {
     display: none;
@@ -1154,8 +1168,6 @@ body::selection {
     font-size: 1.3rem;
   }
 }
-/* Solution for rounded corners found on StackOverflow:
-    https://stackoverflow.com/questions/628301/css3s-border-radius-property-and-border-collapsecollapse-dont-mix-how-can-i */
 table {
   border-collapse: separate;
   border-spacing: 0;
@@ -2187,9 +2199,6 @@ td p:last-child {
     bottom: 0;
     left: 0;
     transition: all 0.3s 0.1s ease-in-out;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
     color: #fff;
     border-radius: 5px;
     /* center overlay text */
