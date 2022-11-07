@@ -12,6 +12,8 @@ The goal of the website is to provide an up-to-date pictures portfolio (bridal m
 
 The site must meet all the requirements and goals as potential visitors will most likely be comparing other similar local services, so the final website look must stand out and show everything the user would want to see.
 
+**Link to** [live site](https://sara-szpak-makeup.vercel.app/index.html/)
+
 ## Contents
 
 - [**User Experience**](#user-experience)
@@ -182,7 +184,7 @@ After deployment your project is connected to the repository you have selected, 
   Have found solution for the issue on StackOverflow:
   https://stackoverflow.com/questions/628301/css3s-border-radius-property-and-border-collapsecollapse-dont-mix-how-can-i
 
-- Portfolio gallery is based on the article how to create a responsive image gallery with CSS flexbox. Examples presented are straightforward and taught me how to build image gallery maintaining image aspect ratios (fully responsive) <br>
+- Portfolio gallery is based on the article how to create a responsive image gallery with CSS flexbox. Examples presented are straightforward and taught me how to build image gallery maintaining image aspect ratios (fully responsive). <br>
   https://blog.logrocket.com/responsive-image-gallery-css-flexbox/
 
 [Back to contents](#contents)
@@ -190,7 +192,7 @@ After deployment your project is connected to the repository you have selected, 
 ### Acknowledgements
 
 - My mentor Dick Vlaanderen for his advice and guidance during this project.
-- Google search engine for limitless information about web development
-- [Stackoverflow](https://stackoverflow.com/) community for general advices and solution to problems I have encountered
+- Google search engine for limitless resources about web development.
+- [Stackoverflow](https://stackoverflow.com/) community for general advices and solution to problems I have encountered.
 
 [Back to contents](#contents)

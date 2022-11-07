@@ -83,7 +83,7 @@ The site was tested on Google Chrome, Microsoft Edge, Safari and Mozilla Firefox
 
 Navigation's behavior checked on every page for every responsive breakpoint (mobile, tablet, desktop, desktop-large):
 
-- [x] For mobile screen size extra step was to check if hamburger menu open mobile menu.
+- [x] For mobile screen size extra step was to check if the hamburger menu opens the mobile menu.
 - [x] Click on the website's logo redirects to index.html.
 - [x] Click on Home link redirects to index.html.
 - [x] Click on Portfolio link redirects to portfolio.html.
