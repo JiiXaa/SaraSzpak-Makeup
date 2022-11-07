@@ -549,7 +549,7 @@ body::selection {
     border-bottom: 1px solid #000;
   }
   .main .header__about__image {
-    height: 1150px;
+    height: 1100px;
     left: -100px;
     bottom: 0;
     top: auto;
@@ -597,8 +597,8 @@ body::selection {
 }
 @media screen and (min-width: 1950px) {
   .main .header__about__image {
-    height: 1100px;
-    left: -30px;
+    height: 1180px;
+    left: -40px;
   }
   .main .header__about__card {
     font-size: 1.2rem;
@@ -859,6 +859,7 @@ body::selection {
   padding: 2rem 1rem;
   color: #707070;
   border-radius: 20px;
+  border: none;
   background-color: #f4f4f4;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
@@ -923,6 +924,7 @@ body::selection {
   border: none;
   color: #707070;
   resize: vertical;
+  letter-spacing: 1px;
   margin-bottom: 1.6rem;
 }
 .contact-form .form__group--message textarea:focus {

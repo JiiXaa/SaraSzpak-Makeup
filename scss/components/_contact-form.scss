@@ -40,6 +40,7 @@
     padding: 2rem 1rem;
     color: $primary-grey;
     border-radius: 20px;
+    border: none;
     background-color: $of-grey;
     box-shadow: $card-shadow;
 
@@ -118,6 +119,7 @@
       border: none;
       color: $primary-grey;
       resize: vertical;
+      letter-spacing: 1px;
 
       &:focus {
         outline: 1px solid $light-pink;
