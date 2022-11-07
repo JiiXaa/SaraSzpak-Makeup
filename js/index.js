@@ -31,6 +31,12 @@ function showMenu() {
   navigationSocials.classList.toggle('show');
 }
 
+function disableMenu() {
+  overlay.classList.remove('show');
+  navigationMainList.classList.remove('show');
+  navigationSocials.classList.remove('show');
+}
+
 // Socials icons change color of others on hover
 socialsColorChange.forEach((socialIcon) => {
   socialIcon.addEventListener('mouseover', () => {
@@ -55,6 +61,6 @@ socialsColorChange.forEach((socialIcon) => {
 // When social icon is clicked, it closes mobile menu
 socialsColorChange.forEach((socialIcon) => {
   socialIcon.addEventListener('click', () => {
-    showMenu();
+    disableMenu();
   });
 });
