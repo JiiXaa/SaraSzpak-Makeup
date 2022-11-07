@@ -201,8 +201,8 @@
     border-bottom: 1px solid #000;
 
     .header__about__image {
-      height: 1100px;
-      left: -100px;
+      height: 1050px;
+      left: -90px;
       bottom: 0;
       top: auto;
     }
@@ -211,14 +211,14 @@
       &__card {
         &:first-child {
           width: 30%;
-          transform: translateX(170%);
+          transform: translateX(160%);
           padding: 1.5rem 1.1rem;
           margin-top: 3rem;
           margin-bottom: 2rem;
         }
 
         &:nth-child(2) {
-          transform: translateX(170%);
+          transform: translateX(160%);
           width: 30%;
           margin: 0;
           margin-bottom: 3rem;
@@ -226,7 +226,7 @@
       }
 
       &__cta {
-        transform: translateX(130%);
+        transform: translateX(110%);
         font-size: 1.5rem;
         width: 12%;
         height: 4rem;
@@ -234,7 +234,7 @@
       }
 
       &__testimonials {
-        transform: translateX(170%);
+        transform: translateX(160%);
         margin: 0;
         width: 30%;
         font-size: 1rem;
@@ -253,7 +253,7 @@
 
       &__awards {
         width: 35%;
-        transform: translateX(45%);
+        transform: translateX(37%);
 
         margin-bottom: 4rem;
       }
