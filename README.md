@@ -12,7 +12,7 @@ The goal of the website is to provide an up-to-date pictures portfolio (bridal m
 
 The site must meet all the requirements and goals as potential visitors will most likely be comparing other similar local services, so the final website look must stand out and show everything the user would want to see.
 
-**Link to** [live site](https://sara-szpak-makeup.vercel.app/index.html/)
+**Link to** [live site](https://sara-szpak-makeup.vercel.app/index.html)
 
 ## Contents
 
