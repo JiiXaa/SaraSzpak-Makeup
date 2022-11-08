@@ -22,6 +22,16 @@
     object-fit: cover;
     margin-bottom: 1rem;
   }
+
+  .divider {
+    width: 100%;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid $primary-grey;
+
+    &:last-child {
+      margin-bottom: 2.5rem;
+    }
+  }
 }
 
 .bridal-option {
@@ -85,6 +95,14 @@
       object-fit: cover;
       margin-bottom: 1rem;
     }
+
+    .divider {
+      margin-bottom: 3rem;
+
+      &:last-child {
+        margin-bottom: 4rem;
+      }
+    }
   }
 
   .bridal-option {
@@ -131,9 +149,8 @@
       margin-bottom: 1rem;
     }
 
-    /* Utility Classes Large Desktop */
     .divider {
-      margin-bottom: 2rem;
+      margin-bottom: 3.5rem;
 
       &:last-child {
         margin-bottom: 5rem;
@@ -158,15 +175,4 @@
 /* Utility Classes */
 .mb-1 {
   margin-bottom: 1rem;
-}
-
-.divider {
-  height: 0.1px;
-  width: 100%;
-  background-color: $primary-grey;
-  margin-bottom: 1.5rem;
-
-  &:last-child {
-    margin-bottom: 3rem;
-  }
 }
