@@ -32,8 +32,8 @@ dd {
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-ul[role="list"],
-ol[role="list"] {
+ul[role=list],
+ol[role=list] {
   list-style: none;
 }
 
@@ -144,9 +144,7 @@ body::selection {
   justify-content: center;
   align-items: center;
   z-index: 20;
-  box-shadow:
-    rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 .nav__logo {
   text-decoration: none;
@@ -268,9 +266,7 @@ body::selection {
     display: none;
   }
   .nav {
-    box-shadow:
-      rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-      rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   }
   .nav__logo {
     display: flex;
@@ -325,9 +321,7 @@ body::selection {
 }
 @media screen and (min-width: 1440px) {
   .nav {
-    box-shadow:
-      rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-      rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   }
   .nav__logo {
     display: flex;
@@ -406,9 +400,7 @@ body::selection {
   line-height: 1.4rem;
   padding: 1rem;
   border-radius: 20px;
-  box-shadow:
-    rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 .main .header__about__card:first-child {
   width: 60%;
@@ -448,9 +440,7 @@ body::selection {
   line-height: 1.4rem;
   border-radius: 20px;
   margin-bottom: 1.5rem;
-  box-shadow:
-    rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 .main .header__about__testimonials p {
   color: #585858;
@@ -536,9 +526,7 @@ body::selection {
     width: 70%;
     line-height: 1.8rem;
     margin-bottom: 2.6rem;
-    box-shadow:
-      rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-      rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   }
   .main .header__about__testimonials p {
     color: #585858;
@@ -678,9 +666,7 @@ body::selection {
   border-radius: 20px;
   color: #585858;
   background-color: #f4f4f4;
-  box-shadow:
-    rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   text-decoration: none;
 }
 .services__cards-item img {
@@ -762,9 +748,7 @@ body::selection {
     padding-bottom: 1rem;
     border-radius: 20px;
     background-color: #f4f4f4;
-    box-shadow:
-      rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-      rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   }
   .services__cards-item img {
     margin-bottom: 0.5rem;
@@ -818,9 +802,7 @@ body::selection {
     padding-bottom: 1rem;
     border-radius: 20px;
     background-color: #f4f4f4;
-    box-shadow:
-      rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-      rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   }
   .services__cards-item img {
     border-radius: 6px;
@@ -879,18 +861,13 @@ body::selection {
   border-radius: 20px;
   border: none;
   background-color: #f4f4f4;
-  box-shadow:
-    rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 .contact-form .contact-form__container .contact-form__main-wrapper {
   display: flex;
   flex-direction: column;
 }
-.contact-form
-  .contact-form__container
-  .contact-form__main-wrapper
-  .contact-form__item:nth-child(2) {
+.contact-form .contact-form__container .contact-form__main-wrapper .contact-form__item:nth-child(2) {
   order: -1;
 }
 .contact-form .contact-form__description {
@@ -927,52 +904,6 @@ body::selection {
 .contact-form .contact-form__inputs .form__group input:focus {
   outline: 1px solid #dd9fab;
 }
-
-.contact-form .contact-form__inputs .form__group select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-
-  font-size: 0.8rem;
-  height: 2rem;
-  padding: 0 2rem 0 10px;
-  border: none;
-  border-radius: 4px;
-  color: #707070;
-  background-color: #fff;
-  letter-spacing: 1px;
-  cursor: pointer;
-  line-height: 1.2;
-
-  /* clean arrow */
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 20 20' fill='none' stroke='%23707070' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 8 10 12 14 8'/></svg>");
-  background-repeat: no-repeat;
-  background-position: right 0.6rem center;
-  background-size: 14px;
-}
-
-/* Focus – identyczny jak input/textarea */
-.contact-form .contact-form__inputs .form__group select:focus {
-  outline: 1px solid #dd9fab;
-}
-
-/* Placeholder-like (dla opcji disabled + empty): przygaszony tekst do wyboru */
-.contact-form .contact-form__inputs .form__group select:required:invalid {
-  color: #777;
-}
-
-/* Opcje w rozwijanym menu (wsparcie stylowania zależy od przeglądarki) */
-.contact-form .contact-form__inputs .form__group select option {
-  color: #707070;
-  background: #fff;
-}
-
-/* Disabled state (if need in future) */
-.contact-form .contact-form__inputs .form__group select:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
 .contact-form .form__group--message {
   width: 100%;
   display: flex;
@@ -993,12 +924,14 @@ body::selection {
   color: #707070;
   resize: vertical;
   letter-spacing: 1px;
-  margin-bottom: 1.6rem;
 }
 .contact-form .form__group--message textarea:focus {
   outline: 1px solid #dd9fab;
 }
-.contact-form input[type="submit"] {
+.contact-form .form__group--message textarea {
+  margin-bottom: 1.6rem;
+}
+.contact-form input[type=submit] {
   background-color: #b97e8a;
   border: none;
   padding: 0.6rem 0;
@@ -1011,13 +944,13 @@ body::selection {
 }
 
 @media screen and (min-width: 768px) {
-  .contact-form input[type="submit"] {
+  .contact-form input[type=submit] {
     font-size: 1.6rem;
   }
-  .contact-form input[type="submit"]:hover {
+  .contact-form input[type=submit]:hover {
     background-color: #dd9fab;
   }
-  .contact-form input[type="submit"]:focus {
+  .contact-form input[type=submit]:focus {
     outline: 1px solid rgba(99, 56, 61, 0.7529411765);
   }
 }
@@ -1034,25 +967,17 @@ body::selection {
     color: #707070;
     border-radius: 20px;
     background-color: #f4f4f4;
-    box-shadow:
-      rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-      rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   }
   .contact-form .contact-form__container .contact-form__main-wrapper {
     display: flex;
     flex-direction: row;
   }
-  .contact-form
-    .contact-form__container
-    .contact-form__main-wrapper
-    .contact-form__item:first-child {
+  .contact-form .contact-form__container .contact-form__main-wrapper .contact-form__item:first-child {
     width: 40%;
     padding-left: 4rem;
   }
-  .contact-form
-    .contact-form__container
-    .contact-form__main-wrapper
-    .contact-form__item:nth-child(2) {
+  .contact-form .contact-form__container .contact-form__main-wrapper .contact-form__item:nth-child(2) {
     order: 0;
     width: 40%;
     margin: 0 auto;
@@ -1111,12 +1036,14 @@ body::selection {
     border: none;
     color: #707070;
     resize: vertical;
-    margin-bottom: 1.6rem;
   }
   .contact-form .form__group--message textarea:focus {
     outline: 1px solid #dd9fab;
   }
-  .contact-form input[type="submit"] {
+  .contact-form .form__group--message textarea {
+    margin-bottom: 1.6rem;
+  }
+  .contact-form input[type=submit] {
     width: 12%;
     padding: 0.4rem 0;
     margin-left: 4rem;
@@ -1131,25 +1058,21 @@ body::selection {
   }
   .contact-form {
     margin-bottom: 3rem;
-    /* Fix for contact form in the index.html, it needs bigger size to match the design. */
   }
   .contact-form .contact-form__container {
     width: 50%;
     padding: 2rem 0 3.5rem 1rem;
   }
-  .contact-form
-    .contact-form__container
-    .contact-form__main-wrapper
-    .contact-form__item:first-child {
+  .contact-form .contact-form__container .contact-form__main-wrapper .contact-form__item:first-child {
     width: 45%;
     padding-left: 2rem;
   }
-  .contact-form
-    .contact-form__container
-    .contact-form__main-wrapper
-    .contact-form__item:nth-child(2) {
+  .contact-form .contact-form__container .contact-form__main-wrapper .contact-form__item:nth-child(2) {
     width: 40%;
     margin-left: 5rem;
+  }
+  .contact-form {
+    /* Fix for contact form in the index.html, it needs bigger size to match the design. */
   }
   .contact-form .contact-form__container.main {
     width: 70%;
@@ -1193,7 +1116,7 @@ body::selection {
     padding: 12px 12px;
     margin-bottom: 1.8rem;
   }
-  .contact-form input[type="submit"] {
+  .contact-form input[type=submit] {
     width: 13%;
     padding: 0.5rem 0;
     margin-left: 4rem;
@@ -1490,9 +1413,7 @@ td p:last-child {
   border-radius: 15px;
   color: #585858;
   font-size: 0.8rem;
-  box-shadow:
-    rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 .terms-conds h2 {
   text-align: center;
@@ -1633,9 +1554,7 @@ td p:last-child {
   width: 80%;
   border-radius: 20px;
   background-color: #f4f4f4;
-  box-shadow:
-    rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
 .services-link__item img {
@@ -2492,5 +2411,3 @@ td p:last-child {
     width: 210px;
   }
 }
-
-/*# sourceMappingURL=style.css.map */
