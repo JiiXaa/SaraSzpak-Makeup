@@ -132,4 +132,7 @@ A hidden input that real users won’t fill, but bots often do. If the honeypot 
 
 ## SCSS BUILDING
 
-npm run build:css
+- dev mode (auto-watch)
+  npm run dev:css
+- one time build
+  npm run build:css
