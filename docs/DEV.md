@@ -129,3 +129,7 @@ A hidden input that real users won’t fill, but bots often do. If the honeypot 
 <input name="email" id="email" type="email" required />
 <!-- ... -->
 ```
+
+## SCSS BUILDING
+
+npm run build:css

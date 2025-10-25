@@ -1,5 +1,8 @@
 @use '../abstracts/variables' as *;
 
+// Local error color (kept here to avoid touching global variables)
+$error-color: #d93025;
+
 .contact__header {
   // TODO: could use mixins as code snippet is exactly same in rates.scss
   width: 80%;
@@ -16,6 +19,7 @@
     position: relative;
     margin-bottom: 0.4rem;
     opacity: 1;
+
     &::after {
       content: '';
       position: absolute;
@@ -89,11 +93,49 @@
         border-radius: 4px;
         color: $primary-grey;
         letter-spacing: 1px;
+        background-color: #fff;
 
         &:focus {
           outline: 1px solid $light-pink;
         }
       }
+
+      // style the <select> to match inputs
+      select {
+        font-size: 0.8rem;
+        height: 2rem;
+        padding-left: 10px;
+        padding-right: 2rem; // space for the arrow
+        border: none;
+        border-radius: 4px;
+        color: $primary-grey;
+        letter-spacing: 1px;
+        background-color: #fff;
+
+        // remove native arrows
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+
+        // custom arrow
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23707070' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+        background-repeat: no-repeat;
+        background-position: right 0.6rem center;
+
+        &:focus {
+          outline: 1px solid $light-pink;
+        }
+      }
+
+
+      // error message (optional helper under fields)
+      .form__error {
+        margin-top: 0.3rem;
+        font-size: 0.75rem;
+        line-height: 1.2;
+        color: $error-color;
+      }
+
     }
   }
 
@@ -119,6 +161,7 @@
       color: $primary-grey;
       resize: vertical;
       letter-spacing: 1px;
+      background-color: #fff;
 
       &:focus {
         outline: 1px solid $light-pink;
@@ -145,6 +188,7 @@
   .contact-form {
     input[type='submit'] {
       font-size: 1.6rem;
+
       &:hover {
         background-color: $light-pink;
       }
@@ -181,6 +225,7 @@
           width: 40%;
           padding-left: 4rem;
         }
+
         .contact-form__item:nth-child(2) {
           order: 0;
           width: 40%;
@@ -224,11 +269,37 @@
           border: none;
           border-radius: 4px;
           color: $primary-grey;
+          background-color: #fff;
 
           &:focus {
             outline: 1px solid $light-pink;
           }
         }
+
+        // @desktop: select mirrors input sizing
+        select {
+          font-size: 0.8rem;
+          height: 2rem;
+          padding-left: 10px;
+          padding-right: 2rem;
+          border: none;
+          border-radius: 4px;
+          color: $primary-grey;
+          background-color: #fff;
+
+          appearance: none;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+
+          background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23707070' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+          background-repeat: no-repeat;
+          background-position: right 0.6rem center;
+
+          &:focus {
+            outline: 1px solid $light-pink;
+          }
+        }
+
       }
     }
 
@@ -254,6 +325,7 @@
         border: none;
         color: $primary-grey;
         resize: vertical;
+        background-color: #fff;
 
         &:focus {
           outline: 1px solid $light-pink;
@@ -281,14 +353,17 @@
 
   .contact-form {
     margin-bottom: 3rem;
+
     .contact-form__container {
       width: 50%;
       padding: 2rem 0 3.5rem 1rem;
+
       .contact-form__main-wrapper {
         .contact-form__item:first-child {
           width: 45%;
           padding-left: 2rem;
         }
+
         .contact-form__item:nth-child(2) {
           width: 40%;
           margin-left: 5rem;
@@ -312,6 +387,7 @@
 
     .contact-form__inputs {
       padding-top: 2rem;
+
       .form__group {
         padding-left: 2rem;
 
@@ -326,6 +402,30 @@
           height: 2.4rem;
           padding-left: 12px;
         }
+
+        // @desktop-large: larger select to match larger inputs
+        select {
+          font-size: 1rem;
+          height: 2.4rem;
+          padding-left: 12px;
+          padding-right: 2.2rem;
+          border-radius: 4px;
+          color: $primary-grey;
+          background-color: #fff;
+
+          appearance: none;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+
+          background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23707070' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+          background-repeat: no-repeat;
+          background-position: right 0.7rem center;
+
+          &:focus {
+            outline: 1px solid $light-pink;
+          }
+        }
+
 
         &:last-child {
           margin-bottom: 0.6rem;
@@ -355,6 +455,52 @@
       padding: 0.5rem 0;
       margin-left: 4rem;
       font-size: 1.6rem;
+    }
+  }
+}
+
+// hide legacy IE arrow (noop for modern browsers)
+select::-ms-expand {
+  display: none;
+}
+
+// consistent background on iOS Safari
+select {
+  background-color: #fff;
+  line-height: normal;
+}
+
+/* ERROR STATES (inputs, selects, textarea) */
+.contact-form {
+
+  // red outline on error helper class or aria-invalid
+  .contact-form__inputs .form__group,
+  .form__group--message {
+
+    input.is-error,
+    select.is-error,
+    textarea.is-error,
+    input[aria-invalid='true'],
+    select[aria-invalid='true'],
+    textarea[aria-invalid='true'] {
+      outline: 1px solid $error-color;
+      box-shadow: 0 0 0 2px rgba(217, 48, 37, 0.08);
+    }
+
+    // when focusing an errored field keep red but slightly stronger
+    input.is-error:focus,
+    select.is-error:focus,
+    textarea.is-error:focus,
+    input[aria-invalid='true']:focus,
+    select[aria-invalid='true']:focus,
+    textarea[aria-invalid='true']:focus {
+      outline: 2px solid $error-color;
+      box-shadow: 0 0 0 3px rgba(217, 48, 37, 0.12);
+    }
+
+    // error text (reuse .form__error above)
+    .form__error {
+      color: $error-color;
     }
   }
 }

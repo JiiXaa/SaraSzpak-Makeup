@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev:css": "sass scss/main.scss css/style.css -w",
-    "build:css": "sass scss/main.scss css/style.css --no-source-map",
+    "build:css": "sass scss/main.scss public/css/style.css --no-source-map",
     "build": "echo \"no build - static site\"",
     "start": "echo \"static site\""
   },

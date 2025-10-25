@@ -74,7 +74,7 @@ export default async function handler(req, res) {
 
     const name = (body.name || "").trim();
     const email = (body.email || "").trim();
-    const phone = (body.phone || "").trim(); // <-- NEW: phone
+    const phone = (body.phone || "").trim();
     const occasion = (body.occasion || "").trim();
     const manyServices = (body.manyServices || "").trim();
     const location = (body.location || "").trim();
