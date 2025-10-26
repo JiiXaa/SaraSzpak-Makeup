@@ -6,6 +6,7 @@ function serialize(formEl) {
   return {
     name: (data["name"] || "").trim(),
     email: (data["email"] || "").trim(),
+    phone: (data["phone"] || "").trim(),
     occasion: (data["occasion"] || "").trim(),
     manyServices: (data["manyServices"] || "").trim(),
     location: (data["location"] || "").trim(),
