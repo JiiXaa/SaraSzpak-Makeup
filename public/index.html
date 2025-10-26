@@ -11,22 +11,22 @@
     <link
       rel="apple-touch-icon"
       sizes="180x180"
-      href="./img/apple-touch-icon.png?"
+      href="/img/apple-touch-icon.png?"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="./img/favicon-32x32.png?"
+      href="/img/favicon-32x32.png?"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="16x16"
-      href="./img/favicon-16x16.png?"
+      href="/img/favicon-16x16.png?"
     />
-    <link rel="manifest" href="./img/site.webmanifest?" />
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="manifest" href="/img/site.webmanifest?" />
+    <link rel="stylesheet" href="/css/style.css" />
     <!-- adobe fonts Aileron import -->
     <link rel="stylesheet" href="https://use.typekit.net/nax6ups.css" />
     <!-- google fonts Great Vibes import -->
@@ -48,7 +48,7 @@
     <div class="overlay"></div>
     <!-- Navigation -->
     <nav class="nav">
-      <a href="index.html" class="nav__logo">
+      <a href="/index.html" class="nav__logo">
         <p>
           Sara Szpak
           <span class="nav__logo__suffix">MakeUp & Hair Stylist</span>
@@ -60,19 +60,19 @@
       <div class="nav__list">
         <ul class="nav__links">
           <li class="nav__list__link">
-            <a class="link-active" href="index.html">Home</a>
+            <a class="link-active" href="/index.html">Home</a>
           </li>
           <li class="nav__list__link">
-            <a class="anim-to-left" href="portfolio.html">Portfolio</a>
+            <a class="anim-to-left" href="/portfolio.html">Portfolio</a>
           </li>
           <li class="nav__list__link">
-            <a class="anim-to-left" href="services.html">Services</a>
+            <a class="anim-to-left" href="/services.html">Services</a>
           </li>
           <li class="nav__list__link">
-            <a class="anim-to-left" href="rates.html">Rates</a>
+            <a class="anim-to-left" href="/rates.html">Rates</a>
           </li>
           <li class="nav__list__link">
-            <a class="anim-to-left" href="contact.html">Contact</a>
+            <a class="anim-to-left" href="/contact.html">Contact</a>
           </li>
         </ul>
         <ul class="nav__socials">
@@ -106,10 +106,9 @@
         </ul>
       </div>
     </nav>
-
     <!-- End Navigation -->
-    <!-- Main (with Header) -->
 
+    <!-- Main (with Header) -->
     <main class="main">
       <header class="header__about">
         <div class="header__about__card">
@@ -130,7 +129,7 @@
             and TNT.
           </p>
         </div>
-        <a class="header__about__cta" href="contact.html">Contact Me</a>
+        <a class="header__about__cta" href="/contact.html">Contact Me</a>
 
         <div class="header__about__testimonials">
           <p class="testimonials-text">
@@ -144,7 +143,7 @@
         <div class="header__about__awards">
           <div class="header__about__awards-item">
             <img
-              src="./img/official-makeup-award2019.jpg"
+              src="/img/official-makeup-award2019.jpg"
               alt="Creative Make Up Artist of the Year 2019 award"
               width="400"
               height="340"
@@ -152,7 +151,7 @@
           </div>
           <div class="header__about__awards-item">
             <img
-              src="./img/finalist-wbia-2022.jpg"
+              src="/img/finalist-wbia-2022.jpg"
               alt="Welsh Beauty Awards 2022 Finalist"
               width="300"
               height="300"
@@ -161,7 +160,7 @@
           </div>
           <div class="header__about__awards-item">
             <img
-              src="./img/psa-award.jpg"
+              src="/img/psa-award.jpg"
               alt="PSA Exhibition Award"
               width="400"
               height="267"
@@ -176,16 +175,15 @@
         />
       </header>
     </main>
-
     <!-- End Main (with Header) -->
-    <!-- Services Section -->
 
+    <!-- Services Section -->
     <section class="services">
       <div class="services__texture-text"><p>Award Winning</p></div>
       <div class="services__cards">
-        <a href="./bridal.html" class="services__cards-item">
+        <a href="/bridal.html" class="services__cards-item">
           <img
-            src="./img/brides-card.jpg"
+            src="/img/brides-card.jpg"
             alt="Two brides hugging"
             width="600"
             height="387"
@@ -196,9 +194,9 @@
             it is special!
           </p>
         </a>
-        <a href="./other.html" class="services__cards-item">
+        <a href="/other.html" class="services__cards-item">
           <img
-            src="./img/creative-card.jpg"
+            src="/img/creative-card.jpg"
             alt="face close-up"
             width="600"
             height="372"
@@ -209,9 +207,9 @@
             here"
           </p>
         </a>
-        <a href="./lessons.html" class="services__cards-item">
+        <a href="/lessons.html" class="services__cards-item">
           <img
-            src="./img/lessons-card.jpg"
+            src="/img/lessons-card.jpg"
             alt="woman putting make up on"
             width="600"
             height="400"
@@ -224,11 +222,17 @@
         </a>
       </div>
     </section>
-
     <!-- End Services Section -->
+
     <!-- Contact Form -->
-    <form class="contact-form" method="GET" action="form-submitted.html">
-      <div class="contact-form__container main">
+    <form
+      class="contact-form"
+      id="contactForm"
+      action="/api/contact?redirect=/form-submitted.html"
+      method="POST"
+      novalidate
+    >
+      <div class="contact-form__container">
         <div class="contact-form__main-wrapper">
           <div class="contact-form__inputs contact-form__item">
             <div class="form__group">
@@ -241,6 +245,7 @@
                 autocomplete="off"
               />
             </div>
+
             <div class="form__group">
               <label id="email-label" for="email">Your email address:</label>
               <input
@@ -251,18 +256,36 @@
                 autocomplete="off"
               />
             </div>
+
+            <div class="form__group">
+              <label id="phone-label" for="phone">Your phone number:</label>
+              <input
+                name="phone"
+                id="phone"
+                type="tel"
+                required
+                autocomplete="tel"
+                inputmode="tel"
+                placeholder="+44 7..."
+              />
+            </div>
+
             <div class="form__group">
               <label id="occasion-label" for="occasion"
                 >What occasion is it?</label
               >
-              <input
-                name="occasion"
-                id="occasion"
-                type="text"
-                required
-                autocomplete="off"
-              />
+              <select name="occasion" id="occasion" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="bride">I'm the bride</option>
+                <option value="wedding-guest">Wedding guest</option>
+                <option value="birthday-party">Birthday party</option>
+                <option value="photoshoot">Photoshoot</option>
+                <option value="xmas-party">Xmas party</option>
+                <option value="halloween-party">Halloween party</option>
+                <option value="other">Other</option>
+              </select>
             </div>
+
             <div class="form__group">
               <label id="services-label" for="manyServices"
                 >How many services required?</label
@@ -275,6 +298,7 @@
                 autocomplete="off"
               />
             </div>
+
             <div class="form__group">
               <label id="location-label" for="location">Location</label>
               <input
@@ -285,6 +309,7 @@
                 autocomplete="off"
               />
             </div>
+
             <div class="form__group">
               <label id="readyFor-label" for="readyFor"
                 >What time do you need to be ready for?</label
@@ -298,6 +323,7 @@
               />
             </div>
           </div>
+
           <div class="contact-form__description contact-form__item">
             <p>
               If you would like to contact me, please choose one of the
@@ -324,17 +350,40 @@
             </p>
           </div>
         </div>
+
         <div class="form__group--message">
           <label for="your-message">Your Message</label>
-          <textarea name="your-message" id="your-message"></textarea>
+          <textarea name="your-message" id="your-message" required></textarea>
         </div>
+
+        <!-- Honeypot -->
+        <div
+          style="
+            position: absolute;
+            left: -9999px;
+            top: auto;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+          "
+        >
+          <label for="company">Company</label>
+          <input
+            type="text"
+            id="company"
+            name="company"
+            tabindex="-1"
+            autocomplete="off"
+          />
+        </div>
+
         <input type="submit" value="Submit" />
+        <p id="contactStatus" role="status" aria-live="polite"></p>
       </div>
     </form>
     <!-- End Contact Form -->
 
     <!-- Footer -->
-
     <footer class="footer">
       <p class="footer-logo">Sara Szpak</p>
       <div class="footer__contacts">
@@ -348,8 +397,8 @@
       </div>
     </footer>
 
-    <!-- End Footer -->
-
-    <script type="module" src="js/site.js"></script>
+    <script type="module" src="/js/site.js"></script>
+    <script type="module" src="/js/contact.js"></script>
+    <script type="module" src="/js/contact-validate.js"></script>
   </body>
 </html>

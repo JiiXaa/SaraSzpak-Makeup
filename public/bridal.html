@@ -11,22 +11,22 @@
     <link
       rel="apple-touch-icon"
       sizes="180x180"
-      href="./img/apple-touch-icon.png?"
+      href="/img/apple-touch-icon.png?"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="./img/favicon-32x32.png?"
+      href="/img/favicon-32x32.png?"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="16x16"
-      href="./img/favicon-16x16.png?"
+      href="/img/favicon-16x16.png?"
     />
-    <link rel="manifest" href="./img/site.webmanifest?" />
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="manifest" href="/img/site.webmanifest?" />
+    <link rel="stylesheet" href="/css/style.css" />
     <!-- adobe fonts Aileron import -->
     <link rel="stylesheet" href="https://use.typekit.net/nax6ups.css" />
     <!-- google fonts Great Vibes import -->
@@ -48,7 +48,7 @@
     <div class="overlay"></div>
     <!-- Navigation -->
     <nav class="nav">
-      <a href="index.html" class="nav__logo">
+      <a href="/index.html" class="nav__logo">
         <p>
           Sara Szpak
           <span class="nav__logo__suffix">MakeUp & Hair Stylist</span>
@@ -60,19 +60,19 @@
       <div class="nav__list">
         <ul class="nav__links">
           <li class="nav__list__link">
-            <a class="anim-to-left" href="index.html">Home</a>
+            <a class="anim-to-left" href="/index.html">Home</a>
           </li>
           <li class="nav__list__link">
-            <a class="anim-to-left" href="portfolio.html">Portfolio</a>
+            <a class="anim-to-left" href="/portfolio.html">Portfolio</a>
           </li>
           <li class="nav__list__link">
-            <a class="anim-to-left" href="services.html">Services</a>
+            <a class="anim-to-left" href="/services.html">Services</a>
           </li>
           <li class="nav__list__link">
-            <a class="anim-to-left" href="rates.html">Rates</a>
+            <a class="anim-to-left" href="/rates.html">Rates</a>
           </li>
           <li class="nav__list__link">
-            <a class="anim-to-left" href="contact.html">Contact</a>
+            <a class="anim-to-left" href="/contact.html">Contact</a>
           </li>
         </ul>
         <ul class="nav__socials">
@@ -125,13 +125,13 @@
         </p>
         <div class="option-images">
           <img
-            src="./img/services01.jpg"
+            src="/img/services01.jpg"
             alt="Braidsmaids looking at the wedding ring"
             width="426"
             height="284"
           />
           <img
-            src="./img/services02.jpg"
+            src="/img/services02.jpg"
             alt="Braidsmaids waving to the camera"
             width="426"
             height="284"
@@ -208,7 +208,13 @@
 
     <!-- Contact Form -->
     <div class="bridal-contact">
-      <form class="contact-form" method="GET" action="form-submitted.html">
+      <form
+        class="contact-form"
+        id="contactForm"
+        action="/api/contact?redirect=/form-submitted.html"
+        method="POST"
+        novalidate
+      >
         <div class="contact-form__container">
           <div class="contact-form__main-wrapper">
             <div class="contact-form__inputs contact-form__item">
@@ -222,6 +228,7 @@
                   autocomplete="off"
                 />
               </div>
+
               <div class="form__group">
                 <label id="email-label" for="email">Your email address:</label>
                 <input
@@ -232,18 +239,36 @@
                   autocomplete="off"
                 />
               </div>
+
+              <div class="form__group">
+                <label id="phone-label" for="phone">Your phone number:</label>
+                <input
+                  name="phone"
+                  id="phone"
+                  type="tel"
+                  required
+                  autocomplete="tel"
+                  inputmode="tel"
+                  placeholder="+44 7..."
+                />
+              </div>
+
               <div class="form__group">
                 <label id="occasion-label" for="occasion"
                   >What occasion is it?</label
                 >
-                <input
-                  name="occasion"
-                  id="occasion"
-                  type="text"
-                  required
-                  autocomplete="off"
-                />
+                <select name="occasion" id="occasion" required>
+                  <option value="" disabled selected>Select an option</option>
+                  <option value="bride">I'm the bride</option>
+                  <option value="wedding-guest">Wedding guest</option>
+                  <option value="birthday-party">Birthday party</option>
+                  <option value="photoshoot">Photoshoot</option>
+                  <option value="xmas-party">Xmas party</option>
+                  <option value="halloween-party">Halloween party</option>
+                  <option value="other">Other</option>
+                </select>
               </div>
+
               <div class="form__group">
                 <label id="services-label" for="manyServices"
                   >How many services required?</label
@@ -256,6 +281,7 @@
                   autocomplete="off"
                 />
               </div>
+
               <div class="form__group">
                 <label id="location-label" for="location">Location</label>
                 <input
@@ -266,6 +292,7 @@
                   autocomplete="off"
                 />
               </div>
+
               <div class="form__group">
                 <label id="readyFor-label" for="readyFor"
                   >What time do you need to be ready for?</label
@@ -279,6 +306,7 @@
                 />
               </div>
             </div>
+
             <div class="contact-form__description contact-form__item">
               <p>
                 If you would like to contact me, please choose one of the
@@ -305,11 +333,35 @@
               </p>
             </div>
           </div>
+
           <div class="form__group--message">
             <label for="your-message">Your Message</label>
-            <textarea name="your-message" id="your-message"></textarea>
+            <textarea name="your-message" id="your-message" required></textarea>
           </div>
+
+          <!-- Honeypot -->
+          <div
+            style="
+              position: absolute;
+              left: -9999px;
+              top: auto;
+              width: 1px;
+              height: 1px;
+              overflow: hidden;
+            "
+          >
+            <label for="company">Company</label>
+            <input
+              type="text"
+              id="company"
+              name="company"
+              tabindex="-1"
+              autocomplete="off"
+            />
+          </div>
+
           <input type="submit" value="Submit" />
+          <p id="contactStatus" role="status" aria-live="polite"></p>
         </div>
       </form>
     </div>
@@ -332,6 +384,8 @@
 
     <!-- End Footer -->
 
-    <script src="js/site.js"></script>
+    <script type="module" src="/js/site.js"></script>
+    <script type="module" src="/js/contact.js"></script>
+    <script type="module" src="/js/contact-validate.js"></script>
   </body>
 </html>
