@@ -8,12 +8,16 @@
     "node": "20.x"
   },
   "scripts": {
+    "dev": "concurrently \"npm run dev:css\" \"npm run dev:serve\"",
     "dev:css": "sass scss/main.scss public/css/style.css --watch",
+    "dev:serve": "live-server public --port=5500 --watch=public --quiet",
     "build:css": "sass scss/main.scss public/css/style.css --no-source-map",
     "build": "echo \"no build - static site\"",
     "start": "echo \"static site\""
   },
   "devDependencies": {
+    "concurrently": "^9.2.1",
+    "live-server": "^1.2.2",
     "sass": "^1.93.2"
   }
 }
