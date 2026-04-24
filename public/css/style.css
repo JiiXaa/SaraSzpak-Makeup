@@ -459,19 +459,64 @@ body::selection {
   border-radius: 20px;
   margin-bottom: 1.5rem;
   box-shadow: 0 10px 30px rgba(16, 24, 40, 0.08), 0 1px 2px rgba(16, 24, 40, 0.06);
+  min-height: 255px;
+  display: flex;
+  flex-direction: column;
 }
 .main .header__about__testimonials p {
   color: #2f2a2c;
   font-size: 1.1rem;
 }
+.main .header__about__testimonials .testimonials-meta {
+  display: flex;
+  align-items: center;
+  column-gap: 0.6rem;
+  margin-bottom: 0.6rem;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.main .header__about__testimonials .testimonials-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 10px 30px rgba(16, 24, 40, 0.08), 0 1px 2px rgba(16, 24, 40, 0.06);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
 .main .header__about__testimonials .testimonials-text {
   margin-bottom: 0.5rem;
   font-style: italic;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  line-clamp: 6;
+  overflow: hidden;
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 .main .header__about__testimonials .testimonials-name {
-  text-align: end;
+  text-align: left;
   font-weight: bold;
-  padding-right: 1rem;
+  padding-right: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.main .header__about__testimonials .testimonials-link {
+  margin-top: auto;
+  align-self: flex-start;
+  color: #b97e8a;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.3s ease;
+}
+.main .header__about__testimonials .testimonials-link:hover {
+  border-color: #b97e8a;
+}
+.main .header__about__testimonials.is-animating .testimonials-meta,
+.main .header__about__testimonials.is-animating .testimonials-avatar,
+.main .header__about__testimonials.is-animating .testimonials-name,
+.main .header__about__testimonials.is-animating .testimonials-text,
+.main .header__about__testimonials.is-animating .testimonials-link {
+  opacity: 0;
+  transform: translateY(10px);
 }
 .main .header__about__awards {
   width: 100%;
@@ -545,6 +590,7 @@ body::selection {
     line-height: 1.8rem;
     margin-bottom: 2.6rem;
     box-shadow: 0 10px 30px rgba(16, 24, 40, 0.08), 0 1px 2px rgba(16, 24, 40, 0.06);
+    min-height: 285px;
   }
   .main .header__about__testimonials p {
     color: #2f2a2c;
@@ -599,6 +645,7 @@ body::selection {
     font-size: 1rem;
     line-height: 1.5rem;
     margin-bottom: 2.6rem;
+    min-height: 320px;
   }
   .main .header__about__testimonials p {
     font-size: 1.1rem;
@@ -648,6 +695,7 @@ body::selection {
     width: 30%;
     line-height: 1.5rem;
     margin-bottom: 2.6rem;
+    min-height: 340px;
   }
   .main .header__about__testimonials p {
     font-size: 1.3rem;
@@ -1263,6 +1311,21 @@ select {
 .footer .footer-logo {
   font-family: "Great Vibes", cursive;
   font-size: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+.footer .footer-logo__suffix {
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #7a3f47;
+  margin-top: 0.2rem;
+  white-space: nowrap;
 }
 .footer__contacts {
   display: flex;
@@ -1272,7 +1335,7 @@ select {
 }
 .footer__contacts-email {
   font-size: 1.1rem;
-  color: #7a3f47;
+  color: #4b4448;
   text-decoration: none;
 }
 .footer__contacts-divider {
@@ -1283,7 +1346,7 @@ select {
 }
 .footer__contacts-mobile {
   font-size: 1.1rem;
-  color: #7a3f47;
+  color: #4b4448;
   text-decoration: none;
 }
 
@@ -1291,6 +1354,12 @@ select {
   .footer .footer-logo {
     font-family: "Great Vibes", cursive;
     font-size: 3rem;
+    margin-bottom: 1.2rem;
+  }
+  .footer .footer-logo__suffix {
+    font-size: 1.05rem;
+    letter-spacing: 0.14em;
+    margin-top: 0.25rem;
   }
   .footer__contacts {
     margin-bottom: 1rem;
@@ -2541,5 +2610,3 @@ td p:last-child {
     width: 210px;
   }
 }
-
-/*# sourceMappingURL=style.css.map */

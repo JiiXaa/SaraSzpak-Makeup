@@ -92,6 +92,22 @@ export default async function handler(req, res) {
         : redirect303();
     }
 
+    const missingConfig = [
+      ["BREVO_API_KEY", process.env.BREVO_API_KEY],
+      ["FROM_EMAIL", process.env.FROM_EMAIL],
+      ["OWNER_EMAIL", process.env.OWNER_EMAIL],
+    ]
+      .filter(([, value]) => !String(value || "").trim())
+      .map(([key]) => key);
+
+    if (missingConfig.length > 0) {
+      const error = `Email sending is not configured: missing ${missingConfig.join(", ")}`;
+
+      return wantsJson
+        ? res.status(500).json({ ok: false, error })
+        : redirect303();
+    }
+
     // OWNER EMAIL (HTML + TEXT)
     const ownerHtml = `
       <div style="font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:16px;line-height:1.5;color:#111">

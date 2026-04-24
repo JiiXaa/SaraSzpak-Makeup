@@ -138,12 +138,28 @@
         <a class="header__about__cta" href="/contact.html">Contact Me</a>
 
         <div class="header__about__testimonials">
+          <div class="testimonials-meta">
+            <img
+              class="testimonials-avatar"
+              src="/img/favicon-32x32.png"
+              alt="Reviewer profile photo"
+              width="44"
+              height="44"
+            />
+            <p class="testimonials-name">Gee Delonnette</p>
+          </div>
           <p class="testimonials-text">
             “Thanks so much for the hair and make-up trial a few weekends ago.
             The make-up had great staying power, even when I’d fallen asleep on
             the sofa that evening!”
           </p>
-          <p class="testimonials-name">Gee Delonnette</p>
+          <a
+            class="testimonials-link"
+            href="https://www.google.com/maps"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Read full review</a
+          >
         </div>
 
         <div class="header__about__awards">
@@ -209,8 +225,8 @@
           />
           <h2>Makeup | Hairstyle</h2>
           <p>
-            MakeUp and Hairstyle services we are provide "some more verbose text
-            here"
+            Professional makeup and hairstyling for special occasions,
+            photoshoots, parties, and polished event-ready looks.
           </p>
         </a>
         <a href="/lessons.html" class="services__cards-item">
@@ -306,7 +322,9 @@
             </div>
 
             <div class="form__group">
-              <label id="location-label" for="location">Location</label>
+              <label id="location-label" for="location"
+                >Location (Postcode)</label
+              >
               <input
                 name="location"
                 id="location"
@@ -318,7 +336,7 @@
 
             <div class="form__group">
               <label id="readyFor-label" for="readyFor"
-                >What time do you need to be ready for?</label
+                >What time do you need to be ready?</label
               >
               <input
                 name="readyFor"
@@ -350,7 +368,7 @@
                 additional charge.
               </li>
             </ul>
-            <p>£50 not-refundable deposit to book your wedding date</p>
+            <p>£60 not-refundable deposit to book your wedding date</p>
             <p>
               £10/pp not-refundable deposit to book your special occasion date
             </p>
@@ -391,7 +409,10 @@
 
     <!-- Footer -->
     <footer class="footer">
-      <p class="footer-logo">Sara Szpak</p>
+      <p class="footer-logo">
+        Sara Szpak
+        <span class="footer-logo__suffix">MakeUp & Hair Stylist</span>
+      </p>
       <div class="footer__contacts">
         <a href="mailto:saraszpak@hotmail.com" class="footer__contacts-email"
           >saraszpak@hotmail.com</a

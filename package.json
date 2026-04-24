@@ -8,8 +8,9 @@
     "node": "20.x"
   },
   "scripts": {
-    "dev": "concurrently \"npm run dev:css\" \"npm run dev:serve\"",
+    "dev": "concurrently \"npm run dev:css\" \"npm run dev:app\"",
     "dev:css": "sass scss/main.scss public/css/style.css --watch",
+    "dev:app": "node scripts/dev-server.js",
     "dev:serve": "live-server public --port=5500 --watch=public --quiet",
     "build:css": "sass scss/main.scss public/css/style.css --no-source-map",
     "build": "echo \"no build - static site\"",

@@ -1,147 +1,77 @@
 # Testing
 
-## Contents
+## Current Status
 
-The Sara's Szpak website has been tested the following criteria:
+This file documents the testing approach for the current codebase.
+It intentionally avoids claiming checks that were not re-run against the current implementation.
 
-- [Lighthouse Audit](#lighthouse)
-- [Code Validation](#code-validation)
-  - [W3C HTML Validator](#w3c-html-validator)
-  - [W3C CSS Validator](#w3c-css-validator)
-- [WAVE](#wave)
-- [Browser Compatibility](#browser-compatibility)
-- [Manual Testing](#manual-testing)
-- [Bugs](#bugs)
-  - [Outstanding Bugs](#outstanding-bugs)
+## Verified From Code / Local Commands
 
-## Code Validation
+The following was verified directly against the repository:
 
-## Lighthouse
+- static pages are served from `public/`
+- local API routes exist in `api/contact.js` and `api/google-reviews.js`
+- local development uses `scripts/dev-server.js`
+- SCSS builds successfully with `npm run build:css`
+- `npm run build` is only a placeholder and does not produce deploy artifacts
 
-I used lighthouse in chrome developer tools to test each of the pages for:
+## Manual Testing Checklist
 
-- Performance - how the page performs whilst loading.
-- Accessibility - how accessible is the site for all users and how can it be improved.
-- Best practices - how does the site conform to industry best practices.
-- SEO - search engine optimization. Is the site optimized for search engine result rankings.
+Run these checks before client sign-off and before production deploy.
 
-[Back to contents](#contents)
+### Navigation and Pages
 
-#### Desktop:
+- Open `/`, `/portfolio.html`, `/services.html`, `/rates.html`, `/contact.html`
+- Verify all top navigation links work
+- Verify mobile menu opens and closes correctly
+- Verify external social links open correctly
+- Verify `404.html` is shown for invalid routes in local dev
 
-<img width="476" alt="Lighthouse audit result for desktop screen size" src="https://raw.githubusercontent.com/JiiXaa/SaraSzpak-Makeup/main/.github/screenshots/lighthouse-desktop.jpg">
+### Testimonials / Google Reviews
 
-#### Mobile:
+- Open homepage with Google env vars configured
+- Confirm testimonials render
+- Confirm reviews rotate without layout jump
+- Confirm fallback testimonial still renders if `/api/google-reviews` returns no reviews
+- Check `/api/google-reviews?limit=5` returns JSON with `ok` and `reviews`
 
-<img width="476" alt="Lighthouse audit result for mobile screen size" src="https://raw.githubusercontent.com/JiiXaa/SaraSzpak-Makeup/main/.github/screenshots/lighthouse-mobile.jpg">
+### Contact Form
 
-[Back to contents](#contents)
+- Submit empty form and confirm validation blocks submission
+- Submit invalid email and confirm validation error
+- Submit valid form and confirm redirect to `/form-submitted.html`
+- Confirm owner email is sent through Brevo
+- Confirm autoresponder email is sent to the client
+- Confirm honeypot submissions do not send emails
 
-### W3C HTML Validator
+### Responsive Check
 
-<img width="403" alt="HTML validation result" src="https://raw.githubusercontent.com/JiiXaa/SaraSzpak-Makeup/main/.github/screenshots/html-validated.jpg">
+- Review homepage and contact form on mobile width
+- Review main service pages on tablet width
+- Review homepage, portfolio, rates, and contact on desktop width
+- Confirm no major overflow, broken images, or layout collapse
 
-**All other html files went through the same verification process with exact same result. No errors.**
+## What Is Not Covered Automatically
 
-[Back to contents](#contents)
+There are currently no automated unit tests, integration tests, or end-to-end tests in this repository.
 
-### W3C CSS Validator
+That means release confidence depends on:
 
-<img width="403" alt="CSS validation result" src="https://raw.githubusercontent.com/JiiXaa/SaraSzpak-Makeup/main/.github/screenshots/css-validated.jpg">
+- manual browser checks
+- a real contact form submission in Preview
+- verification of Brevo and Google API configuration
 
-**All styles passed the CSS validator without error.**
+## Recommended Pre-Production Pass
 
-[Back to contents](#contents)
+Before production approval, do one clean Preview deployment and confirm:
 
-## WAVE
+1. homepage loads correctly
+2. Google reviews work with production env vars
+3. contact form sends both emails
+4. redirect to confirmation page works
+5. email headers show SPF, DKIM, and DMARC pass
 
-I used wave (web accessibility evaluation tool) in chrome developer tools to test the website accessibility. Scanned website for on-page and technical accessibility issues and errors to bring site in line with recognized accessibility standards, like the Web Content Accessibility Guidelines (WCAG).
+## Notes
 
-<img width="302" alt="WAVE accessibility check result" src="https://raw.githubusercontent.com/JiiXaa/SaraSzpak-Makeup/main/.github/screenshots/wave-testing.jpg">
-
-[Back to contents](#contents)
-
-## Browser Compatibility
-
-The site was tested on Google Chrome, Microsoft Edge, Safari and Mozilla Firefox, with no visible issues for the user. Appearance, functionality and responsiveness were consistent throughout for a range of device sizes and browsers.
-
-| DEVICE        | BROWSER              | OS             |
-| ------------- | -------------------- | -------------- |
-| Pixel 6 Pro   | Chrome               | Android, v10.0 |
-| Galaxy Note 8 | Firefox              | Android, v7.1  |
-| iPhone 6S     | Chrome               | iOS, v12.1     |
-| Windows PC    | Chrome               | iOS, v12.1     |
-| Windows PC    | Edge 107             | Windows 11     |
-| Windows PC    | Firefox 104          | Windows 11     |
-| Windows PC    | Internet Explorer 11 | Windows 10     |
-
-[Back to contents](#contents)
-
-## Manual Testing
-
-### Navigation:
-
-Navigation's behavior checked on every page for every responsive breakpoint (mobile, tablet, desktop, desktop-large):
-
-- [x] For mobile screen size extra step was to check if the hamburger menu opens the mobile menu.
-- [x] Click on the website's logo redirects to index.html.
-- [x] Click on Home link redirects to index.html.
-- [x] Click on Portfolio link redirects to portfolio.html.
-- [x] Click on Services link redirects to services.html.
-  - [x] Services page contains 3 cards, and all when clicked redirects to specific page:
-    - [x] Bridal card redirects to bridal.html.
-    - [x] Makeup|Hairstyle card redirects to other.html.
-    - [x] Makeup Lessons card redirects to lessons.html.
-- [x] Click on Rates link redirects to rates.html.
-- [x] Click on Contact link redirects to contact.html.
-
-**Social media icons:**
-
-- [x] Hover on one icon changes color of other icons (dim the color) with use of JavaScript.
-- [x] All icon links have target attribute set to "\_blank" and open in new tab.
-- [x] Click on Instagram icon opens new tab with Sara's Szpak profile.
-- [x] Click on Facebook icon opens new tab with Sara's Szpak profile.
-- [x] Click on Envelope icon opens new tab with option to send email to Sara.
-
-### Submit Contact Form:
-
-- [x] Try to submit.
-- [x] Try to submit the empty form and verify that an error message about the required fields appears.
-- [x] Try to submit the form with an invalid email address and verify that a relevant error message appears.
-- [x] Try to submit the form with all inputs valid and verify that a success message appears.
-- [x] Check form responsiveness for all breakpoints (mobile, tablet, desktop, desktop-large)
-
-### Responsive Testing:
-
-For each Device/ Browser/ OS noted in the Browser Compatibility Table, this has been tested:
-
-- [x] Click on submit button - verify it looks as it has been designed.
-- [x] Form is easy to access and invalid entries are noted.
-- [x] Submission of contact form takes user to confirmation page.
-- [x] Submission confirmation page takes user back to index.html on button click.
-
-### Submission confirmation page:
-
-- [x] The links go to the right page
-- [x] Go back button redirects user to the index.html on click.
-
-### Page 404:
-
-- [x] If wrong URL used, user see the custom 404.html page.
-- [x] Go back button redirects user to the index.html on click.
-
-[Back to contents](#contents)
-
-## Bugs
-
-- Constant unit test was done as the features were added. Fixed, checked with appropriate commit messages. No official tracking system was used as the project scope was relatively small.
-
-### Outstanding Bugs
-
-- No outstanding bugs exist at this time that the developer is aware of.
-
-[Back to contents](#contents)
-
-## MAIN PAGE (README)
-
-[Back to Main README](https://github.com/JiiXaa/SaraSzpak-Makeup#testing)
+- Old screenshots or historic Lighthouse/WAVE claims should be treated as archival only unless re-run now.
+- Internet Explorer 11 support should not be claimed without a fresh compatibility test.

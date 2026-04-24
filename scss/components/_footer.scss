@@ -10,6 +10,22 @@
   .footer-logo {
     font-family: $logo-font;
     font-size: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+    margin-bottom: 1rem;
+
+    &__suffix {
+      font-family: $logo-suffix-font;
+      font-size: 0.95rem;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: $dark-pink;
+      margin-top: 0.2rem;
+      white-space: nowrap;
+    }
   }
 
   &__contacts {
@@ -20,7 +36,7 @@
 
     &-email {
       font-size: 1.1rem;
-      color: $dark-pink;
+      color: $primary-grey;
       text-decoration: none;
     }
 
@@ -33,7 +49,7 @@
 
     &-mobile {
       font-size: 1.1rem;
-      color: $dark-pink;
+      color: $primary-grey;
       text-decoration: none;
     }
   }
@@ -44,6 +60,13 @@
     .footer-logo {
       font-family: $logo-font;
       font-size: 3rem;
+      margin-bottom: 1.2rem;
+
+      &__suffix {
+        font-size: 1.05rem;
+        letter-spacing: 0.14em;
+        margin-top: 0.25rem;
+      }
     }
 
     &__contacts {
