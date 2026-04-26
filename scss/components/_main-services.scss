@@ -78,7 +78,9 @@
     position: absolute;
     width: 185%;
     bottom: 5px;
-    left: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
 
     p {
       font-size: 5rem;
@@ -111,7 +113,9 @@
       position: absolute;
       width: 185%;
       bottom: -10px;
-      left: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
       z-index: -1;
 
       p {
@@ -172,6 +176,8 @@
       width: 100%;
       top: -250px;
       left: 0;
+      transform: none;
+      text-align: left;
       overflow: hidden;
       p {
         width: 200%;

@@ -349,7 +349,7 @@ body::selection {
     width: 100%;
     position: absolute;
     bottom: -2px;
-    left: 180px;
+    left: 160px;
   }
   .nav__logo p .nav__logo__suffix {
     font-size: 1.2rem;
@@ -829,7 +829,9 @@ body::selection {
   position: absolute;
   width: 185%;
   bottom: 5px;
-  left: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
 }
 .services__texture-text p {
   font-size: 5rem;
@@ -858,7 +860,9 @@ body::selection {
     position: absolute;
     width: 185%;
     bottom: -10px;
-    left: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
     z-index: -1;
   }
   .services__texture-text p {
@@ -909,6 +913,8 @@ body::selection {
     width: 100%;
     top: -250px;
     left: 0;
+    transform: none;
+    text-align: left;
     overflow: hidden;
   }
   .services__texture-text p {
