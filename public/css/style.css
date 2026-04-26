@@ -518,21 +518,46 @@ body::selection {
   opacity: 0;
   transform: translateY(10px);
 }
-.main .header__about__awards {
-  width: 100%;
-  margin: 0 auto;
+
+.awards {
+  width: 80%;
+  margin: 0 auto 4rem;
+}
+.awards__label {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  margin-bottom: 1.8rem;
+  justify-content: center;
+  gap: 0.7rem;
+  margin-bottom: 1.4rem;
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #4b4448;
+  text-align: center;
+  white-space: nowrap;
 }
-.main .header__about__awards-item {
-  width: 100px;
-  height: 100px;
-  border-radius: 25px;
+.awards__label::before, .awards__label::after {
+  content: "";
+  height: 1px;
+  flex: 1 1 42px;
+  background-color: rgba(75, 68, 72, 0.35);
+}
+.awards__items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1.4rem;
+}
+.awards__item {
+  width: 190px;
+  height: 190px;
+  border-radius: 20px;
   overflow: hidden;
+  box-shadow: 0 10px 30px rgba(16, 24, 40, 0.08), 0 1px 2px rgba(16, 24, 40, 0.06);
 }
-.main .header__about__awards-item img {
+.awards__item img {
   background-color: #fff;
   height: 100%;
   width: 100%;
@@ -596,13 +621,24 @@ body::selection {
     color: #2f2a2c;
     font-size: 1.2rem;
   }
-  .main .header__about__awards {
-    margin-bottom: 2.2rem;
+  .awards {
     width: 70%;
+    margin-bottom: 5rem;
   }
-  .main .header__about__awards-item {
-    width: 120px;
-    height: 120px;
+  .awards__label {
+    gap: 1rem;
+    margin-bottom: 1.8rem;
+    font-size: 1rem;
+  }
+  .awards__items {
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 2rem;
+  }
+  .awards__item {
+    flex: 0 0 180px;
+    width: 180px;
+    height: 180px;
   }
 }
 @media screen and (min-width: 1440px) {
@@ -654,10 +690,22 @@ body::selection {
     margin-bottom: 0.5rem;
     font-style: italic;
   }
-  .main .header__about__awards {
-    width: 35%;
-    transform: translateX(37%);
-    margin-bottom: 4rem;
+  .awards {
+    width: 70%;
+    margin-bottom: 6rem;
+  }
+  .awards__label {
+    margin-bottom: 2rem;
+    font-size: 1.08rem;
+  }
+  .awards__items {
+    justify-content: space-around;
+    column-gap: 5rem;
+  }
+  .awards__item {
+    flex-basis: 280px;
+    width: 280px;
+    height: 280px;
   }
 }
 @media screen and (min-width: 1950px) {
@@ -705,14 +753,16 @@ body::selection {
     margin-bottom: 0.5rem;
     font-style: italic;
   }
-  .main .header__about__awards {
-    width: 35%;
-    transform: translateX(28%);
-    margin-bottom: 4rem;
+  .awards {
+    width: 70%;
   }
-  .main .header__about__awards-item {
-    width: 160px;
-    height: 160px;
+  .awards__label {
+    font-size: 1.14rem;
+  }
+  .awards__item {
+    flex-basis: 260px;
+    width: 260px;
+    height: 260px;
   }
 }
 .services {
@@ -734,6 +784,7 @@ body::selection {
   background-color: #f6f2f3;
   box-shadow: 0 10px 30px rgba(16, 24, 40, 0.08), 0 1px 2px rgba(16, 24, 40, 0.06);
   text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .services__cards-item img {
   border-radius: 6px;
@@ -742,8 +793,18 @@ body::selection {
   object-fit: cover;
 }
 .services__cards-item h2 {
+  display: flex;
+  align-items: center;
+  column-gap: 0.45rem;
+  color: #2f2a2c;
   font-size: 1.1rem;
   margin-bottom: 0.6rem;
+  transition: color 0.3s ease;
+}
+.services__cards-item .services__cards-icon {
+  color: #2f2a2c;
+  font-size: 0.95rem;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 .services__cards-item p {
   color: #4b4448;
@@ -752,6 +813,17 @@ body::selection {
 }
 .services__cards-item:last-child {
   margin-bottom: 6rem;
+}
+.services__cards-item:hover, .services__cards-item:focus {
+  transform: translateY(-4px);
+}
+.services__cards-item:hover h2,
+.services__cards-item:hover .services__cards-icon, .services__cards-item:focus h2,
+.services__cards-item:focus .services__cards-icon {
+  color: #b97e8a;
+}
+.services__cards-item:hover .services__cards-icon, .services__cards-item:focus .services__cards-icon {
+  transform: translateX(3px);
 }
 .services__texture-text {
   position: absolute;

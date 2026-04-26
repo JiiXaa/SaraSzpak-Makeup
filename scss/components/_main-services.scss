@@ -19,6 +19,9 @@
       background-color: $of-grey;
       box-shadow: $card-shadow;
       text-decoration: none;
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 
       img {
         border-radius: 6px;
@@ -28,8 +31,21 @@
       }
 
       h2 {
+        display: flex;
+        align-items: center;
+        column-gap: 0.45rem;
+        color: $text-grey;
         font-size: 1.1rem;
         margin-bottom: 0.6rem;
+        transition: color 0.3s ease;
+      }
+
+      .services__cards-icon {
+        color: $text-grey;
+        font-size: 0.95rem;
+        transition:
+          color 0.3s ease,
+          transform 0.3s ease;
       }
 
       p {
@@ -40,6 +56,20 @@
 
       &:last-child {
         margin-bottom: 6rem;
+      }
+
+      &:hover,
+      &:focus {
+        transform: translateY(-4px);
+
+        h2,
+        .services__cards-icon {
+          color: $primary-color;
+        }
+
+        .services__cards-icon {
+          transform: translateX(3px);
+        }
       }
     }
   }
