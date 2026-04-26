@@ -4,6 +4,8 @@
 // - Honeypot submissions also redirect, silently.
 
 const BREVO_API = "https://api.brevo.com/v3/smtp/email";
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const PHONE_RE = /^\+?[0-9\s().-]{7,20}$/;
 
 // Small HTML escape for email output
 function esc(s = "") {
@@ -81,14 +83,36 @@ export default async function handler(req, res) {
     const readyFor = (body.readyFor || "").trim();
     const message = (body.message || body["your-message"] || "").trim();
 
-    if (!name || !email || !message) {
+    const missingFields = [
+      ["name", name],
+      ["email", email],
+      ["phone", phone],
+      ["occasion", occasion],
+      ["manyServices", manyServices],
+      ["location", location],
+      ["readyFor", readyFor],
+      ["message", message],
+    ]
+      .filter(([, value]) => !value)
+      .map(([field]) => field);
+
+    if (missingFields.length > 0) {
       return wantsJson
-        ? res.status(400).json({ ok: false, error: "Missing fields" })
+        ? res.status(400).json({
+            ok: false,
+            error: "Missing fields",
+            fields: missingFields,
+          })
         : redirect303(); // keep UX consistent even if validation fails without JS
     }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    if (!EMAIL_RE.test(email)) {
       return wantsJson
         ? res.status(400).json({ ok: false, error: "Invalid email" })
+        : redirect303();
+    }
+    if (!PHONE_RE.test(phone)) {
+      return wantsJson
+        ? res.status(400).json({ ok: false, error: "Invalid phone" })
         : redirect303();
     }
 

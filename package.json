@@ -13,7 +13,7 @@
     "dev:app": "node scripts/dev-server.js",
     "dev:serve": "live-server public --port=5500 --watch=public --quiet",
     "build:css": "sass scss/main.scss public/css/style.css --no-source-map",
-    "build": "echo \"no build - static site\"",
+    "build": "npm run build:css",
     "start": "echo \"static site\""
   },
   "devDependencies": {

@@ -1,4 +1,5 @@
 const GOOGLE_PLACE_DETAILS_API = "https://places.googleapis.com/v1/places";
+const FALLBACK_RESPONSE = { ok: true, reviews: [], fallback: true };
 
 export default async function handler(req, res) {
   if (req.method !== "GET") {
@@ -10,7 +11,7 @@ export default async function handler(req, res) {
   const placeId = process.env.GOOGLE_PLACE_ID;
 
   if (!apiKey || !placeId) {
-    return res.status(200).json({ ok: true, reviews: [] });
+    return res.status(200).json(FALLBACK_RESPONSE);
   }
 
   const url = new URL(req.url, `http://${req.headers.host}`);
@@ -23,20 +24,16 @@ export default async function handler(req, res) {
     const response = await fetch(`${GOOGLE_PLACE_DETAILS_API}/${placeId}`, {
       headers: {
         "X-Goog-Api-Key": apiKey,
-        "X-Goog-FieldMask": "id,displayName,reviews",
+        "X-Goog-FieldMask": "id,displayName,googleMapsUri,reviews",
       },
     });
 
     if (!response.ok) {
-      const details = await response.text();
-      return res.status(502).json({
-        ok: false,
-        error: "Google Places request failed",
-        details,
-      });
+      return res.status(200).json(FALLBACK_RESPONSE);
     }
 
     const payload = await response.json();
+    const placeGoogleMapsUri = payload.googleMapsUri || "";
 
     const reviews = Array.isArray(payload?.reviews)
       ? payload.reviews
@@ -51,15 +48,12 @@ export default async function handler(req, res) {
             text: review.text.text,
             rating: review.rating || 0,
             publishedAtLabel: review.relativePublishTimeDescription || "",
-            googleMapsUri: review.googleMapsUri || "",
+            googleMapsUri: review.googleMapsUri || placeGoogleMapsUri,
           }))
       : [];
 
     return res.status(200).json({ ok: true, reviews });
-  } catch (error) {
-    return res.status(500).json({
-      ok: false,
-      error: error?.message || "Server error",
-    });
+  } catch {
+    return res.status(200).json(FALLBACK_RESPONSE);
   }
 }

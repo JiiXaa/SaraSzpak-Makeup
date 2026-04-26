@@ -2108,6 +2108,73 @@ td p:last-child {
   font-style: italic;
 }
 
+.bridal-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 2.8rem auto 3.2rem;
+}
+.bridal-cta__note {
+  margin-bottom: 0.9rem;
+  color: #b97e8a;
+  font-family: "Great Vibes", cursive;
+  font-size: 1.45rem;
+  line-height: 1;
+  text-align: center;
+}
+.bridal-cta__button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  isolation: isolate;
+  overflow: hidden;
+  width: 100%;
+  padding: 0.95rem 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 12px;
+  background: linear-gradient(180deg, #e3b1bb 0%, #e3b1bb 15%, #b97e8a 85%, #b97e8a 100%);
+  box-shadow: 0 10px 24px rgba(185, 126, 138, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.38), inset 0 -1px 0 rgba(122, 63, 71, 0.18);
+  color: #fff;
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 1px 3px rgba(31, 27, 29, 0.24);
+  text-transform: uppercase;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.bridal-cta__button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, #e3b1bb 0%, #b97e8a 45%, #7a3f47 100%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.bridal-cta__button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px rgba(185, 126, 138, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+.bridal-cta__button:hover::before {
+  opacity: 1;
+}
+.bridal-cta__button:active {
+  transform: translateY(0);
+}
+.bridal-cta__button:focus-visible {
+  outline: 2px solid #b97e8a;
+  outline-offset: 4px;
+}
+.bridal-cta__button:focus-visible::before {
+  opacity: 1;
+}
+
 @media screen and (min-width: 768px) {
   .bridal {
     width: 80%;
@@ -2129,6 +2196,17 @@ td p:last-child {
   .bridal-option .option-images {
     display: flex;
     justify-content: space-between;
+  }
+  .bridal-cta {
+    margin: 3rem auto 3.6rem;
+  }
+  .bridal-cta__note {
+    font-size: 1.7rem;
+  }
+  .bridal-cta__button {
+    max-width: 360px;
+    padding: 0.9rem 1.6rem;
+    font-size: 1.06rem;
   }
 }
 @media screen and (min-width: 1440px) {
@@ -2172,6 +2250,17 @@ td p:last-child {
     width: 88%;
     margin: 0 auto;
   }
+  .bridal-cta {
+    margin: 3.4rem auto 4rem;
+  }
+  .bridal-cta__note {
+    font-size: 1.9rem;
+  }
+  .bridal-cta__button {
+    max-width: 410px;
+    padding: 0.85rem 1.8rem;
+    font-size: 1.12rem;
+  }
 }
 @media screen and (min-width: 1950px) {
   .bridal {
@@ -2206,6 +2295,12 @@ td p:last-child {
   .bridal-contact {
     width: 92%;
     margin: 0 auto;
+  }
+  .bridal-cta__note {
+    font-size: 2rem;
+  }
+  .bridal-cta__button {
+    max-width: 430px;
   }
 }
 /* Utility Classes */
@@ -2256,6 +2351,73 @@ td p:last-child {
   margin-bottom: 1.5rem;
 }
 
+.other-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 2.8rem auto 3.2rem;
+}
+.other-cta__note {
+  margin-bottom: 0.9rem;
+  color: #b97e8a;
+  font-family: "Great Vibes", cursive;
+  font-size: 1.45rem;
+  line-height: 1;
+  text-align: center;
+}
+.other-cta__button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  isolation: isolate;
+  overflow: hidden;
+  width: 100%;
+  padding: 0.95rem 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 12px;
+  background: linear-gradient(180deg, #e3b1bb 0%, #e3b1bb 15%, #b97e8a 85%, #b97e8a 100%);
+  box-shadow: 0 10px 24px rgba(185, 126, 138, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.38), inset 0 -1px 0 rgba(122, 63, 71, 0.18);
+  color: #fff;
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 1px 3px rgba(31, 27, 29, 0.24);
+  text-transform: uppercase;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.other-cta__button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, #e3b1bb 0%, #b97e8a 45%, #7a3f47 100%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.other-cta__button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px rgba(185, 126, 138, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+.other-cta__button:hover::before {
+  opacity: 1;
+}
+.other-cta__button:active {
+  transform: translateY(0);
+}
+.other-cta__button:focus-visible {
+  outline: 2px solid #b97e8a;
+  outline-offset: 4px;
+}
+.other-cta__button:focus-visible::before {
+  opacity: 1;
+}
+
 @media screen and (min-width: 768px) {
   .other {
     width: 80%;
@@ -2277,6 +2439,17 @@ td p:last-child {
   .other-option .option-images {
     display: flex;
     justify-content: space-between;
+  }
+  .other-cta {
+    margin: 3rem auto 3.6rem;
+  }
+  .other-cta__note {
+    font-size: 1.7rem;
+  }
+  .other-cta__button {
+    max-width: 360px;
+    padding: 0.9rem 1.6rem;
+    font-size: 1.06rem;
   }
 }
 @media screen and (min-width: 1440px) {
@@ -2320,6 +2493,17 @@ td p:last-child {
     width: 88%;
     margin: 0 auto;
   }
+  .other-cta {
+    margin: 3.4rem auto 4rem;
+  }
+  .other-cta__note {
+    font-size: 1.9rem;
+  }
+  .other-cta__button {
+    max-width: 410px;
+    padding: 0.85rem 1.8rem;
+    font-size: 1.12rem;
+  }
 }
 @media screen and (min-width: 1950px) {
   .other {
@@ -2357,6 +2541,12 @@ td p:last-child {
   .other-contact {
     width: 92%;
     margin: 0 auto;
+  }
+  .other-cta__note {
+    font-size: 2rem;
+  }
+  .other-cta__button {
+    max-width: 430px;
   }
 }
 /* Utility Classes */
