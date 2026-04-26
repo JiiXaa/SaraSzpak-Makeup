@@ -102,6 +102,7 @@
       }
 
       .testimonials-text {
+        height: calc(1.4rem * 6);
         margin-bottom: 0.5rem;
         font-style: italic;
         display: -webkit-box;
@@ -270,6 +271,10 @@
           color: $text-grey;
           font-size: 1.2rem;
         }
+
+        .testimonials-text {
+          height: calc(1.8rem * 6);
+        }
       }
     }
   }
@@ -352,6 +357,7 @@
         }
 
         .testimonials-text {
+          height: calc(1.5rem * 6);
           margin-bottom: 0.5rem;
           font-style: italic;
         }
@@ -429,6 +435,7 @@
         }
 
         .testimonials-text {
+          height: calc(1.5rem * 6);
           padding-top: 1rem;
           margin-bottom: 0.5rem;
           font-style: italic;

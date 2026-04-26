@@ -483,6 +483,7 @@ body::selection {
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 .main .header__about__testimonials .testimonials-text {
+  height: 8.4rem;
   margin-bottom: 0.5rem;
   font-style: italic;
   display: -webkit-box;
@@ -621,6 +622,9 @@ body::selection {
     color: #2f2a2c;
     font-size: 1.2rem;
   }
+  .main .header__about__testimonials .testimonials-text {
+    height: 10.8rem;
+  }
   .awards {
     width: 70%;
     margin-bottom: 5rem;
@@ -687,6 +691,7 @@ body::selection {
     font-size: 1.1rem;
   }
   .main .header__about__testimonials .testimonials-text {
+    height: 9rem;
     margin-bottom: 0.5rem;
     font-style: italic;
   }
@@ -749,6 +754,7 @@ body::selection {
     font-size: 1.3rem;
   }
   .main .header__about__testimonials .testimonials-text {
+    height: 9rem;
     padding-top: 1rem;
     margin-bottom: 0.5rem;
     font-style: italic;
