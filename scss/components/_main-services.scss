@@ -45,7 +45,7 @@
       }
 
       .services__cards-icon {
-        color: $text-grey;
+        color: $primary-color;
         font-size: 0.95rem;
         transition:
           color 0.3s ease,
@@ -62,18 +62,8 @@
         margin-bottom: 6rem;
       }
 
-      &:hover,
-      &:focus {
-        transform: translateY(-4px);
-
-        h2,
-        .services__cards-icon {
-          color: $primary-color;
-        }
-
-        .services__cards-icon {
-          transform: translateX(3px);
-        }
+      &:active {
+        transform: scale(0.99);
       }
     }
   }
@@ -172,7 +162,17 @@
 
         &:hover,
         &:focus-visible {
+          transform: translateY(-4px);
           z-index: 60;
+
+          h2,
+          .services__cards-icon {
+            color: $primary-color;
+          }
+
+          .services__cards-icon {
+            transform: translateX(3px);
+          }
         }
 
         img {

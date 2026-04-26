@@ -458,16 +458,18 @@ body::selection {
   justify-content: center;
   overflow: hidden;
   isolation: isolate;
-  width: min(100%, 280px);
+  width: 100%;
   padding: 0.95rem 1.25rem;
   border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 12px;
-  background: linear-gradient(180deg, #e3b1bb 0%, #e3b1bb 25%, #b97e8a 75%, #b97e8a 100%);
-  box-shadow: 0 10px 24px rgba(185, 126, 138, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  background: linear-gradient(180deg, #e3b1bb 0%, #e3b1bb 15%, #b97e8a 85%, #b97e8a 100%);
+  box-shadow: 0 10px 24px rgba(185, 126, 138, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.38), inset 0 -1px 0 rgba(122, 63, 71, 0.18);
   color: #fff;
-  font-size: 0.95rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-shadow: 0 1px 3px rgba(31, 27, 29, 0.24);
   text-decoration: none;
   text-transform: uppercase;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -514,7 +516,7 @@ body::selection {
 }
 .main .header__about__testimonials p {
   color: #2f2a2c;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 .main .header__about__testimonials .testimonials-meta {
   display: flex;
@@ -552,7 +554,7 @@ body::selection {
   margin-top: 0.5rem;
   align-self: flex-start;
   color: #b97e8a;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   text-decoration: none;
   border-bottom: 1px solid transparent;
   transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.3s ease;
@@ -656,7 +658,7 @@ body::selection {
     min-width: 300px;
     width: auto;
     padding: 1rem 1.5rem;
-    font-size: 1.02rem;
+    font-size: 1.08rem;
     border-radius: 14px;
   }
   .main .header__about__testimonials {
@@ -670,7 +672,7 @@ body::selection {
   }
   .main .header__about__testimonials p {
     color: #2f2a2c;
-    font-size: 1.2rem;
+    font-size: 1.05rem;
   }
   .main .header__about__testimonials .testimonials-text {
     height: 10.8rem;
@@ -731,9 +733,9 @@ body::selection {
     font-size: 2.25rem;
   }
   .main .header__about__cta {
-    min-width: 360px;
-    padding: 1.125rem 2.125rem;
-    font-size: 1.3rem;
+    min-width: 390px;
+    padding: 0.95rem 2.25rem;
+    font-size: 1.28rem;
   }
   .main .header__about__testimonials {
     transform: translateX(160%);
@@ -745,7 +747,7 @@ body::selection {
     min-height: 160px;
   }
   .main .header__about__testimonials p {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
   .main .header__about__testimonials .testimonials-text {
     height: 9rem;
@@ -801,8 +803,10 @@ body::selection {
     font-size: 2.15rem;
   }
   .main .header__about__cta {
-    min-width: 380px;
-    font-size: 1.2rem;
+    min-width: 410px;
+    padding-top: 0.95rem;
+    padding-bottom: 0.95rem;
+    font-size: 1.35rem;
   }
   .main .header__about__testimonials {
     transform: translateX(150%);
@@ -813,7 +817,7 @@ body::selection {
     min-height: 300px;
   }
   .main .header__about__testimonials p {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
   }
   .main .header__about__testimonials .testimonials-text {
     height: 9rem;
@@ -874,7 +878,7 @@ body::selection {
   transition: color 0.3s ease;
 }
 .services__cards-item .services__cards-icon {
-  color: #2f2a2c;
+  color: #b97e8a;
   font-size: 0.95rem;
   transition: color 0.3s ease, transform 0.3s ease;
 }
@@ -886,16 +890,8 @@ body::selection {
 .services__cards-item:last-child {
   margin-bottom: 6rem;
 }
-.services__cards-item:hover, .services__cards-item:focus {
-  transform: translateY(-4px);
-}
-.services__cards-item:hover h2,
-.services__cards-item:hover .services__cards-icon, .services__cards-item:focus h2,
-.services__cards-item:focus .services__cards-icon {
-  color: #b97e8a;
-}
-.services__cards-item:hover .services__cards-icon, .services__cards-item:focus .services__cards-icon {
-  transform: translateX(3px);
+.services__cards-item:active {
+  transform: scale(0.99);
 }
 .services__texture-text {
   position: absolute;
@@ -980,7 +976,16 @@ body::selection {
     box-shadow: 0 10px 30px rgba(16, 24, 40, 0.08), 0 1px 2px rgba(16, 24, 40, 0.06);
   }
   .services__cards-item:hover, .services__cards-item:focus-visible {
+    transform: translateY(-4px);
     z-index: 60;
+  }
+  .services__cards-item:hover h2,
+  .services__cards-item:hover .services__cards-icon, .services__cards-item:focus-visible h2,
+  .services__cards-item:focus-visible .services__cards-icon {
+    color: #b97e8a;
+  }
+  .services__cards-item:hover .services__cards-icon, .services__cards-item:focus-visible .services__cards-icon {
+    transform: translateX(3px);
   }
   .services__cards-item img {
     margin-bottom: 0.5rem;
