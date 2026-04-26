@@ -7,6 +7,10 @@ The project is a static frontend served from `public/`, with lightweight serverl
 - contact form delivery through Brevo
 - Google reviews fetch for homepage testimonials
 
+## Responsive Preview
+
+![Sara Szpak Makeup responsive preview](.github/screenshots/amiresponsive.jpg)
+
 ## Project Structure
 
 - `public/`
