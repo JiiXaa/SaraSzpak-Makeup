@@ -499,7 +499,7 @@ body::selection {
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 .main .header__about__testimonials .testimonials-link {
-  margin-top: auto;
+  margin-top: 0.5rem;
   align-self: flex-start;
   color: #b97e8a;
   font-size: 0.95rem;
@@ -681,7 +681,7 @@ body::selection {
     font-size: 1rem;
     line-height: 1.5rem;
     margin-bottom: 2.6rem;
-    min-height: 320px;
+    min-height: 160px;
   }
   .main .header__about__testimonials p {
     font-size: 1.1rem;
@@ -743,7 +743,7 @@ body::selection {
     width: 30%;
     line-height: 1.5rem;
     margin-bottom: 2.6rem;
-    min-height: 340px;
+    min-height: 300px;
   }
   .main .header__about__testimonials p {
     font-size: 1.3rem;
@@ -765,6 +765,10 @@ body::selection {
     height: 260px;
   }
 }
+.page-dim {
+  display: none;
+}
+
 .services {
   position: relative;
   overflow: hidden;
@@ -871,6 +875,20 @@ body::selection {
   }
 }
 @media screen and (min-width: 1440px) {
+  .page-dim {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(31, 27, 29, 0.55);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 40;
+  }
+  body:has(.services__cards-item:hover) .page-dim,
+  body:has(.services__cards-item:focus-visible) .page-dim {
+    opacity: 1;
+  }
   .services {
     position: relative;
     overflow: visible;
@@ -885,12 +903,16 @@ body::selection {
     row-gap: 2rem;
   }
   .services__cards-item {
+    position: relative;
     width: 30%;
     padding: 2rem;
     padding-bottom: 1rem;
     border-radius: 20px;
     background-color: #f6f2f3;
     box-shadow: 0 10px 30px rgba(16, 24, 40, 0.08), 0 1px 2px rgba(16, 24, 40, 0.06);
+  }
+  .services__cards-item:hover, .services__cards-item:focus-visible {
+    z-index: 60;
   }
   .services__cards-item img {
     margin-bottom: 0.5rem;

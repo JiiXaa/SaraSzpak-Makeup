@@ -1,6 +1,10 @@
 @use '../abstracts/variables' as *;
 @use '../abstracts/animations' as *;
 
+.page-dim {
+  display: none;
+}
+
 .services {
   position: relative;
   overflow: hidden;
@@ -127,6 +131,22 @@
 }
 
 @media screen and (min-width: $desktop) {
+  .page-dim {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background-color: rgba($primary-black, 0.55);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 40;
+  }
+
+  body:has(.services__cards-item:hover) .page-dim,
+  body:has(.services__cards-item:focus-visible) .page-dim {
+    opacity: 1;
+  }
+
   .services {
     position: relative;
     overflow: visible;
@@ -142,12 +162,18 @@
       row-gap: 2rem;
 
       &-item {
+        position: relative;
         width: 30%;
         padding: 2rem;
         padding-bottom: 1rem;
         border-radius: 20px;
         background-color: $of-grey;
         box-shadow: $card-shadow;
+
+        &:hover,
+        &:focus-visible {
+          z-index: 60;
+        }
 
         img {
           margin-bottom: .5rem;
