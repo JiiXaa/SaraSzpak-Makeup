@@ -15,6 +15,27 @@ function esc(s = "") {
     .replace(/>/g, "&gt;");
 }
 
+function sendHtmlError(res, statusCode, title, message, backUrl = "/contact.html") {
+  res.statusCode = statusCode;
+  res.setHeader("Content-Type", "text/html; charset=utf-8");
+  return res.end(`<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>${esc(title)} | Sara Szpak</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <main class="form-submitted__wrapper" style="min-height:100vh">
+      <h1>${esc(title)}</h1>
+      <p>${esc(message)}</p>
+      <a class="btn-custom" href="${esc(backUrl)}">Back to contact form</a>
+    </main>
+  </body>
+</html>`);
+}
+
 async function parseBody(req) {
   const ctype = req.headers["content-type"] || "";
   if (ctype.includes("application/json")) {
@@ -66,6 +87,10 @@ export default async function handler(req, res) {
     return res.end();
   }
 
+  function formError(statusCode, title, message) {
+    return sendHtmlError(res, statusCode, title, message, "/contact.html");
+  }
+
   try {
     const body = await parseBody(req);
 
@@ -103,17 +128,29 @@ export default async function handler(req, res) {
             error: "Missing fields",
             fields: missingFields,
           })
-        : redirect303(); // keep UX consistent even if validation fails without JS
+        : formError(
+            400,
+            "Please check the form",
+            `Some required fields are missing: ${missingFields.join(", ")}. Please go back and complete the form.`
+          );
     }
     if (!EMAIL_RE.test(email)) {
       return wantsJson
         ? res.status(400).json({ ok: false, error: "Invalid email" })
-        : redirect303();
+        : formError(
+            400,
+            "Please check your email",
+            "The email address does not look valid. Please go back and correct it."
+          );
     }
     if (!PHONE_RE.test(phone)) {
       return wantsJson
         ? res.status(400).json({ ok: false, error: "Invalid phone" })
-        : redirect303();
+        : formError(
+            400,
+            "Please check your phone number",
+            "The phone number does not look valid. Please go back and correct it."
+          );
     }
 
     const missingConfig = [
@@ -129,7 +166,11 @@ export default async function handler(req, res) {
 
       return wantsJson
         ? res.status(500).json({ ok: false, error })
-        : redirect303();
+        : formError(
+            500,
+            "Message could not be sent",
+            "Email sending is not configured correctly. Please contact Sara directly by email or WhatsApp."
+          );
     }
 
     // OWNER EMAIL (HTML + TEXT)
@@ -261,7 +302,11 @@ ${message}
         ? res
             .status(502)
             .json({ ok: false, error: "Owner email failed", details: t })
-        : redirect303();
+        : formError(
+            502,
+            "Message could not be sent",
+            "The email service did not accept the message. Please try again or contact Sara directly by email or WhatsApp."
+          );
     }
     if (!r2.ok) {
       const t = await r2.text();
@@ -271,7 +316,11 @@ ${message}
             error: "Client autoresponse failed",
             details: t,
           })
-        : redirect303();
+        : formError(
+            502,
+            "Message could not be sent",
+            "The confirmation email could not be sent. Please try again or contact Sara directly by email or WhatsApp."
+          );
     }
 
     return wantsJson ? res.status(200).json({ ok: true }) : redirect303();
@@ -280,6 +329,10 @@ ${message}
       ? res
           .status(500)
           .json({ ok: false, error: err?.message || "Server error" })
-      : redirect303();
+      : formError(
+          500,
+          "Message could not be sent",
+          "Something went wrong while sending the message. Please try again or contact Sara directly by email or WhatsApp."
+        );
   }
 }
