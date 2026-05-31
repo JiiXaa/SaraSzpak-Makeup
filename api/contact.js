@@ -45,6 +45,27 @@ function isValidEventDate(value) {
   return !Number.isNaN(date.getTime());
 }
 
+async function sendBrevoEmail(payload, headers) {
+  const response = await fetch(BREVO_API, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(payload),
+  });
+
+  if (response.ok) {
+    return { ok: true };
+  }
+
+  const details = await response.text().catch(() => "");
+
+  return {
+    ok: false,
+    status: response.status,
+    statusText: response.statusText,
+    details,
+  };
+}
+
 async function parseBody(req) {
   const ctype = req.headers["content-type"] || "";
   if (ctype.includes("application/json")) {
@@ -309,38 +330,49 @@ ${message}
       textContent: clientText,
     };
 
-    const [r1, r2] = await Promise.all([
-      fetch(BREVO_API, {
-        method: "POST",
-        headers,
-        body: JSON.stringify(ownerPayload),
-      }),
-      fetch(BREVO_API, {
-        method: "POST",
-        headers,
-        body: JSON.stringify(clientPayload),
-      }),
-    ]);
+    const ownerResult = await sendBrevoEmail(ownerPayload, headers);
 
-    if (!r1.ok) {
-      const t = await r1.text();
+    if (!ownerResult.ok) {
+      console.error("Brevo owner email failed", {
+        status: ownerResult.status,
+        statusText: ownerResult.statusText,
+        details: ownerResult.details,
+        sender: process.env.FROM_EMAIL,
+        ownerEmail: process.env.OWNER_EMAIL,
+        hasReplyTo: Boolean(email),
+      });
+
       return wantsJson
         ? res
             .status(502)
-            .json({ ok: false, error: "Owner email failed", details: t })
+            .json({
+              ok: false,
+              error: "Owner email failed",
+              details: ownerResult.details,
+            })
         : formError(
             502,
             "Message could not be sent",
             "The email service did not accept the message. Please try again or contact Sara directly by email or WhatsApp."
           );
     }
-    if (!r2.ok) {
-      const t = await r2.text();
+
+    const clientResult = await sendBrevoEmail(clientPayload, headers);
+
+    if (!clientResult.ok) {
+      console.error("Brevo client autoresponse failed", {
+        status: clientResult.status,
+        statusText: clientResult.statusText,
+        details: clientResult.details,
+        sender: process.env.FROM_EMAIL,
+        clientEmail: email,
+      });
+
       return wantsJson
         ? res.status(502).json({
             ok: false,
             error: "Client autoresponse failed",
-            details: t,
+            details: clientResult.details,
           })
         : formError(
             502,
