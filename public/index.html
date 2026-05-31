@@ -26,6 +26,10 @@
       href="/img/favicon-16x16.png?"
     />
     <link rel="manifest" href="/img/site.webmanifest?" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css"
+    />
     <link rel="stylesheet" href="/css/style.css" />
     <!-- adobe fonts Aileron import -->
     <link rel="stylesheet" href="https://use.typekit.net/nax6ups.css" />
@@ -327,6 +331,34 @@
               </select>
             </div>
 
+            <div class="form__group form__group--date">
+              <label id="eventDate-label" for="eventDate">Preferred date</label>
+              <div class="date-field">
+                <input
+                  name="eventDate"
+                  id="eventDate"
+                  type="text"
+                  required
+                  autocomplete="off"
+                  inputmode="none"
+                  placeholder="Choose your date"
+                  aria-describedby="eventDate-hint"
+                  data-date-picker
+                />
+                <button
+                  class="date-field__button"
+                  type="button"
+                  aria-label="Open calendar"
+                  data-date-picker-toggle
+                >
+                  <i class="fa-regular fa-calendar"></i>
+                </button>
+              </div>
+              <p class="form__hint" id="eventDate-hint">
+                Select the wedding, lesson, or occasion date.
+              </p>
+            </div>
+
             <div class="form__group">
               <label id="services-label" for="manyServices"
                 >How many services required?</label
@@ -445,6 +477,8 @@
     </footer>
 
     <script type="module" src="/js/site.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13"></script>
+    <script type="module" src="/js/date-picker.js"></script>
     <script type="module" src="/js/contact.js"></script>
     <script type="module" src="/js/contact-validate.js"></script>
   </body>

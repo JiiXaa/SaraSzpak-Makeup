@@ -6,6 +6,7 @@
 const BREVO_API = "https://api.brevo.com/v3/smtp/email";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_RE = /^\+?[0-9\s().-]{7,20}$/;
+const ISO_DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 
 // Small HTML escape for email output
 function esc(s = "") {
@@ -34,6 +35,14 @@ function sendHtmlError(res, statusCode, title, message, backUrl = "/contact.html
     </main>
   </body>
 </html>`);
+}
+
+function isValidEventDate(value) {
+  if (!value) return true;
+  if (!ISO_DATE_RE.test(value)) return false;
+
+  const date = new Date(`${value}T00:00:00Z`);
+  return !Number.isNaN(date.getTime());
 }
 
 async function parseBody(req) {
@@ -103,6 +112,7 @@ export default async function handler(req, res) {
     const email = (body.email || "").trim();
     const phone = (body.phone || "").trim();
     const occasion = (body.occasion || "").trim();
+    const eventDate = (body.eventDate || "").trim();
     const manyServices = (body.manyServices || "").trim();
     const location = (body.location || "").trim();
     const readyFor = (body.readyFor || "").trim();
@@ -113,6 +123,7 @@ export default async function handler(req, res) {
       ["email", email],
       ["phone", phone],
       ["occasion", occasion],
+      ["eventDate", eventDate],
       ["manyServices", manyServices],
       ["location", location],
       ["readyFor", readyFor],
@@ -152,6 +163,15 @@ export default async function handler(req, res) {
             "The phone number does not look valid. Please go back and correct it."
           );
     }
+    if (!isValidEventDate(eventDate)) {
+      return wantsJson
+        ? res.status(400).json({ ok: false, error: "Invalid preferred date" })
+        : formError(
+            400,
+            "Please check your preferred date",
+            "The preferred date does not look valid. Please go back and correct it."
+          );
+    }
 
     const missingConfig = [
       ["BREVO_API_KEY", process.env.BREVO_API_KEY],
@@ -183,6 +203,11 @@ export default async function handler(req, res) {
             <tr><td style="padding:8px;border:1px solid #eee"><strong>Email</strong></td><td style="padding:8px;border:1px solid #eee">${esc(email)}</td></tr>
             <tr><td style="padding:8px;border:1px solid #eee"><strong>Phone</strong></td><td style="padding:8px;border:1px solid #eee">${esc(phone) || "—"}</td></tr>
             <tr><td style="padding:8px;border:1px solid #eee"><strong>Occasion</strong></td><td style="padding:8px;border:1px solid #eee">${esc(occasion) || "—"}</td></tr>
+            ${
+              eventDate
+                ? `<tr><td style="padding:8px;border:1px solid #eee"><strong>Preferred date</strong></td><td style="padding:8px;border:1px solid #eee">${esc(eventDate)}</td></tr>`
+                : ""
+            }
             <tr><td style="padding:8px;border:1px solid #eee"><strong>Services needed</strong></td><td style="padding:8px;border:1px solid #eee">${esc(manyServices) || "—"}</td></tr>
             <tr><td style="padding:8px;border:1px solid #eee"><strong>Location</strong></td><td style="padding:8px;border:1px solid #eee">${esc(location) || "—"}</td></tr>
             <tr><td style="padding:8px;border:1px solid #eee"><strong>Ready for</strong></td><td style="padding:8px;border:1px solid #eee">${esc(readyFor) || "—"}</td></tr>
@@ -199,7 +224,8 @@ Name: ${name}
 Email: ${email}
 Phone: ${phone || "—"}
 Occasion: ${occasion || "—"}
-Services needed: ${manyServices || "—"}
+${eventDate ? `Preferred date: ${eventDate}
+` : ""}Services needed: ${manyServices || "—"}
 Location: ${location || "—"}
 Ready for: ${readyFor || "—"}
 

@@ -136,6 +136,13 @@ $error-color: #d93025;
         color: $error-color;
       }
 
+      .form__hint {
+        margin-top: 0.35rem;
+        color: rgba($text-grey, 0.72);
+        font-size: 0.7rem;
+        line-height: 1.35;
+      }
+
     }
   }
 
@@ -181,6 +188,129 @@ $error-color: #d93025;
     cursor: pointer;
     transition: 0.3s background-color ease-in;
     letter-spacing: 3px;
+  }
+}
+
+.date-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  input {
+    width: 100%;
+    padding-right: 2.8rem;
+  }
+
+  .flatpickr-wrapper {
+    width: 100%;
+  }
+
+  .flatpickr-input[readonly] {
+    cursor: pointer;
+  }
+
+  .flatpickr-calendar.static {
+    top: calc(100% + 0.45rem);
+    left: 0;
+    right: auto;
+    z-index: 20;
+  }
+
+  &__button {
+    position: absolute;
+    right: 0.35rem;
+    width: 2rem;
+    height: 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 4px;
+    background: transparent;
+    color: $primary-color;
+    cursor: pointer;
+    transition:
+      color 0.2s ease,
+      background-color 0.2s ease;
+
+    &:hover,
+    &:focus {
+      color: $dark-pink;
+      background-color: rgba($light-pink, 0.16);
+      outline: none;
+    }
+  }
+}
+
+.flatpickr-calendar {
+  border: 1px solid rgba($primary-color, 0.18);
+  border-radius: 8px;
+  box-shadow: 0 18px 45px rgba(31, 27, 29, 0.14);
+  color: $primary-grey;
+  font-family: $main-font-sans;
+
+  &::before,
+  &::after {
+    border-bottom-color: #fff;
+  }
+
+  .flatpickr-months {
+    padding: 0.45rem 0.35rem 0;
+  }
+
+  .flatpickr-current-month {
+    font-size: 1rem;
+  }
+
+  .flatpickr-monthDropdown-months,
+  .numInputWrapper input {
+    color: $primary-grey;
+    font-family: $main-font-sans;
+    font-weight: $medium;
+  }
+
+  .flatpickr-weekday {
+    color: $dark-pink;
+    font-size: 0.75rem;
+    font-weight: $medium;
+  }
+
+  .flatpickr-day {
+    border-radius: 6px;
+    color: $text-grey;
+
+    &:hover,
+    &:focus {
+      border-color: rgba($primary-color, 0.22);
+      background: $of-pink;
+    }
+
+    &.today {
+      border-color: $light-pink;
+    }
+
+    &.selected,
+    &.selected:hover,
+    &.selected:focus {
+      border-color: $primary-color;
+      background: $primary-color;
+      color: #fff;
+    }
+
+    &.flatpickr-disabled,
+    &.prevMonthDay,
+    &.nextMonthDay {
+      color: rgba($primary-grey, 0.32);
+    }
+  }
+
+  .flatpickr-prev-month,
+  .flatpickr-next-month {
+    color: $primary-color;
+
+    &:hover {
+      color: $dark-pink;
+    }
   }
 }
 

@@ -1,6 +1,7 @@
 // Lightweight client-side validation for contact form.
 // - Highlights invalid fields with .is-invalid
 // - Requires: name, email(valid), phone(valid-ish), occasion(select), manyServices, location, readyFor, your-message
+// - Requires eventDate only on pages that include the field.
 
 (function () {
   const form = document.getElementById("contactForm");
@@ -9,6 +10,7 @@
   // Helpers
   const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const phoneRe = /^\+?[0-9\s().-]{7,20}$/;
+  const isoDateRe = /^\d{4}-\d{2}-\d{2}$/;
 
   function byId(id) {
     return form.querySelector("#" + id);
@@ -16,18 +18,35 @@
 
   function markInvalid(el, msg) {
     if (!el) return false;
+    const flatpickrAltInput = el._flatpickr?.altInput;
+
     el.classList.add("is-invalid");
     el.setAttribute("aria-invalid", "true");
     // Opcjonalnie: pokaż krótką podpowiedź w title
     if (msg) el.title = msg;
+
+    if (flatpickrAltInput) {
+      flatpickrAltInput.classList.add("is-invalid");
+      flatpickrAltInput.setAttribute("aria-invalid", "true");
+      if (msg) flatpickrAltInput.title = msg;
+    }
+
     return false;
   }
 
   function clearInvalid(el) {
     if (!el) return;
+    const flatpickrAltInput = el._flatpickr?.altInput;
+
     el.classList.remove("is-invalid");
     el.removeAttribute("aria-invalid");
     el.removeAttribute("title");
+
+    if (flatpickrAltInput) {
+      flatpickrAltInput.classList.remove("is-invalid");
+      flatpickrAltInput.removeAttribute("aria-invalid");
+      flatpickrAltInput.removeAttribute("title");
+    }
   }
 
   function required(el, msg) {
@@ -53,12 +72,35 @@
     return true;
   }
 
+  function validFutureDate(el) {
+    const v = String(el?.value || "").trim();
+
+    if (!isoDateRe.test(v)) {
+      return markInvalid(el, "Please select a valid preferred date.");
+    }
+
+    const selected = new Date(`${v}T00:00:00`);
+    if (Number.isNaN(selected.getTime())) {
+      return markInvalid(el, "Please select a valid preferred date.");
+    }
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    if (selected < today) {
+      return markInvalid(el, "Please choose today or a future date.");
+    }
+
+    return true;
+  }
+
   // Fields
   const fields = {
     name: byId("name"),
     email: byId("email"),
     phone: byId("phone"),
     occasion: byId("occasion"), // <select>
+    eventDate: byId("eventDate"),
     manyServices: byId("manyServices"),
     location: byId("location"),
     readyFor: byId("readyFor"),
@@ -70,6 +112,7 @@
     fields.name,
     fields.email,
     fields.phone,
+    fields.eventDate,
     fields.manyServices,
     fields.location,
     fields.readyFor,
@@ -101,6 +144,9 @@
     ok = required(fields.email) && ok;
     ok = required(fields.phone) && ok;
     ok = required(fields.occasion) && ok; // <select> ma pustą option + required
+    if (fields.eventDate) {
+      ok = required(fields.eventDate, "Please select your preferred date.") && ok;
+    }
     ok = required(fields.manyServices) && ok;
     ok = required(fields.location) && ok;
     ok = required(fields.readyFor) && ok;
@@ -114,6 +160,9 @@
     if (ok) {
       ok = validEmail(fields.email) && ok;
       ok = validPhone(fields.phone) && ok;
+      if (fields.eventDate) {
+        ok = validFutureDate(fields.eventDate) && ok;
+      }
     }
 
     if (!ok) {
@@ -121,8 +170,10 @@
       // Scroll to first invalid
       const firstInvalid = form.querySelector(".is-invalid");
       if (firstInvalid && typeof firstInvalid.scrollIntoView === "function") {
-        firstInvalid.scrollIntoView({ behavior: "smooth", block: "center" });
-        firstInvalid.focus({ preventScroll: true });
+        const focusTarget = firstInvalid._flatpickr?.altInput || firstInvalid;
+
+        focusTarget.scrollIntoView({ behavior: "smooth", block: "center" });
+        focusTarget.focus({ preventScroll: true });
       }
       return;
     }

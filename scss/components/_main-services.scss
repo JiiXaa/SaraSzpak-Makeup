@@ -24,8 +24,11 @@
       box-shadow: $card-shadow;
       text-decoration: none;
       transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+      will-change: transform;
+      backface-visibility: hidden;
+      transform: translateZ(0);
 
       img {
         border-radius: 6px;
@@ -98,7 +101,7 @@
         }
         img {
           margin: 0 auto;
-          margin-bottom: .7rem;
+          margin-bottom: 0.7rem;
         }
       }
     }
@@ -133,7 +136,9 @@
   }
 
   body:has(.services__cards-item:hover) .page-dim,
-  body:has(.services__cards-item:focus-visible) .page-dim {
+  body:has(.services__cards-item:focus-visible) .page-dim,
+  body:has(.services-link:hover) .page-dim,
+  body:has(.services-link:focus-visible) .page-dim {
     opacity: 1;
   }
 
@@ -176,7 +181,7 @@
         }
 
         img {
-          margin-bottom: .5rem;
+          margin-bottom: 0.5rem;
           height: 60%;
         }
 
@@ -210,7 +215,7 @@
         font-size: 17vw;
         letter-spacing: 10px;
         font-family: $logo-font;
-        opacity: .7;
+        opacity: 0.7;
       }
     }
   }

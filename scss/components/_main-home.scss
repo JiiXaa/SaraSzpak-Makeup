@@ -233,6 +233,8 @@
 }
 
 .awards {
+  --awards-image-background: transparent;
+
   width: 80%;
   margin: 0 auto 4rem;
 
@@ -270,12 +272,9 @@
   &__item {
     width: 190px;
     height: 190px;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: $card-shadow;
 
     img {
-      background-color: #fff;
+      background-color: var(--awards-image-background);
       height: 100%;
       width: 100%;
       object-fit: cover;

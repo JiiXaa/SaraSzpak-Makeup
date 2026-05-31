@@ -2,6 +2,7 @@ const form = document.getElementById("contactForm");
 const statusEl = document.getElementById("contactStatus");
 const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const phoneRe = /^\+?[0-9\s().-]{7,20}$/;
+const isoDateRe = /^\d{4}-\d{2}-\d{2}$/;
 
 function serialize(formEl) {
   const data = Object.fromEntries(new FormData(formEl).entries());
@@ -10,6 +11,7 @@ function serialize(formEl) {
     email: (data["email"] || "").trim(),
     phone: (data["phone"] || "").trim(),
     occasion: (data["occasion"] || "").trim(),
+    eventDate: (data["eventDate"] || "").trim(),
     manyServices: (data["manyServices"] || "").trim(),
     location: (data["location"] || "").trim(),
     readyFor: (data["readyFor"] || "").trim(),
@@ -22,15 +24,35 @@ function isValidEmail(v) {
   return emailRe.test(v);
 }
 
+function isValidFutureDate(v) {
+  if (!isoDateRe.test(v)) return false;
+
+  const selected = new Date(`${v}T00:00:00`);
+  if (Number.isNaN(selected.getTime())) return false;
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  return selected >= today;
+}
+
 function markInvalid(name, message) {
   const field =
     form.querySelector(`[name="${name}"]`) || form.querySelector(`#${name}`);
 
   if (!field) return;
 
+  const flatpickrAltInput = field._flatpickr?.altInput;
+
   field.classList.add("is-invalid");
   field.setAttribute("aria-invalid", "true");
   field.title = message;
+
+  if (flatpickrAltInput) {
+    flatpickrAltInput.classList.add("is-invalid");
+    flatpickrAltInput.setAttribute("aria-invalid", "true");
+    flatpickrAltInput.title = message;
+  }
 }
 
 function clearInvalidFields() {
@@ -53,6 +75,13 @@ function validatePayload(payload) {
   }
   if (!payload.occasion) {
     errors.push(["occasion", "Please select an occasion."]);
+  }
+  if (form.querySelector('[name="eventDate"]')) {
+    if (!payload.eventDate) {
+      errors.push(["eventDate", "Please select your preferred date."]);
+    } else if (!isValidFutureDate(payload.eventDate)) {
+      errors.push(["eventDate", "Please choose today or a future date."]);
+    }
   }
   if (!payload.manyServices) {
     errors.push(["manyServices", "Please enter how many services are needed."]);
@@ -83,8 +112,10 @@ form?.addEventListener("submit", async (e) => {
 
     const firstInvalid = form.querySelector(".is-invalid");
     if (firstInvalid && typeof firstInvalid.scrollIntoView === "function") {
-      firstInvalid.scrollIntoView({ behavior: "smooth", block: "center" });
-      firstInvalid.focus({ preventScroll: true });
+      const focusTarget = firstInvalid._flatpickr?.altInput || firstInvalid;
+
+      focusTarget.scrollIntoView({ behavior: "smooth", block: "center" });
+      focusTarget.focus({ preventScroll: true });
     }
 
     return;
