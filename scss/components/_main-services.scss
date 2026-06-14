@@ -19,8 +19,8 @@
       width: 80%;
       padding: 2rem;
       border-radius: 20px;
-      color: $text-grey;
-      background-color: $of-grey;
+      color: $primary-grey;
+      background-color: $nav-bg;
       box-shadow: $card-shadow;
       text-decoration: none;
       transition:
@@ -48,7 +48,7 @@
       }
 
       .services__cards-icon {
-        color: $primary-color;
+        color: $light-pink;
         font-size: 0.95rem;
         transition:
           color 0.3s ease,
@@ -162,7 +162,6 @@
         padding: 2rem;
         padding-bottom: 1rem;
         border-radius: 20px;
-        background-color: $of-grey;
         box-shadow: $card-shadow;
 
         &:hover,
@@ -244,7 +243,6 @@
       padding: 2rem;
       padding-bottom: 1rem;
       border-radius: 20px;
-      background-color: $of-grey;
       box-shadow: $card-shadow;
 
       img {

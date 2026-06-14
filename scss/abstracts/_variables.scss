@@ -4,14 +4,15 @@
 
 // Primary Colors
 $primary-black: #1f1b1d;
-$primary-grey: #4b4448;
-$primary-color: #b97e8a;
+$primary-grey: #60513e;
+$primary-color: #9c7a67;
 // Secondary Colors
 $of-grey: #f6f2f3;
-$of-pink: #fff0f0;
-$dark-pink: #7a3f47;
-$light-pink: #e3b1bb;
+$of-pink: #d1c2b4;
+$dark-pink: #8e7866;
+$light-pink: #b89c84;
 $text-grey: #2f2a2c;
+$nav-bg: #f7f3ee;
 // Other Colors
 
 /**********************
@@ -21,6 +22,7 @@ $text-grey: #2f2a2c;
 $main-font-sans: 'aileron', Arial, sans-serif;
 $logo-font: 'Great Vibes', cursive;
 $logo-suffix-font: 'Manrope', Arial, sans-serif;
+$nav-font: 'Cormorant Garamond', Georgia, serif;
 $font-base-size: 1rem; // 16px
 $thin: 300;
 $regular: 400;
@@ -31,8 +33,10 @@ $spacing-5: 5px;
 /********************
     UTILS
 **********************/
-$card-shadow: 0 10px 30px rgba(16, 24, 40, 0.08),
+$card-shadow:
+  0 10px 30px rgba(16, 24, 40, 0.08),
   0 1px 2px rgba(16, 24, 40, 0.06);
+$page-header-offset: 8rem;
 
 /********************
     BREAKPOINTS

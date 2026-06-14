@@ -4,7 +4,7 @@
   // TODO: could use mixins as code snippet is exactly same in contact-form.scss
   width: 80%;
   margin: 0 auto;
-  margin-top: 5rem;
+  margin-top: 8rem;
   display: flex;
   justify-content: start;
 
@@ -16,6 +16,7 @@
     position: relative;
     margin-bottom: 0.4rem;
     opacity: 1;
+
     &::after {
       content: '';
       position: absolute;
@@ -68,7 +69,7 @@
 /* Gallery image overlay on hover */
 @media screen and (min-width: $tablet) {
   .img-group {
-    > a {
+    >a {
       // position: relative;
       cursor: pointer;
 

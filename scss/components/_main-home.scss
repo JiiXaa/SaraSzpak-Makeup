@@ -2,7 +2,7 @@
 
 .main {
   position: relative;
-  margin-top: 50px;
+  margin-top: 5rem;
 
   .header__about__image {
     height: 320px;
@@ -20,7 +20,7 @@
     row-gap: 0.5rem;
 
     &__card {
-      background-color: $of-grey;
+      background-color: $nav-bg;
       font-size: 0.9rem;
       line-height: 1.4rem;
       padding: 1rem;
@@ -75,13 +75,11 @@
       padding: 0.95rem 1.25rem;
       border: 1px solid rgba(255, 255, 255, 0.35);
       border-radius: 12px;
-      background: linear-gradient(
-        180deg,
-        $light-pink 0%,
-        $light-pink 15%,
-        $primary-color 85%,
-        $primary-color 100%
-      );
+      background: linear-gradient(180deg,
+          $light-pink 0%,
+          $light-pink 15%,
+          $primary-color 85%,
+          $primary-color 100%);
       box-shadow:
         0 10px 24px rgba($primary-color, 0.24),
         inset 0 1px 0 rgba(255, 255, 255, 0.38),
@@ -102,12 +100,10 @@
         content: '';
         position: absolute;
         inset: 0;
-        background: linear-gradient(
-          180deg,
-          $light-pink 0%,
-          $primary-color 45%,
-          $dark-pink 100%
-        );
+        background: linear-gradient(180deg,
+            $light-pink 0%,
+            $primary-color 45%,
+            $dark-pink 100%);
         opacity: 0;
         transition: opacity 0.25s ease;
         z-index: -1;
@@ -141,7 +137,7 @@
     &__testimonials {
       margin: 0 auto;
       padding: 2rem 1.5rem 1.5rem;
-      background-color: $of-grey;
+      background-color: $nav-bg;
       width: 90%;
       font-size: 0.9rem;
       line-height: 1.4rem;
@@ -153,7 +149,7 @@
       flex-direction: column;
 
       p {
-        color: $text-grey;
+        color: $primary-grey;
         font-size: 1rem;
       }
 
@@ -179,6 +175,7 @@
       }
 
       .testimonials-text {
+        color: $primary-grey;
         height: calc(1.4rem * 6);
         margin-bottom: 0.5rem;
         font-style: italic;
@@ -193,6 +190,7 @@
       }
 
       .testimonials-name {
+        color: $primary-grey;
         text-align: left;
         font-weight: bold;
         padding-right: 0;
@@ -219,6 +217,7 @@
       }
 
       &.is-animating {
+
         .testimonials-meta,
         .testimonials-avatar,
         .testimonials-name,
@@ -383,7 +382,7 @@
 @media screen and (min-width: $desktop) {
   .main {
     position: relative;
-    margin-top: 80px;
+    margin-top: $page-header-offset;
     margin-bottom: 13rem;
     border-bottom: 1px solid #000;
 

@@ -40,11 +40,11 @@
       href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
       rel="stylesheet"
     />
-    <!-- google fonts Manrope import -->
+    <!-- google fonts Manrope and Cormorant Garamond import -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@200..800&display=swap"
       rel="stylesheet"
     />
     <!-- Font Awesome Icons import -->
@@ -60,11 +60,12 @@
     <div class="page-dim" aria-hidden="true"></div>
     <!-- Navigation -->
     <nav class="nav">
-      <a href="/index.html" class="nav__logo">
-        <p>
-          Sara Szpak
-          <span class="nav__logo__suffix">MakeUp & Hair Stylist</span>
-        </p>
+      <a href="/index.html" class="nav__logo" aria-label="Go to home page">
+        <img
+          class="nav__logo-image"
+          src="/img/vh-logo-desktop.png"
+          alt="Venus Hour MakeUp and Hair Stylist Logo"
+        />
       </a>
       <div id="nav__toggle">
         <i class="fa-solid fa-bars"></i>
@@ -85,6 +86,9 @@
           </li>
           <li class="nav__list__link">
             <a class="anim-to-left" href="/contact.html">Contact</a>
+          </li>
+          <li class="nav__list__link">
+            <a class="anim-to-left" href="/terms.html">T&amp;C</a>
           </li>
         </ul>
         <ul class="nav__socials">
@@ -134,10 +138,8 @@
         </div>
         <div class="header__about__card">
           <p>
-            Based in South Wales and serving the Bristol area, I offer
-            everything from soft, natural glam to refined luxury. If you would
-            like to check availability or share your wedding/ special occasion
-            plans, I'd love to hear from you.
+            Based in South Wales and travelling throughout Wales and the South
+            West of England.
           </p>
         </div>
         <div class="header__about__cta-block">
@@ -476,10 +478,10 @@
       </div>
     </footer>
 
-    <script type="module" src="/js/site.js"></script>
+    <script type="module" src="./js/site.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13"></script>
-    <script type="module" src="/js/date-picker.js"></script>
-    <script type="module" src="/js/contact.js"></script>
-    <script type="module" src="/js/contact-validate.js"></script>
+    <script type="module" src="./js/date-picker.js"></script>
+    <script type="module" src="./js/contact.js"></script>
+    <script type="module" src="./js/contact-validate.js"></script>
   </body>
 </html>

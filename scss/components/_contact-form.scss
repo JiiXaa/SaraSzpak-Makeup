@@ -7,7 +7,7 @@ $error-color: #d93025;
   // TODO: could use mixins as code snippet is exactly same in rates.scss
   width: 80%;
   margin: 0 auto;
-  margin-top: 5rem;
+  margin-top: $page-header-offset;
   display: flex;
   justify-content: start;
 
@@ -45,7 +45,7 @@ $error-color: #d93025;
     color: $primary-grey;
     border-radius: 20px;
     border: none;
-    background-color: $of-grey;
+    background-color: $nav-bg;
     box-shadow: $card-shadow;
 
     .contact-form__main-wrapper {
@@ -127,7 +127,6 @@ $error-color: #d93025;
         }
       }
 
-
       // error message (optional helper under fields)
       .form__error {
         margin-top: 0.3rem;
@@ -142,7 +141,6 @@ $error-color: #d93025;
         font-size: 0.7rem;
         line-height: 1.35;
       }
-
     }
   }
 
@@ -344,7 +342,7 @@ $error-color: #d93025;
       padding: 3rem 1rem;
       color: $primary-grey;
       border-radius: 20px;
-      background-color: $of-grey;
+      background-color: $nav-bg;
       box-shadow: $card-shadow;
 
       .contact-form__main-wrapper {
@@ -429,7 +427,6 @@ $error-color: #d93025;
             outline: 1px solid $light-pink;
           }
         }
-
       }
     }
 
@@ -556,7 +553,6 @@ $error-color: #d93025;
           }
         }
 
-
         &:last-child {
           margin-bottom: 0.6rem;
         }
@@ -602,11 +598,9 @@ select {
 
 /* ERROR STATES (inputs, selects, textarea) */
 .contact-form {
-
   // red outline on error helper class or aria-invalid
   .contact-form__inputs .form__group,
   .form__group--message {
-
     input.is-error,
     select.is-error,
     textarea.is-error,

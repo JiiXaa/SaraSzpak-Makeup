@@ -21,8 +21,8 @@
   /* Position the navbar at the top of the page */
   top: 0;
   border-bottom: 1px solid $primary-grey;
-  background-color: #fff;
-  height: 4.5rem;
+  background-color: $nav-bg;
+  height: 5.8rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,34 +30,20 @@
   box-shadow: $card-shadow;
 
   &__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: min(72vw, 21rem);
+    height: 100%;
+    margin-left: 2.5rem;
     text-decoration: none;
-    color: $primary-black;
-    font-family: $logo-font;
+  }
 
-    p {
-      font-size: 2.3rem;
-      font-family: inherit;
-      position: relative;
-      top: 5px;
-
-      span {
-        width: 100%;
-        font-size: 0.8rem;
-        position: absolute;
-        bottom: -2px;
-        left: 0px;
-      }
-
-      .nav__logo__suffix {
-        font-size: .8rem;
-        font-family: $logo-suffix-font;
-        font-weight: 400;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: $dark-pink;
-        white-space: nowrap;
-      }
-    }
+  &__logo-image {
+    display: block;
+    width: 100%;
+    max-height: 5rem;
+    object-fit: contain;
   }
 
   &__list {
@@ -121,7 +107,7 @@
       list-style: none;
 
       a {
-        color: $primary-color;
+        color: $primary-grey;
         transition: all 0.6s ease;
       }
 
@@ -129,6 +115,13 @@
         color: $dark-pink;
         transition: all 0.6s ease;
       }
+    }
+  }
+
+  &__links {
+    a {
+      font-family: $nav-font;
+      font-weight: 600;
     }
   }
 }
@@ -178,7 +171,6 @@
 }
 
 @media screen and (min-width: $tablet) {
-
   // Mobile Navigation Icon
   #nav__toggle {
     display: none;
@@ -188,22 +180,13 @@
     box-shadow: $card-shadow;
 
     &__logo {
-      display: flex;
-      justify-content: center;
       width: 25%;
+      max-width: 19rem;
+      margin-left: 3rem;
+    }
 
-      p {
-        font-size: 1.8rem;
-
-        span {
-          font-family: inherit;
-          width: 100%;
-          font-size: 0.7rem;
-          position: absolute;
-          bottom: -2px;
-          left: 105px;
-        }
-      }
+    &__logo-image {
+      max-height: 4.5rem;
     }
 
     &__list {
@@ -221,8 +204,9 @@
 
       .nav__links {
         display: flex;
-        justify-content: space-around;
-        width: 60%;
+        justify-content: center;
+        gap: 1.25rem;
+        width: 70%;
 
         a {
           color: $primary-grey;
@@ -255,34 +239,13 @@
     box-shadow: $card-shadow;
 
     &__logo {
-      display: flex;
-      justify-content: center;
       width: 30%;
+      max-width: 27rem;
+      margin-left: 4.5rem;
+    }
 
-      p {
-        font-size: 2.8rem;
-        font-family: inherit;
-        position: relative;
-        top: 5px;
-
-        span {
-          font-family: inherit;
-          width: 100%;
-          position: absolute;
-          bottom: -2px;
-          left: 160px;
-        }
-
-        .nav__logo__suffix {
-          font-size: 1.2rem;
-          font-family: $logo-suffix-font;
-          font-weight: 400;
-          letter-spacing: 0.14em;
-          text-transform: uppercase;
-          color: $dark-pink;
-          white-space: nowrap;
-        }
-      }
+    &__logo-image {
+      max-height: 5.1rem;
     }
 
     &__list {
@@ -299,12 +262,13 @@
 
       .nav__links {
         display: flex;
-        justify-content: space-around;
-        width: 40%;
+        justify-content: center;
+        gap: 2rem;
+        width: 65%;
 
         a {
           color: $primary-grey;
-          font-size: 1.3rem;
+          font-size: 1.8rem;
           letter-spacing: 1px;
         }
       }
