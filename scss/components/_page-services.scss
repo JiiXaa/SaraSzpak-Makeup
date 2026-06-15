@@ -56,7 +56,7 @@
   padding: 2rem;
   width: 80%;
   border-radius: 20px;
-  background-color: $of-grey;
+  background-color: $nav-bg;
   box-shadow: $card-shadow;
   color: $text-grey;
   transition:
@@ -96,14 +96,14 @@
     display: flex;
     align-items: center;
     column-gap: 0.45rem;
-    color: $text-grey;
+    color: $services-link-heading-color;
     font-size: 1.1rem;
     margin-bottom: 0.6rem;
     transition: color 0.25s ease;
   }
 
   .services-link__icon {
-    color: $primary-color;
+    color: $light-pink;
     font-size: 0.95rem;
     transition:
       color 0.25s ease,
@@ -216,7 +216,7 @@
     }
 
     h2 {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       margin-bottom: 0.6rem;
     }
 

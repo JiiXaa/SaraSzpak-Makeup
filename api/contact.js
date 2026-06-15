@@ -262,7 +262,7 @@ ${message}
 
         <p>If your date is time-sensitive, you can also reach us here:</p>
         <ul style="margin:0 0 12px 20px">
-          <li>Instagram: @saraszpak_mua</li>
+          <li>Instagram: @venushourbeauty</li>
           <li>WhatsApp: +44 7783 109 453</li>
           <li>Website: <a href="https://saraszpak.com" target="_blank" rel="noopener">saraszpak.com</a></li>
           <li>Email: Contact@saraszpak.com</li>
@@ -284,7 +284,7 @@ ${message}
       We’ve received your enquiry and will get back to you within 24 hours.
 
       If your date is time-sensitive, you can also reach us here:
-      - Instagram: @saraszpak_mua
+      - Instagram: @venushourbeauty
       - WhatsApp: +44 7783 109 453
       - Website: https://saraszpak.com
       - Email: Contact@saraszpak.com

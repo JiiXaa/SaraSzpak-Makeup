@@ -33,7 +33,7 @@
   width: 80%;
   margin: 0 auto;
   margin-bottom: 2rem;
-  padding: 2rem 1rem 2rem 0;
+  padding: 2rem 1rem;
   border: 1px solid $of-grey;
   border-radius: 15px;
   color: $text-grey;
@@ -70,6 +70,26 @@
     padding-left: 2.2rem;
     line-height: 1.4rem;
   }
+
+  p {
+    margin-bottom: 0.55rem;
+    line-height: 1.45rem;
+  }
+
+  &__section {
+    margin-bottom: 1.4rem;
+  }
+
+  p.terms-conds__contact {
+    margin-bottom: 0.1rem;
+    line-height: 1.25rem;
+    font-weight: bold;
+
+    span {
+      color: $primary-color;
+      font-weight: bold;
+    }
+  }
 }
 
 @media screen and (min-width: $desktop) {
@@ -86,6 +106,10 @@
     div {
       width: 90%;
       margin: 0 auto;
+    }
+
+    .terms-conds__section {
+      margin-bottom: 1.8rem;
     }
 
     h2 {
@@ -107,6 +131,10 @@
     ol {
       margin-bottom: 1rem;
       line-height: 1.8rem;
+    }
+
+    p {
+      line-height: 1.6rem;
     }
   }
 }

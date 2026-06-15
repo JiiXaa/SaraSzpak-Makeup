@@ -8,23 +8,18 @@
   padding-top: 0.8rem;
 
   .footer-logo {
-    font-family: $logo-font;
-    font-size: 2.5rem;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    line-height: 1;
+    justify-content: center;
+    width: min(68vw, 18rem);
     margin-bottom: 1rem;
+    text-decoration: none;
 
-    &__suffix {
-      font-family: $logo-suffix-font;
-      font-size: 0.95rem;
-      font-weight: 400;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: $dark-pink;
-      margin-top: 0.2rem;
-      white-space: nowrap;
+    &__image {
+      display: block;
+      width: 100%;
+      max-height: 4.2rem;
+      object-fit: contain;
     }
   }
 
@@ -33,6 +28,10 @@
     align-items: center;
     height: 1rem;
     margin-bottom: 0.8rem;
+
+    a {
+      color: $primary-grey;
+    }
 
     &-email {
       font-size: 1.1rem;
@@ -58,14 +57,11 @@
 @media screen and (min-width: $desktop) {
   .footer {
     .footer-logo {
-      font-family: $logo-font;
-      font-size: 3rem;
+      width: min(30vw, 23rem);
       margin-bottom: 1.2rem;
 
-      &__suffix {
-        font-size: 1.05rem;
-        letter-spacing: 0.14em;
-        margin-top: 0.25rem;
+      &__image {
+        max-height: 5.1rem;
       }
     }
 
