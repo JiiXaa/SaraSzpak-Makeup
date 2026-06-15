@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta
       name="description"
-      content="Sara's Szpak Hair and Make-Up Application Services we provide: Night Out, Special Occasion Hair and Make-Up, Hair and Make-Up For Graduation/Prom, Photoshoots, Engagement, Maternity, Glamour and available Gift Cards"
+      content="Venus Hour Hair and Make-Up Application Services we provide: Night Out, Special Occasion Hair and Make-Up, Hair and Make-Up For Graduation/Prom, Photoshoots, Engagement, Maternity, Glamour and available Gift Cards"
     />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -52,7 +52,7 @@
       src="https://kit.fontawesome.com/733177767a.js"
       crossorigin="anonymous"
     ></script>
-    <title>Sara Szpak Make-Up Artist and Hair Stylist</title>
+    <title>Venus Hour Hair & Makeup</title>
   </head>
   <body>
     <!-- OVERLAY MOBILE MENU -->
@@ -231,7 +231,7 @@
 
               <div class="form__group">
                 <label id="occasion-label" for="occasion"
-                  >What occasion is it?</label
+                  >What is the occassion?</label
                 >
                 <select name="occasion" id="occasion" required>
                   <option value="" disabled selected>Select an option</option>
@@ -244,6 +244,19 @@
                   <option value="other">Other</option>
                 </select>
               </div>
+
+            <div class="form__group">
+              <label id="bookingFor-label" for="bookingFor">Who is the booking for?</label>
+              <select name="bookingFor" id="bookingFor" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="bride">Bride</option>
+                <option value="wedding-guest">Wedding Guest</option>
+                <option value="special-occasion">Special Occasion</option>
+                <option value="prom">Prom</option>
+                <option value="photoshoot">Photoshoot</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
 
               <div class="form__group form__group--date">
                 <label id="eventDate-label" for="eventDate"
@@ -277,7 +290,7 @@
 
               <div class="form__group">
                 <label id="services-label" for="manyServices"
-                  >How many services required?</label
+                  >How many people require services</label
                 >
                 <input
                   name="manyServices"
@@ -290,7 +303,7 @@
 
               <div class="form__group">
                 <label id="location-label" for="location"
-                  >Location (Postcode)</label
+                  >Venue Location (Postcode)</label
                 >
                 <input
                   name="location"
@@ -303,7 +316,7 @@
 
               <div class="form__group">
                 <label id="readyFor-label" for="readyFor"
-                  >What time do you need to be ready?</label
+                  >Ready by:</label
                 >
                 <input
                   name="readyFor"
@@ -343,7 +356,7 @@
           </div>
 
           <div class="form__group--message">
-            <label for="your-message">Your Message</label>
+            <label for="your-message">Tell me a little about your plans</label>
             <textarea name="your-message" id="your-message" required></textarea>
           </div>
 

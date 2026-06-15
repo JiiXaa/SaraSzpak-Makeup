@@ -1,8 +1,8 @@
 {
-  "name": "sara-szpak",
+  "name": "venus-hour",
   "version": "1.0.0",
   "private": true,
-  "description": "Sara Szpak Website",
+  "description": "Venus Hour Website",
   "type": "module",
   "engines": {
     "node": "20.x"

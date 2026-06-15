@@ -11,6 +11,7 @@ function serialize(formEl) {
     email: (data["email"] || "").trim(),
     phone: (data["phone"] || "").trim(),
     occasion: (data["occasion"] || "").trim(),
+    bookingFor: (data["bookingFor"] || "").trim(),
     eventDate: (data["eventDate"] || "").trim(),
     manyServices: (data["manyServices"] || "").trim(),
     location: (data["location"] || "").trim(),
@@ -75,6 +76,9 @@ function validatePayload(payload) {
   }
   if (!payload.occasion) {
     errors.push(["occasion", "Please select an occasion."]);
+  }
+  if (!payload.bookingFor) {
+    errors.push(["bookingFor", "Please select who the booking is for."]);
   }
   if (form.querySelector('[name="eventDate"]')) {
     if (!payload.eventDate) {

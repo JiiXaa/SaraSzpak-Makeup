@@ -16,7 +16,13 @@ function esc(s = "") {
     .replace(/>/g, "&gt;");
 }
 
-function sendHtmlError(res, statusCode, title, message, backUrl = "/contact.html") {
+function sendHtmlError(
+  res,
+  statusCode,
+  title,
+  message,
+  backUrl = "/contact.html",
+) {
   res.statusCode = statusCode;
   res.setHeader("Content-Type", "text/html; charset=utf-8");
   return res.end(`<!doctype html>
@@ -24,7 +30,7 @@ function sendHtmlError(res, statusCode, title, message, backUrl = "/contact.html
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>${esc(title)} | Sara Szpak</title>
+    <title>${esc(title)} | Venus Hour</title>
     <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
@@ -133,6 +139,7 @@ export default async function handler(req, res) {
     const email = (body.email || "").trim();
     const phone = (body.phone || "").trim();
     const occasion = (body.occasion || "").trim();
+    const bookingFor = (body.bookingFor || "").trim();
     const eventDate = (body.eventDate || "").trim();
     const manyServices = (body.manyServices || "").trim();
     const location = (body.location || "").trim();
@@ -144,6 +151,7 @@ export default async function handler(req, res) {
       ["email", email],
       ["phone", phone],
       ["occasion", occasion],
+      ["bookingFor", bookingFor],
       ["eventDate", eventDate],
       ["manyServices", manyServices],
       ["location", location],
@@ -163,7 +171,7 @@ export default async function handler(req, res) {
         : formError(
             400,
             "Please check the form",
-            `Some required fields are missing: ${missingFields.join(", ")}. Please go back and complete the form.`
+            `Some required fields are missing: ${missingFields.join(", ")}. Please go back and complete the form.`,
           );
     }
     if (!EMAIL_RE.test(email)) {
@@ -172,7 +180,7 @@ export default async function handler(req, res) {
         : formError(
             400,
             "Please check your email",
-            "The email address does not look valid. Please go back and correct it."
+            "The email address does not look valid. Please go back and correct it.",
           );
     }
     if (!PHONE_RE.test(phone)) {
@@ -181,7 +189,7 @@ export default async function handler(req, res) {
         : formError(
             400,
             "Please check your phone number",
-            "The phone number does not look valid. Please go back and correct it."
+            "The phone number does not look valid. Please go back and correct it.",
           );
     }
     if (!isValidEventDate(eventDate)) {
@@ -190,7 +198,7 @@ export default async function handler(req, res) {
         : formError(
             400,
             "Please check your preferred date",
-            "The preferred date does not look valid. Please go back and correct it."
+            "The preferred date does not look valid. Please go back and correct it.",
           );
     }
 
@@ -210,7 +218,7 @@ export default async function handler(req, res) {
         : formError(
             500,
             "Message could not be sent",
-            "Email sending is not configured correctly. Please contact Sara directly by email or WhatsApp."
+            "Email sending is not configured correctly. Please contact Sara directly by email or WhatsApp.",
           );
     }
 
@@ -224,15 +232,16 @@ export default async function handler(req, res) {
             <tr><td style="padding:8px;border:1px solid #eee"><strong>Email</strong></td><td style="padding:8px;border:1px solid #eee">${esc(email)}</td></tr>
             <tr><td style="padding:8px;border:1px solid #eee"><strong>Phone</strong></td><td style="padding:8px;border:1px solid #eee">${esc(phone) || "—"}</td></tr>
             <tr><td style="padding:8px;border:1px solid #eee"><strong>Occasion</strong></td><td style="padding:8px;border:1px solid #eee">${esc(occasion) || "—"}</td></tr>
+            <tr><td style="padding:8px;border:1px solid #eee"><strong>Booking for</strong></td><td style="padding:8px;border:1px solid #eee">${esc(bookingFor) || "—"}</td></tr>
             ${
               eventDate
                 ? `<tr><td style="padding:8px;border:1px solid #eee"><strong>Preferred date</strong></td><td style="padding:8px;border:1px solid #eee">${esc(eventDate)}</td></tr>`
                 : ""
             }
-            <tr><td style="padding:8px;border:1px solid #eee"><strong>Services needed</strong></td><td style="padding:8px;border:1px solid #eee">${esc(manyServices) || "—"}</td></tr>
-            <tr><td style="padding:8px;border:1px solid #eee"><strong>Location</strong></td><td style="padding:8px;border:1px solid #eee">${esc(location) || "—"}</td></tr>
-            <tr><td style="padding:8px;border:1px solid #eee"><strong>Ready for</strong></td><td style="padding:8px;border:1px solid #eee">${esc(readyFor) || "—"}</td></tr>
-            <tr><td style="padding:8px;border:1px solid #eee;vertical-align:top"><strong>Message</strong></td><td style="padding:8px;border:1px solid #eee;white-space:pre-wrap">${esc(message)}</td></tr>
+            <tr><td style="padding:8px;border:1px solid #eee"><strong>People requiring services</strong></td><td style="padding:8px;border:1px solid #eee">${esc(manyServices) || "—"}</td></tr>
+            <tr><td style="padding:8px;border:1px solid #eee"><strong>Venue Location</strong></td><td style="padding:8px;border:1px solid #eee">${esc(location) || "—"}</td></tr>
+            <tr><td style="padding:8px;border:1px solid #eee"><strong>Ready by</strong></td><td style="padding:8px;border:1px solid #eee">${esc(readyFor) || "—"}</td></tr>
+            <tr><td style="padding:8px;border:1px solid #eee;vertical-align:top"><strong>Plans</strong></td><td style="padding:8px;border:1px solid #eee;white-space:pre-wrap">${esc(message)}</td></tr>
           </tbody>
         </table>
         <p style="color:#666;margin-top:16px">Tip: hit “Reply” to respond directly to the client.</p>
@@ -245,12 +254,17 @@ Name: ${name}
 Email: ${email}
 Phone: ${phone || "—"}
 Occasion: ${occasion || "—"}
-${eventDate ? `Preferred date: ${eventDate}
-` : ""}Services needed: ${manyServices || "—"}
-Location: ${location || "—"}
-Ready for: ${readyFor || "—"}
+Booking for: ${bookingFor || "—"}
+${
+  eventDate
+    ? `Preferred date: ${eventDate}
+`
+    : ""
+}People requiring services: ${manyServices || "—"}
+Venue Location: ${location || "—"}
+Ready by: ${readyFor || "—"}
 
-Message:
+Plans:
 ${message}
 `.trim();
 
@@ -264,17 +278,17 @@ ${message}
         <ul style="margin:0 0 12px 20px">
           <li>Instagram: @venushourbeauty</li>
           <li>WhatsApp: +44 7783 109 453</li>
-          <li>Website: <a href="https://saraszpak.com" target="_blank" rel="noopener">saraszpak.com</a></li>
-          <li>Email: Contact@saraszpak.com</li>
+          <li>Website: <a href="https://venus-hour.co.uk" target="_blank" rel="noopener">venus-hour.co.uk</a></li>
+          <li>Email: hello@venus-hour.co.uk</li>
         </ul>
 
-        <p style="margin-top:16px">Warmly,<br>Sara – Bridal Hair & Makeup</p>
+        <p style="margin-top:16px">Warmly,<br>Venus Hour – Bridal Hair & Makeup</p>
 
         <hr style="border:none;border-top:1px solid #eee;margin:20px 0">
         <div style="font-size:13px;color:#666;line-height:1.5">
-          <div><strong>Sara Szpak — Bridal Hair & Makeup</strong></div>
-          <div>Newport, South Wales • +44 7783 109 453 • Contact@saraszpak.com</div>
-          <div><a href="https://saraszpak.com" target="_blank" rel="noopener" style="color:#666;text-decoration:underline">https://saraszpak.com</a></div>
+          <div><strong>Venus Hour — Bridal Hair & Makeup</strong></div>
+          <div>Newport, South Wales • +44 7783 109 453 • hello@venus-hour.co.uk</div>
+          <div><a href="https://venus-hour.co.uk" target="_blank" rel="noopener" style="color:#666;text-decoration:underline">https://venus-hour.co.uk</a></div>
           <div style="margin-top:8px">If you didn’t submit this enquiry, you can ignore this email.</div>
         </div>
       </div>
@@ -286,15 +300,15 @@ ${message}
       If your date is time-sensitive, you can also reach us here:
       - Instagram: @venushourbeauty
       - WhatsApp: +44 7783 109 453
-      - Website: https://saraszpak.com
-      - Email: Contact@saraszpak.com
+      - Website: https://venus-hour.co.uk
+      - Email: hello@venus-hour.co.uk
 
       Warmly,
-      Sara – Bridal Hair & Makeup
+      Sara Szpak
 
-      Sara Szpak — Bridal Hair & Makeup
-      Newport, South Wales • +44 7783 109 453 • Contact@saraszpak.com
-      https://saraszpak.com
+      Venus Hour — Bridal Hair & Makeup
+      Newport, South Wales • +44 7783 109 453 • hello@venus-hour.co.uk
+      https://venus-hour.co.uk
 
       If you didn’t submit this enquiry, you can ignore this email.
       `.trim();
@@ -322,7 +336,7 @@ ${message}
     const clientPayload = {
       sender: {
         email: process.env.FROM_EMAIL,
-        name: "Sara – Bridal Hair & Makeup",
+        name: "Venus Hour – Bridal Hair & Makeup",
       },
       to: [{ email, name }],
       subject: "We received your enquiry – thank you!",
@@ -343,17 +357,15 @@ ${message}
       });
 
       return wantsJson
-        ? res
-            .status(502)
-            .json({
-              ok: false,
-              error: "Owner email failed",
-              details: ownerResult.details,
-            })
+        ? res.status(502).json({
+            ok: false,
+            error: "Owner email failed",
+            details: ownerResult.details,
+          })
         : formError(
             502,
             "Message could not be sent",
-            "The email service did not accept the message. Please try again or contact Sara directly by email or WhatsApp."
+            "The email service did not accept the message. Please try again or contact Sara directly by email or WhatsApp.",
           );
     }
 
@@ -377,7 +389,7 @@ ${message}
         : formError(
             502,
             "Message could not be sent",
-            "The confirmation email could not be sent. Please try again or contact Sara directly by email or WhatsApp."
+            "The confirmation email could not be sent. Please try again or contact Sara directly by email or WhatsApp.",
           );
     }
 
@@ -390,7 +402,7 @@ ${message}
       : formError(
           500,
           "Message could not be sent",
-          "Something went wrong while sending the message. Please try again or contact Sara directly by email or WhatsApp."
+          "Something went wrong while sending the message. Please try again or contact Sara directly by email or WhatsApp.",
         );
   }
 }

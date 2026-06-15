@@ -1,6 +1,6 @@
 // Lightweight client-side validation for contact form.
 // - Highlights invalid fields with .is-invalid
-// - Requires: name, email(valid), phone(valid-ish), occasion(select), manyServices, location, readyFor, your-message
+// - Requires: name, email(valid), phone(valid-ish), occasion(select), bookingFor(select), manyServices, location, readyFor, your-message
 // - Requires eventDate only on pages that include the field.
 
 (function () {
@@ -100,6 +100,7 @@
     email: byId("email"),
     phone: byId("phone"),
     occasion: byId("occasion"), // <select>
+    bookingFor: byId("bookingFor"), // <select>
     eventDate: byId("eventDate"),
     manyServices: byId("manyServices"),
     location: byId("location"),
@@ -133,6 +134,15 @@
     );
   }
 
+  if (fields.bookingFor) {
+    fields.bookingFor.addEventListener("change", () =>
+      clearInvalid(fields.bookingFor),
+    );
+    fields.bookingFor.addEventListener("blur", () =>
+      clearInvalid(fields.bookingFor),
+    );
+  }
+
   form.addEventListener("submit", (e) => {
     // Wyzeruj stare błędy
     Object.values(fields).forEach(clearInvalid);
@@ -144,6 +154,7 @@
     ok = required(fields.email) && ok;
     ok = required(fields.phone) && ok;
     ok = required(fields.occasion) && ok; // <select> ma pustą option + required
+    ok = required(fields.bookingFor) && ok;
     if (fields.eventDate) {
       ok = required(fields.eventDate, "Please select your preferred date.") && ok;
     }

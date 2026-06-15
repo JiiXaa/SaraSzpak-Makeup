@@ -54,8 +54,8 @@ Required variables:
 ```bash
 BREVO_API_KEY=your_brevo_key
 FROM_EMAIL=Contact@saraszpak.com
-OWNER_EMAIL=saraszpak@hotmail.com
-OWNER_NAME=Sara
+OWNER_EMAIL=hello@venus-hour.co.uk
+OWNER_NAME=VenusHour
 GOOGLE_PLACES_API_KEY=your_google_places_key
 GOOGLE_PLACE_ID=your_google_place_id
 ```
