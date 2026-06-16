@@ -9,6 +9,8 @@ const socialsColorChange = document.querySelectorAll("[data-color-id]");
 if (!navigationMainList || !navigationSocials || !overlay || !menuBtn) {
   // don't do anything
 } else {
+  initActiveNavLink();
+
   // Mobile Menu Logic
   menuBtn.addEventListener("click", toggleMenu);
   overlay.addEventListener("click", toggleMenu);
@@ -31,6 +33,30 @@ if (!navigationMainList || !navigationSocials || !overlay || !menuBtn) {
     overlay.classList.remove("show");
     navigationMainList.classList.remove("show");
     navigationSocials.classList.remove("show");
+  }
+
+  function initActiveNavLink() {
+    const servicePages = new Set([
+      "/services.html",
+      "/bridal.html",
+      "/other.html",
+      "/lessons.html",
+    ]);
+    const currentPath =
+      window.location.pathname === "/" ? "/index.html" : window.location.pathname;
+    const activePath = servicePages.has(currentPath) ? "/services.html" : currentPath;
+    const navLinks = navigationMainList.querySelectorAll(".nav__links a[href]");
+
+    navLinks.forEach((link) => {
+      const linkPath = new URL(
+        link.getAttribute("href"),
+        window.location.origin,
+      ).pathname;
+      const isActive = linkPath === activePath;
+
+      link.classList.toggle("link-active", isActive);
+      link.classList.toggle("anim-to-left", !isActive);
+    });
   }
 
   // Socials: change color of other icons on hover

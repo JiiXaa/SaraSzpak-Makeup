@@ -73,6 +73,17 @@ $error-color: #d93025;
     }
   }
 
+  .contact-form__description--intro {
+    width: 100%;
+    padding: 0 0.4rem 1.5rem;
+  }
+
+  .contact-form__description--footer {
+    width: 100%;
+    padding: 1.5rem 0.4rem 0;
+    margin-bottom: 0;
+  }
+
   .contact-form__inputs {
     .form__group {
       display: flex;
@@ -378,6 +389,15 @@ $error-color: #d93025;
       }
     }
 
+    .contact-form__description--intro {
+      display: block;
+      padding: 0 4rem 2rem;
+    }
+
+    .contact-form__description--footer {
+      padding: 1.5rem 4rem 0;
+    }
+
     .contact-form__inputs {
       .form__group {
         display: flex;
@@ -510,6 +530,14 @@ $error-color: #d93025;
       ul {
         padding-left: 1.8rem;
       }
+    }
+
+    .contact-form__description--intro {
+      padding: 0 2rem 2rem;
+    }
+
+    .contact-form__description--footer {
+      padding: 1.5rem 2rem 0;
     }
 
     .contact-form__inputs {

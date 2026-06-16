@@ -88,8 +88,11 @@
 
 .services-link__item {
   img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
     border-radius: 6px;
     margin-bottom: 1rem;
+    object-fit: cover;
   }
 
   h2 {
@@ -149,13 +152,13 @@
     align-items: normal;
     justify-content: space-around;
     row-gap: 2rem;
-    width: 80%;
+    width: 86%;
     margin: 0 auto;
   }
 
   .services-link {
     width: 30%;
-    padding: 1.2rem;
+    padding: 1.4rem;
   }
 
   .services-link__item {
@@ -193,7 +196,7 @@
 
   .services__container {
     justify-content: space-between;
-    width: 60%;
+    width: 70%;
   }
 
   .services__header {
@@ -206,7 +209,7 @@
 
   .services-link {
     width: 30%;
-    padding: 1.2rem;
+    padding: 1.5rem;
   }
 
   .services-link__item {
@@ -241,12 +244,12 @@
 
   .services__container {
     justify-content: space-between;
-    width: 60%;
+    width: 70%;
   }
 
   .services-link {
     width: 30%;
-    padding: 1.2rem;
+    padding: 1.5rem;
   }
 
   .services-page {

@@ -75,11 +75,13 @@
       padding: 0.95rem 1.25rem;
       border: 1px solid rgba(255, 255, 255, 0.35);
       border-radius: 12px;
-      background: linear-gradient(180deg,
-          $light-pink 0%,
-          $light-pink 15%,
-          $primary-color 85%,
-          $primary-color 100%);
+      background: linear-gradient(
+        180deg,
+        $light-pink 0%,
+        $light-pink 15%,
+        $primary-color 85%,
+        $primary-color 100%
+      );
       box-shadow:
         0 10px 24px rgba($primary-color, 0.24),
         inset 0 1px 0 rgba(255, 255, 255, 0.38),
@@ -100,10 +102,12 @@
         content: '';
         position: absolute;
         inset: 0;
-        background: linear-gradient(180deg,
-            $light-pink 0%,
-            $primary-color 45%,
-            $dark-pink 100%);
+        background: linear-gradient(
+          180deg,
+          $light-pink 0%,
+          $primary-color 45%,
+          $dark-pink 100%
+        );
         opacity: 0;
         transition: opacity 0.25s ease;
         z-index: -1;
@@ -217,7 +221,6 @@
       }
 
       &.is-animating {
-
         .testimonials-meta,
         .testimonials-avatar,
         .testimonials-name,

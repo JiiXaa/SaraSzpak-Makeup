@@ -81,7 +81,7 @@
             <a class="anim-to-left" href="/services.html">Services</a>
           </li>
           <li class="nav__list__link">
-            <a class="anim-to-left" href="/rates.html">Rates</a>
+            <a class="anim-to-left" href="/rates.html">Pricing</a>
           </li>
           <li class="nav__list__link">
             <a class="anim-to-left" href="/contact.html">Contact</a>
@@ -124,16 +124,18 @@
     <!-- End Navigation -->
     <!-- Rates Overview -->
     <header class="rates__header">
-      <h1>Rates</h1>
+      <h1>Pricing</h1>
     </header>
 
     <section class="rates-overview" aria-label="Rates overview">
       <article class="rates-card rates-card--featured">
         <p class="rates-card__eyebrow">Wedding</p>
-        <h2>Every wedding is unique.</h2>
-        <p>Wedding services begin from £250.</p>
-        <p>For a personalised quote, please get in touch.</p>
-        <p class="rates-card__note">Prices available upon enquiry.</p>
+        <h2>
+          Every wedding is unique, which is why each quotation is tailored to
+          your individual requirements, location and wedding morning schedule.
+        </h2>
+        <p>Wedding services begin from £220.</p>
+        <p>For a personalised quotation, please get in touch.</p>
       </article>
 
       <article class="rates-card">
@@ -155,229 +157,29 @@
         <p class="rates-card__eyebrow">Photoshoots</p>
         <h2>Quoted individually</h2>
         <p>
-          Photoshoot pricing is tailored to the creative brief, location and
-          timings.
+          Photoshoot pricing is tailored to the creative brief, location,
+          timings and overall project requirements.
         </p>
-      </article>
-
-      <article class="rates-card">
-        <p class="rates-card__eyebrow">Makeup Lessons</p>
-        <h2>Personal makeup lessons</h2>
-        <ul class="rates-card__prices">
-          <li><span>1-2-1 lesson</span><strong>£70</strong></li>
-          <li><span>Group lesson</span><strong>£50</strong></li>
-        </ul>
       </article>
 
       <article class="rates-card rates-card--travel">
         <p class="rates-card__eyebrow">Travel</p>
         <h2>Travel is calculated from Newport.</h2>
-        <p>Travel costs are confirmed as part of your personalised quote.</p>
+        <p>
+          Travel costs are calculated from Newport and included within your
+          personalised quotation.
+        </p>
+      </article>
+      <article class="rates-card rates-card--travel">
+        <p class="rates-card__eyebrow">Additional Expenses</p>
+
+        <p>
+          Parking charges and, where necessary, accommodation costs are to be
+          covered by the client.
+        </p>
       </article>
     </section>
     <!-- End Rates Overview -->
-
-    <!-- Contact Form -->
-    <form
-      class="contact-form"
-      id="contactForm"
-      action="/api/contact?redirect=/form-submitted.html"
-      method="POST"
-      novalidate
-    >
-      <div class="contact-form__container">
-        <div class="contact-form__main-wrapper">
-          <div class="contact-form__inputs contact-form__item">
-            <div class="form__group">
-              <label id="name-label" for="name">Your full name:</label>
-              <input
-                name="name"
-                id="name"
-                type="text"
-                required
-                autocomplete="off"
-              />
-            </div>
-
-            <div class="form__group">
-              <label id="email-label" for="email">Your email address:</label>
-              <input
-                name="email"
-                id="email"
-                type="email"
-                required
-                autocomplete="off"
-              />
-            </div>
-
-            <div class="form__group">
-              <label id="phone-label" for="phone">Your phone number:</label>
-              <input
-                name="phone"
-                id="phone"
-                type="tel"
-                required
-                autocomplete="tel"
-                inputmode="tel"
-                placeholder="+44 7..."
-              />
-            </div>
-
-            <div class="form__group">
-              <label id="occasion-label" for="occasion"
-                >What is the occassion?</label
-              >
-              <select name="occasion" id="occasion" required>
-                <option value="" disabled selected>Select an option</option>
-                <option value="bride">I'm the bride</option>
-                <option value="wedding-guest">Wedding guest</option>
-                <option value="birthday-party">Birthday party</option>
-                <option value="photoshoot">Photoshoot</option>
-                <option value="xmas-party">Xmas party</option>
-                <option value="halloween-party">Halloween party</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-
-            <div class="form__group">
-              <label id="bookingFor-label" for="bookingFor">Who is the booking for?</label>
-              <select name="bookingFor" id="bookingFor" required>
-                <option value="" disabled selected>Select an option</option>
-                <option value="bride">Bride</option>
-                <option value="wedding-guest">Wedding Guest</option>
-                <option value="special-occasion">Special Occasion</option>
-                <option value="prom">Prom</option>
-                <option value="photoshoot">Photoshoot</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-
-            <div class="form__group form__group--date">
-              <label id="eventDate-label" for="eventDate">Preferred date</label>
-              <div class="date-field">
-                <input
-                  name="eventDate"
-                  id="eventDate"
-                  type="text"
-                  required
-                  autocomplete="off"
-                  inputmode="none"
-                  placeholder="Choose your date"
-                  aria-describedby="eventDate-hint"
-                  data-date-picker
-                />
-                <button
-                  class="date-field__button"
-                  type="button"
-                  aria-label="Open calendar"
-                  data-date-picker-toggle
-                >
-                  <i class="fa-regular fa-calendar"></i>
-                </button>
-              </div>
-              <p class="form__hint" id="eventDate-hint">
-                Select the wedding, lesson, or occasion date.
-              </p>
-            </div>
-
-            <div class="form__group">
-              <label id="services-label" for="manyServices"
-                >How many people require services</label
-              >
-              <input
-                name="manyServices"
-                id="manyServices"
-                type="text"
-                required
-                autocomplete="off"
-              />
-            </div>
-
-            <div class="form__group">
-              <label id="location-label" for="location"
-                >Venue Location (Postcode)</label
-              >
-              <input
-                name="location"
-                id="location"
-                type="text"
-                required
-                autocomplete="off"
-              />
-            </div>
-
-            <div class="form__group">
-              <label id="readyFor-label" for="readyFor"
-                >Ready by:</label
-              >
-              <input
-                name="readyFor"
-                id="readyFor"
-                type="text"
-                required
-                autocomplete="off"
-              />
-            </div>
-          </div>
-
-          <div class="contact-form__description contact-form__item">
-            <p>
-              If you would like to contact me, please choose one of the
-              following:
-            </p>
-            <ul>
-              <li>You can email me at “hello@venus-hour.co.uk“, or</li>
-              <li>
-                You can text me on
-                <a href="tel:+447783109453">+44 7783 109 453</a>, or
-              </li>
-              <li class="mb-1">
-                You can also use the contact form below to send me a message.
-              </li>
-              <li>
-                <b><i>Please note</i></b> – Travel is calculated from Newport
-                and confirmed as part of your personalised quote.
-              </li>
-            </ul>
-            <p>Wedding bookings are quoted individually and begin from £250.</p>
-            <p>
-              Special occasion services are not available for bridal events.
-            </p>
-          </div>
-        </div>
-
-        <div class="form__group--message">
-          <label for="your-message">Tell me a little about your plans</label>
-          <textarea name="your-message" id="your-message" required></textarea>
-        </div>
-
-        <!-- Honeypot -->
-        <div
-          style="
-            position: absolute;
-            left: -9999px;
-            top: auto;
-            width: 1px;
-            height: 1px;
-            overflow: hidden;
-          "
-        >
-          <label for="company">Company</label>
-          <input
-            type="text"
-            id="company"
-            name="company"
-            tabindex="-1"
-            autocomplete="off"
-          />
-        </div>
-
-        <input type="submit" value="Submit" />
-        <p id="contactStatus" role="status" aria-live="polite"></p>
-      </div>
-    </form>
-
-    <!-- End Contact Form -->
 
     <!-- Footer -->
 
