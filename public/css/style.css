@@ -842,8 +842,8 @@ body::selection {
   display: flex;
   align-items: center;
   column-gap: 0.45rem;
-  color: #2f2a2c;
-  font-size: 1.1rem;
+  color: #60513e;
+  font-size: 1.3rem;
   margin-bottom: 0.6rem;
   transition: color 0.3s ease;
 }
@@ -856,6 +856,7 @@ body::selection {
   color: #60513e;
   font-size: 1rem;
   line-height: 1.5rem;
+  margin-left: 1.4rem;
 }
 .services__cards-item:last-child {
   margin-bottom: 6rem;
@@ -963,13 +964,14 @@ body::selection {
     height: 60%;
   }
   .services__cards-item h2 {
-    color: #2f2a2c;
+    color: #60513e;
     margin-bottom: 0.6rem;
   }
   .services__cards-item p {
     color: #60513e;
     font-size: 1.2rem;
     line-height: 1.5rem;
+    margin-left: 1.4rem;
   }
   .services__cards-item:last-child {
     margin-bottom: 0;
@@ -1018,13 +1020,14 @@ body::selection {
     margin-bottom: 1rem;
   }
   .services__cards-item h2 {
-    color: #2f2a2c;
+    color: #60513e;
     margin-bottom: 0.6rem;
   }
   .services__cards-item p {
     color: #60513e;
     font-size: 1.2rem;
     line-height: 1.5rem;
+    margin-left: 1.4rem;
   }
   .services__cards-item:last-child {
     margin-bottom: 0;
@@ -1689,11 +1692,11 @@ select {
 }
 .rates-card h2 {
   margin-bottom: 0.85rem;
-  color: #2f2a2c;
-  font-family: "Great Vibes", cursive;
-  font-size: 2rem;
-  font-weight: 400;
-  line-height: 1;
+  color: #60513e;
+  font-family: "Stack Sans Headline", "Manrope", Arial, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.45;
 }
 .rates-card p {
   margin-bottom: 0.55rem;
@@ -1765,7 +1768,7 @@ select {
     grid-column: span 1;
   }
   .rates-card h2 {
-    font-size: 2.4rem;
+    font-size: 1.15rem;
   }
 }
 @media screen and (min-width: 1950px) {
@@ -1814,7 +1817,7 @@ select {
 }
 .terms-conds h2 {
   text-align: center;
-  color: #2f2a2c;
+  color: #60513e;
   font-size: 1.4rem;
   margin-bottom: 1rem;
 }
@@ -2014,7 +2017,7 @@ select {
   display: flex;
   align-items: center;
   column-gap: 0.45rem;
-  color: text-grey;
+  color: #60513e;
   font-size: 1.1rem;
   margin-bottom: 0.6rem;
   transition: color 0.25s ease;
@@ -2028,6 +2031,7 @@ select {
   color: #60513e;
   font-size: 1rem;
   line-height: 1.5rem;
+  margin-left: 1.4rem;
 }
 
 @media screen and (min-width: 768px) {
@@ -2071,6 +2075,7 @@ select {
   .services-link__item p {
     font-size: 0.9rem;
     line-height: 1.2rem;
+    margin-left: 1.4rem;
   }
 }
 @media screen and (min-width: 1440px) {
@@ -2113,6 +2118,7 @@ select {
   .services-link__item p {
     font-size: 1.1rem;
     line-height: 1.5rem;
+    margin-left: 1.4rem;
   }
 }
 @media screen and (min-width: 1950px) {
@@ -2152,6 +2158,7 @@ select {
   }
   .services-link__item p {
     line-height: 1.4rem;
+    margin-left: 1.4rem;
   }
 }
 .bridal {
@@ -3065,3 +3072,5 @@ select {
     width: 210px;
   }
 }
+
+/*# sourceMappingURL=style.css.map */

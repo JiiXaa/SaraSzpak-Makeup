@@ -626,9 +626,11 @@ select {
 
 /* ERROR STATES (inputs, selects, textarea) */
 .contact-form {
+
   // red outline on error helper class or aria-invalid
   .contact-form__inputs .form__group,
   .form__group--message {
+
     input.is-error,
     select.is-error,
     textarea.is-error,

@@ -41,8 +41,8 @@
         display: flex;
         align-items: center;
         column-gap: 0.45rem;
-        color: $text-grey;
-        font-size: 1.1rem;
+        color: $services-link-heading-color;
+        font-size: 1.3rem;
         margin-bottom: 0.6rem;
         transition: color 0.3s ease;
       }
@@ -59,6 +59,7 @@
         color: $primary-grey;
         font-size: 1rem;
         line-height: 1.5rem;
+        margin-left: 1.4rem;
       }
 
       &:last-child {
@@ -185,7 +186,7 @@
         }
 
         h2 {
-          color: $text-grey;
+          color: $services-link-heading-color;
           margin-bottom: 0.6rem;
         }
 
@@ -193,6 +194,7 @@
           color: $primary-grey;
           font-size: 1.2rem;
           line-height: 1.5rem;
+          margin-left: 1.4rem;
         }
 
         &:last-child {
@@ -251,7 +253,7 @@
       }
 
       h2 {
-        color: $text-grey;
+        color: $services-link-heading-color;
         margin-bottom: 0.6rem;
       }
 
@@ -259,6 +261,7 @@
         color: $primary-grey;
         font-size: 1.2rem;
         line-height: 1.5rem;
+        margin-left: 1.4rem;
       }
 
       &:last-child {
