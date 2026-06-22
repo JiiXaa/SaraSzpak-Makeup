@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://venus-hour.co.uk/sitemap.xml
