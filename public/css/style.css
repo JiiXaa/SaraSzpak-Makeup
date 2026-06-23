@@ -1706,6 +1706,71 @@ select {
 .rates-card p.rates-card__eyebrow {
   margin-bottom: 1.5rem;
 }
+.rates-card .header__about__cta-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: min(100%, 22rem);
+  margin: 1.4rem auto 0;
+}
+.rates-card .header__about__cta-note {
+  margin-bottom: 0.9rem;
+  color: #9c7a67;
+  font-family: "Great Vibes", cursive;
+  font-size: 1.45rem;
+  line-height: 1;
+  text-align: center;
+}
+.rates-card .header__about__cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  isolation: isolate;
+  width: 100%;
+  padding: 0.95rem 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 12px;
+  background: linear-gradient(180deg, #b89c84 0%, #b89c84 15%, #9c7a67 85%, #9c7a67 100%);
+  box-shadow: 0 10px 24px rgba(156, 122, 103, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.38), inset 0 -1px 0 rgba(142, 120, 102, 0.18);
+  color: #fff;
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-shadow: 0 1px 3px rgba(31, 27, 29, 0.24);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.rates-card .header__about__cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #b89c84 0%, #9c7a67 45%, #8e7866 100%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  z-index: -1;
+}
+.rates-card .header__about__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px rgba(156, 122, 103, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+.rates-card .header__about__cta:hover::before {
+  opacity: 1;
+}
+.rates-card .header__about__cta:active {
+  transform: translateY(0);
+}
+.rates-card .header__about__cta:focus-visible {
+  outline: 2px solid #9c7a67;
+  outline-offset: 4px;
+}
+.rates-card .header__about__cta:focus-visible::before {
+  opacity: 1;
+}
 .rates-card__prices {
   margin: 0 0 0.9rem;
   padding: 0;
