@@ -85,9 +85,10 @@
     line-height: 1.25rem;
     font-weight: bold;
 
-    span {
+    a {
       color: $primary-color;
       font-weight: bold;
+      text-decoration: none;
     }
   }
 }

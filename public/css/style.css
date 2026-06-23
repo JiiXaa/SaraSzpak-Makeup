@@ -1854,9 +1854,10 @@ select {
   line-height: 1.25rem;
   font-weight: bold;
 }
-.terms-conds p.terms-conds__contact span {
+.terms-conds p.terms-conds__contact a {
   color: #9c7a67;
   font-weight: bold;
+  text-decoration: none;
 }
 
 @media screen and (min-width: 1440px) {
