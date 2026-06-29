@@ -17,12 +17,14 @@ function esc(s = "") {
 }
 
 function mailto(email, subject, body = "") {
-  const query = new URLSearchParams({
-    subject,
-    body,
-  });
+  const params = [
+    ["subject", subject],
+    ["body", body.replace(/\n/g, "\r\n")],
+  ]
+    .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
+    .join("&");
 
-  return `mailto:${encodeURIComponent(email)}?${query.toString()}`;
+  return `mailto:${email}?${params}`;
 }
 
 function sendHtmlError(
