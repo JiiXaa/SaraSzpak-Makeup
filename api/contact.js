@@ -16,6 +16,15 @@ function esc(s = "") {
     .replace(/>/g, "&gt;");
 }
 
+function mailto(email, subject, body = "") {
+  const query = new URLSearchParams({
+    subject,
+    body,
+  });
+
+  return `mailto:${encodeURIComponent(email)}?${query.toString()}`;
+}
+
 function sendHtmlError(
   res,
   statusCode,
@@ -223,9 +232,19 @@ export default async function handler(req, res) {
     }
 
     // OWNER EMAIL (HTML + TEXT)
+    const replySubject = `Re: Your enquiry to Venus Hour`;
+    const replyBody = `Hi ${name},\n\n`;
+    const replyLink = mailto(email, replySubject, replyBody);
+
     const ownerHtml = `
       <div style="font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:16px;line-height:1.5;color:#111">
         <h2 style="margin:0 0 12px">New enquiry from website</h2>
+        <p style="margin:0 0 16px">
+          <a href="${esc(replyLink)}" style="display:inline-block;background:#111;color:#fff;text-decoration:none;border-radius:4px;padding:11px 16px;font-weight:700">
+            Reply to client
+          </a>
+        </p>
+        <p style="color:#666;margin:0 0 16px">Use the button above to start a clean email to the client. Avoid normal “Reply” if you do not want the enquiry details below to be quoted.</p>
         <table style="border-collapse:collapse;width:100%;max-width:640px">
           <tbody>
             <tr><td style="padding:8px;border:1px solid #eee"><strong>Name</strong></td><td style="padding:8px;border:1px solid #eee">${esc(name)}</td></tr>
@@ -244,11 +263,15 @@ export default async function handler(req, res) {
             <tr><td style="padding:8px;border:1px solid #eee;vertical-align:top"><strong>Plans</strong></td><td style="padding:8px;border:1px solid #eee;white-space:pre-wrap">${esc(message)}</td></tr>
           </tbody>
         </table>
-        <p style="color:#666;margin-top:16px">Tip: hit “Reply” to respond directly to the client.</p>
       </div>
     `;
 
     const ownerText = `New enquiry from website
+
+Reply to client:
+${replyLink}
+
+Use this link to start a clean email to the client. Avoid normal Reply if you do not want the enquiry details below to be quoted.
 
 Name: ${name}
 Email: ${email}
