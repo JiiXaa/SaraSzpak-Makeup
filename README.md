@@ -79,6 +79,10 @@ BREVO_API_KEY=your_brevo_key
 FROM_EMAIL=Contact@saraszpak.com
 OWNER_EMAIL=saraszpak@hotmail.com
 OWNER_NAME=Sara
+KV_REST_API_URL=https://your-database.upstash.io
+KV_REST_API_TOKEN=your_upstash_token
+REQUIRE_DURABLE_CONTACT_STORAGE=true
+BREVO_WEBHOOK_SECRET=your_webhook_secret
 GOOGLE_PLACES_API_KEY=your_google_places_key
 GOOGLE_PLACE_ID=your_google_place_id
 ```
@@ -103,6 +107,14 @@ Anti-spam currently includes:
 - honeypot field
 - client-side validation
 - server-side validation
+- IP and email rate limiting backed by Upstash
+- idempotency protection and submit-button locking
+
+Validated enquiries are saved to Upstash before Brevo is called. Brevo delivery
+webhooks update the saved owner/client delivery status.
+
+The storage adapter accepts both Vercel's `KV_REST_API_*` variable names and
+Upstash's `UPSTASH_REDIS_REST_*` equivalents.
 
 ## Google Reviews
 

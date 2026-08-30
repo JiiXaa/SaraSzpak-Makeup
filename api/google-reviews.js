@@ -1,5 +1,13 @@
 const GOOGLE_PLACE_DETAILS_API = "https://places.googleapis.com/v1/places";
 const FALLBACK_RESPONSE = { ok: true, reviews: [], fallback: true };
+const CACHE_SECONDS = 60 * 60 * 12;
+
+function cacheResponse(res, seconds = CACHE_SECONDS) {
+  res.setHeader(
+    "Cache-Control",
+    `public, s-maxage=${seconds}, stale-while-revalidate=${seconds * 2}`,
+  );
+}
 
 export default async function handler(req, res) {
   if (req.method !== "GET") {
@@ -11,6 +19,7 @@ export default async function handler(req, res) {
   const placeId = process.env.GOOGLE_PLACE_ID;
 
   if (!apiKey || !placeId) {
+    cacheResponse(res, 300);
     return res.status(200).json(FALLBACK_RESPONSE);
   }
 
@@ -21,7 +30,7 @@ export default async function handler(req, res) {
     : 5;
 
   try {
-    const response = await fetch(`${GOOGLE_PLACE_DETAILS_API}/${placeId}`, {
+    const response = await fetch(`${GOOGLE_PLACE_DETAILS_API}/${encodeURIComponent(placeId)}`, {
       headers: {
         "X-Goog-Api-Key": apiKey,
         "X-Goog-FieldMask": "id,displayName,googleMapsUri,reviews",
@@ -29,6 +38,7 @@ export default async function handler(req, res) {
     });
 
     if (!response.ok) {
+      cacheResponse(res, 300);
       return res.status(200).json(FALLBACK_RESPONSE);
     }
 
@@ -52,8 +62,10 @@ export default async function handler(req, res) {
           }))
       : [];
 
+    cacheResponse(res);
     return res.status(200).json({ ok: true, reviews });
   } catch {
+    cacheResponse(res, 300);
     return res.status(200).json(FALLBACK_RESPONSE);
   }
 }

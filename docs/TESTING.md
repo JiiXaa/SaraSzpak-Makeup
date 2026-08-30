@@ -14,6 +14,7 @@ The following was verified directly against the repository:
 - local development uses `scripts/dev-server.js`
 - SCSS builds successfully with `npm run build:css`
 - `npm run build` is only a placeholder and does not produce deploy artifacts
+- contact handler regression tests pass with `npm test`
 
 ## Manual Testing Checklist
 
@@ -43,6 +44,11 @@ Run these checks before client sign-off and before production deploy.
 - Confirm owner email is sent through Brevo
 - Confirm autoresponder email is sent to the client
 - Confirm honeypot submissions do not send emails
+- Confirm repeated clicks produce only one owner email
+- Confirm a failed autoresponder can be retried without duplicating the owner email
+- Confirm the sixth new enquiry from one IP inside 15 minutes returns HTTP 429
+- Confirm Upstash contains the enquiry and both message states
+- Confirm a Brevo delivery webhook updates `deliveryStatus`
 
 ### Responsive Check
 
@@ -53,7 +59,10 @@ Run these checks before client sign-off and before production deploy.
 
 ## What Is Not Covered Automatically
 
-There are currently no automated unit tests, integration tests, or end-to-end tests in this repository.
+There are automated handler tests for the contact flow, including Reply-To,
+idempotency, partial failure recovery, date validation, redirect safety, and IP
+rate limiting. Browser end-to-end tests and live Brevo/Upstash integration tests
+remain manual.
 
 That means release confidence depends on:
 

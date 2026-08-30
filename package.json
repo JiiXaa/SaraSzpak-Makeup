@@ -14,6 +14,7 @@
     "dev:serve": "live-server public --port=5500 --watch=public --quiet",
     "build:css": "sass scss/main.scss public/css/style.css --no-source-map",
     "build": "npm run build:css",
+    "test": "node --test",
     "start": "echo \"static site\""
   },
   "devDependencies": {

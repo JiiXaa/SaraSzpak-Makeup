@@ -5,6 +5,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import contactHandler from "../api/contact.js";
+import brevoWebhookHandler from "../api/brevo-webhook.js";
 import googleReviewsHandler from "../api/google-reviews.js";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -39,6 +40,11 @@ const server = http.createServer(async (req, res) => {
   try {
     if (req.url.startsWith("/api/contact")) {
       await contactHandler(req, res);
+      return;
+    }
+
+    if (req.url.startsWith("/api/brevo-webhook")) {
+      await brevoWebhookHandler(req, res);
       return;
     }
 

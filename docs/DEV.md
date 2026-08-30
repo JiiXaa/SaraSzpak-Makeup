@@ -56,6 +56,10 @@ BREVO_API_KEY=your_brevo_key
 FROM_EMAIL=Contact@saraszpak.com
 OWNER_EMAIL=hello@venus-hour.co.uk
 OWNER_NAME=VenusHour
+KV_REST_API_URL=https://your-database.upstash.io
+KV_REST_API_TOKEN=your_upstash_token
+REQUIRE_DURABLE_CONTACT_STORAGE=true
+BREVO_WEBHOOK_SECRET=generate-a-long-random-secret
 GOOGLE_PLACES_API_KEY=your_google_places_key
 GOOGLE_PLACE_ID=your_google_place_id
 ```
@@ -121,12 +125,54 @@ curl -s "https://places.googleapis.com/v1/places/$GOOGLE_PLACE_ID" \
 
 Current behavior:
 
-- required backend fields: `name`, `email`, `message`
+- required backend fields: all fields visible in the form
 - honeypot field: `company` / `hp_company`
 - success redirect: `/form-submitted.html`
 - owner email goes to `OWNER_EMAIL`
 - autoresponder goes to the client email address
 - `Reply-To` is set to the client, so Sara can reply directly
+- `Reply-To` on the autoresponder is set to `OWNER_EMAIL`
+- one submission ID is reused after a partial failure, preventing duplicate owner emails
+- enquiry and delivery state are retained for 365 days when Upstash is configured
+
+### Contact storage and rate limiting
+
+Create one free Upstash Redis database through Vercel Marketplace and connect it
+to this project. Depending on the integration version, Vercel provides
+`KV_REST_API_URL` and `KV_REST_API_TOKEN` or the equivalent
+`UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN`. The code accepts both.
+Set
+`REQUIRE_DURABLE_CONTACT_STORAGE=true` in Preview and Production after the
+variables are present.
+
+The store is used for:
+
+- a durable copy of every validated enquiry before email sending starts;
+- idempotency and continuation after a partial failure;
+- limits of 5 new submissions per IP and 3 per email address per 15 minutes;
+- Brevo accepted/delivered/bounce status.
+
+Without Upstash, local development uses process memory. That fallback is not
+durable and is not a global rate limiter across Vercel instances.
+
+### Brevo delivery webhook
+
+Create a transactional webhook in Brevo pointing to:
+
+```text
+https://YOUR_DOMAIN/api/brevo-webhook
+```
+
+Subscribe it to `delivered`, `deferred`, `softBounce`, `hardBounce`, `blocked`,
+`spam`, `invalid`, and `error`. Configure this custom request header in Brevo:
+
+```text
+X-Brevo-Webhook-Secret: the same value as BREVO_WEBHOOK_SECRET
+```
+
+The endpoint records the latest real delivery event against the saved enquiry.
+An API acceptance is stored as `accepted`; only the webhook changes it to
+`delivered` or a bounce/block status.
 
 Expected Brevo result after one valid submission:
 
@@ -141,6 +187,10 @@ Set these variables in Vercel for both Preview and Production:
 - `FROM_EMAIL`
 - `OWNER_EMAIL`
 - `OWNER_NAME`
+- `KV_REST_API_URL` (or `UPSTASH_REDIS_REST_URL`)
+- `KV_REST_API_TOKEN` (or `UPSTASH_REDIS_REST_TOKEN`)
+- `REQUIRE_DURABLE_CONTACT_STORAGE`
+- `BREVO_WEBHOOK_SECRET`
 - `GOOGLE_PLACES_API_KEY`
 - `GOOGLE_PLACE_ID`
 
@@ -193,11 +243,15 @@ Then in Brevo:
 Currently implemented:
 
 - honeypot input named `company`
-- client-side validation in `public/js/contact-validate.js`
+- client-side validation and submission locking in `public/js/contact.js`
 - server-side validation in `api/contact.js`
+- IP and email rate limiting through Upstash
+- idempotent continuation after partial sending failures
 
-Not implemented in code:
+CAPTCHA is intentionally not used.
 
-- Cloudflare Turnstile
+## Google Reviews cache and billing
 
-If Turnstile is added later, document it separately after implementation.
+`/api/google-reviews` sends a 12-hour CDN cache header, with 24 hours of stale
+content allowed while refreshing. Error fallbacks are cached for 5 minutes.
+This avoids one billable Google Places request for every homepage view.

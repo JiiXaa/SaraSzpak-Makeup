@@ -3,28 +3,47 @@
 // - On success: redirects with 303 See Other to ?redirect=/form-submitted.html
 // - Honeypot submissions also redirect, silently.
 
+import {
+  getEnquiry,
+  deleteValue,
+  hasDurableStore,
+  incrementWithWindow,
+  linkMessage,
+  saveEnquiry,
+  setIfAbsent,
+} from "./_contact-store.js";
+import { createHash, randomUUID } from "node:crypto";
+
 const BREVO_API = "https://api.brevo.com/v3/smtp/email";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_RE = /^\+?[0-9\s().-]{7,20}$/;
 const ISO_DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+const IDEMPOTENCY_RE = /^[a-zA-Z0-9_-]{16,100}$/;
+const MAX_BODY_BYTES = 24 * 1024;
+const RATE_WINDOW_SECONDS = 15 * 60;
+const MAX_IP_SUBMISSIONS = 5;
+const MAX_EMAIL_SUBMISSIONS = 3;
+const FIELD_LIMITS = {
+  name: 120,
+  email: 254,
+  phone: 30,
+  occasion: 100,
+  bookingFor: 100,
+  eventDate: 10,
+  manyServices: 100,
+  location: 240,
+  readyFor: 100,
+  message: 4000,
+};
 
 // Small HTML escape for email output
 function esc(s = "") {
   return String(s)
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;");
-}
-
-function mailto(email, subject, body = "") {
-  const params = [
-    ["subject", subject],
-    ["body", body.replace(/\n/g, "\r\n")],
-  ]
-    .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
-    .join("&");
-
-  return `mailto:${email}?${params}`;
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }
 
 function sendHtmlError(
@@ -55,64 +74,116 @@ function sendHtmlError(
 }
 
 function isValidEventDate(value) {
-  if (!value) return true;
   if (!ISO_DATE_RE.test(value)) return false;
 
   const date = new Date(`${value}T00:00:00Z`);
-  return !Number.isNaN(date.getTime());
-}
-
-async function sendBrevoEmail(payload, headers) {
-  const response = await fetch(BREVO_API, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(payload),
-  });
-
-  if (response.ok) {
-    return { ok: true };
+  if (Number.isNaN(date.getTime()) || date.toISOString().slice(0, 10) !== value) {
+    return false;
   }
 
-  const details = await response.text().catch(() => "");
+  const today = new Date();
+  const todayIso = new Date(
+    Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()),
+  )
+    .toISOString()
+    .slice(0, 10);
+  return value >= todayIso;
+}
 
-  return {
-    ok: false,
-    status: response.status,
-    statusText: response.statusText,
-    details,
-  };
+async function sendBrevoEmail(payload, headers, maxAttempts = 3) {
+  for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+    let response;
+    try {
+      response = await fetch(BREVO_API, {
+        method: "POST",
+        headers,
+        body: JSON.stringify(payload),
+        signal: AbortSignal.timeout(8000),
+      });
+    } catch (error) {
+      // A timed-out POST may already have reached Brevo. Retrying it could
+      // produce a duplicate email, so ambiguous network failures are not retried.
+      return { ok: false, status: 0, statusText: error?.name || "Network error" };
+    }
+
+    const responseText = await response.text().catch(() => "");
+    let responseBody = {};
+    try {
+      responseBody = responseText ? JSON.parse(responseText) : {};
+    } catch {
+      responseBody = {};
+    }
+
+    if (response.ok) {
+      return { ok: true, messageId: responseBody.messageId || null };
+    }
+
+    // A 429 means Brevo rejected the request before sending. It is safe to retry.
+    if (response.status === 429 && attempt < maxAttempts) {
+      const resetSeconds = Math.min(
+        Math.max(Number(response.headers.get("x-sib-ratelimit-reset")) || attempt, 1),
+        4,
+      );
+      await new Promise((resolve) => setTimeout(resolve, resetSeconds * 1000));
+      continue;
+    }
+
+    return {
+      ok: false,
+      status: response.status,
+      statusText: response.statusText,
+      details: responseBody.message || responseBody.code || "Brevo rejected the email",
+    };
+  }
 }
 
 async function parseBody(req) {
   const ctype = req.headers["content-type"] || "";
-  if (ctype.includes("application/json")) {
-    return new Promise((resolve) => {
-      let buf = "";
-      req.on("data", (ch) => (buf += ch));
-      req.on("end", () => {
-        try {
-          resolve(JSON.parse(buf || "{}"));
-        } catch {
-          resolve({});
-        }
-      });
-    });
-  }
-  // x-www-form-urlencoded (classic form)
-  return new Promise((resolve) => {
+  const buf = await new Promise((resolve, reject) => {
     let buf = "";
-    req.on("data", (ch) => (buf += ch));
-    req.on("end", () => {
-      try {
-        const params = new URLSearchParams(buf);
-        const obj = {};
-        for (const [k, v] of params.entries()) obj[k] = v;
-        resolve(obj);
-      } catch {
-        resolve({});
+    req.on("data", (ch) => {
+      buf += ch;
+      if (Buffer.byteLength(buf) > MAX_BODY_BYTES) {
+        const error = new Error("Request body too large");
+        error.statusCode = 413;
+        reject(error);
       }
     });
+    req.on("end", () => resolve(buf));
+    req.on("error", reject);
   });
+
+  if (ctype.includes("application/json")) {
+    try {
+      return JSON.parse(buf || "{}");
+    } catch {
+      return {};
+    }
+  }
+
+  const params = new URLSearchParams(buf);
+  return Object.fromEntries(params.entries());
+}
+
+function getClientIp(req) {
+  const forwarded = String(req.headers["x-forwarded-for"] || "");
+  return (forwarded.split(",")[0] || req.socket?.remoteAddress || "unknown").trim();
+}
+
+function rateKey(value) {
+  return createHash("sha256").update(value).digest("hex").slice(0, 32);
+}
+
+function safeRedirect(value) {
+  return typeof value === "string" && value.startsWith("/") && !value.startsWith("//")
+    ? value
+    : "/form-submitted.html";
+}
+
+function publicError(res, status, error, fields) {
+  const payload = { ok: false, error };
+  if (fields) payload.fields = fields;
+  return res.status(status).json(payload);
 }
 
 export default async function handler(req, res) {
@@ -126,7 +197,7 @@ export default async function handler(req, res) {
     (req.headers["accept"] || "").includes("application/json") ||
     (req.headers["content-type"] || "").includes("application/json");
   const url = new URL(req.url, `http://${req.headers.host}`);
-  const redirectTo = url.searchParams.get("redirect") || "/form-submitted.html";
+  const redirectTo = safeRedirect(url.searchParams.get("redirect"));
 
   function redirect303() {
     res.statusCode = 303;
@@ -138,6 +209,7 @@ export default async function handler(req, res) {
     return sendHtmlError(res, statusCode, title, message, "/contact.html");
   }
 
+  let submissionLockKey = null;
   try {
     const body = await parseBody(req);
 
@@ -156,6 +228,11 @@ export default async function handler(req, res) {
     const location = (body.location || "").trim();
     const readyFor = (body.readyFor || "").trim();
     const message = (body.message || body["your-message"] || "").trim();
+    const suppliedIdempotencyKey = String(
+      req.headers["idempotency-key"] || body.idempotencyKey || "",
+    ).trim();
+    const idempotencyKey = suppliedIdempotencyKey ||
+      (!wantsJson ? randomUUID() : "");
 
     const missingFields = [
       ["name", name],
@@ -213,6 +290,79 @@ export default async function handler(req, res) {
           );
     }
 
+    const values = {
+      name,
+      email,
+      phone,
+      occasion,
+      bookingFor,
+      eventDate,
+      manyServices,
+      location,
+      readyFor,
+      message,
+    };
+    const tooLongFields = Object.entries(values)
+      .filter(([field, value]) => value.length > FIELD_LIMITS[field])
+      .map(([field]) => field);
+
+    if (tooLongFields.length > 0) {
+      return wantsJson
+        ? publicError(res, 400, "Some fields are too long", tooLongFields)
+        : formError(400, "Please check the form", "Some fields contain too much text.");
+    }
+
+    if (!IDEMPOTENCY_RE.test(idempotencyKey)) {
+      return wantsJson
+        ? publicError(res, 400, "Invalid submission identifier")
+        : formError(400, "Please reload the form", "The form session is invalid. Please reload and try again.");
+    }
+
+    const existingEnquiry = await getEnquiry(idempotencyKey);
+    if (existingEnquiry?.status === "complete") {
+      return wantsJson ? res.status(200).json({ ok: true, duplicate: true }) : redirect303();
+    }
+
+    if (
+      existingEnquiry?.contact &&
+      JSON.stringify(existingEnquiry.contact) !== JSON.stringify(values)
+    ) {
+      return wantsJson
+        ? publicError(res, 409, "Submission identifier was already used")
+        : formError(409, "Please reload the form", "This form session was already used with different details.");
+    }
+
+    submissionLockKey = `contact:lock:${idempotencyKey}`;
+    const acquiredLock = await setIfAbsent(
+      submissionLockKey,
+      "1",
+      60,
+    );
+    if (!acquiredLock) {
+      res.setHeader("Retry-After", "60");
+      return wantsJson
+        ? publicError(res, 409, "This submission is already being processed")
+        : formError(409, "Message is being sent", "Please wait before trying again.");
+    }
+
+    const clientIp = getClientIp(req);
+    if (!existingEnquiry) {
+      const [ipCount, emailCount] = await Promise.all([
+        incrementWithWindow(`contact:rate:ip:${rateKey(clientIp)}`, RATE_WINDOW_SECONDS),
+        incrementWithWindow(
+          `contact:rate:email:${rateKey(email.toLowerCase())}`,
+          RATE_WINDOW_SECONDS,
+        ),
+      ]);
+
+      if (ipCount > MAX_IP_SUBMISSIONS || emailCount > MAX_EMAIL_SUBMISSIONS) {
+        res.setHeader("Retry-After", String(RATE_WINDOW_SECONDS));
+        return wantsJson
+          ? publicError(res, 429, "Too many submissions. Please try again in 15 minutes.")
+          : formError(429, "Please wait", "Too many messages were sent recently. Please try again in 15 minutes.");
+      }
+    }
+
     const missingConfig = [
       ["BREVO_API_KEY", process.env.BREVO_API_KEY],
       ["FROM_EMAIL", process.env.FROM_EMAIL],
@@ -233,20 +383,17 @@ export default async function handler(req, res) {
           );
     }
 
-    // OWNER EMAIL (HTML + TEXT)
-    const replySubject = `Re: Your enquiry to Venus Hour`;
-    const replyBody = `Hi ${name},\n\n`;
-    const replyLink = mailto(email, replySubject, replyBody);
+    if (!hasDurableStore && process.env.REQUIRE_DURABLE_CONTACT_STORAGE === "true") {
+      return wantsJson
+        ? publicError(res, 503, "Contact storage is temporarily unavailable")
+        : formError(503, "Message could not be saved", "Please contact Sara directly by email or WhatsApp.");
+    }
 
+    // OWNER EMAIL (HTML + TEXT)
     const ownerHtml = `
       <div style="font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:16px;line-height:1.5;color:#111">
         <h2 style="margin:0 0 12px">New enquiry from website</h2>
-        <p style="margin:0 0 16px">
-          <a href="${esc(replyLink)}" style="display:inline-block;background:#111;color:#fff;text-decoration:none;border-radius:4px;padding:11px 16px;font-weight:700">
-            Reply to client
-          </a>
-        </p>
-        <p style="color:#666;margin:0 0 16px">Use the button above to start a clean email to the client. Avoid normal “Reply” if you do not want the enquiry details below to be quoted.</p>
+        <p style="color:#666;margin:0 0 16px">Use Reply in your email app to respond directly to the client.</p>
         <table style="border-collapse:collapse;width:100%;max-width:640px">
           <tbody>
             <tr><td style="padding:8px;border:1px solid #eee"><strong>Name</strong></td><td style="padding:8px;border:1px solid #eee">${esc(name)}</td></tr>
@@ -270,10 +417,7 @@ export default async function handler(req, res) {
 
     const ownerText = `New enquiry from website
 
-Reply to client:
-${replyLink}
-
-Use this link to start a clean email to the client. Avoid normal Reply if you do not want the enquiry details below to be quoted.
+Use Reply in your email app to respond directly to the client.
 
 Name: ${name}
 Email: ${email}
@@ -356,6 +500,7 @@ ${message}
       subject: `New enquiry: ${name}${occasion ? " – " + occasion : ""}`,
       htmlContent: ownerHtml,
       textContent: ownerText,
+      tags: ["website-enquiry", `enquiry-${idempotencyKey.slice(0, 24)}`],
     };
 
     const clientPayload = {
@@ -364,29 +509,49 @@ ${message}
         name: "Venus Hour – Bridal Hair & Makeup",
       },
       to: [{ email, name }],
+      replyTo: {
+        email: process.env.OWNER_EMAIL,
+        name: process.env.OWNER_NAME || "Venus Hour",
+      },
       subject: "We received your enquiry – thank you!",
       htmlContent: clientHtml,
       textContent: clientText,
+      tags: ["website-autoreply", `enquiry-${idempotencyKey.slice(0, 24)}`],
     };
 
-    const ownerResult = await sendBrevoEmail(ownerPayload, headers);
+    const enquiry = existingEnquiry || {
+      id: idempotencyKey,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      status: "saved",
+      contact: values,
+      ownerEmail: { status: "pending", messageId: null },
+      clientEmail: { status: "pending", messageId: null },
+    };
+    await saveEnquiry(enquiry);
+
+    let ownerResult = { ok: true, messageId: enquiry.ownerEmail?.messageId || null };
+    if (enquiry.ownerEmail?.status !== "accepted") {
+      ownerResult = await sendBrevoEmail(ownerPayload, headers);
+    }
 
     if (!ownerResult.ok) {
+      enquiry.ownerEmail = {
+        status: "failed",
+        error: ownerResult.statusText || "Brevo rejected the email",
+      };
+      enquiry.status = "owner-email-failed";
+      enquiry.updatedAt = new Date().toISOString();
+      await saveEnquiry(enquiry);
       console.error("Brevo owner email failed", {
         status: ownerResult.status,
         statusText: ownerResult.statusText,
         details: ownerResult.details,
-        sender: process.env.FROM_EMAIL,
-        ownerEmail: process.env.OWNER_EMAIL,
-        hasReplyTo: Boolean(email),
+        enquiryId: enquiry.id,
       });
 
       return wantsJson
-        ? res.status(502).json({
-            ok: false,
-            error: "Owner email failed",
-            details: ownerResult.details,
-          })
+        ? publicError(res, 502, "The message could not be sent. Please try again.")
         : formError(
             502,
             "Message could not be sent",
@@ -394,23 +559,37 @@ ${message}
           );
     }
 
-    const clientResult = await sendBrevoEmail(clientPayload, headers);
+    enquiry.ownerEmail = {
+      status: "accepted",
+      messageId: ownerResult.messageId,
+    };
+    enquiry.status = "owner-email-accepted";
+    enquiry.updatedAt = new Date().toISOString();
+    await saveEnquiry(enquiry);
+    await linkMessage(ownerResult.messageId, enquiry.id, "owner");
+
+    let clientResult = { ok: true, messageId: enquiry.clientEmail?.messageId || null };
+    if (enquiry.clientEmail?.status !== "accepted") {
+      clientResult = await sendBrevoEmail(clientPayload, headers);
+    }
 
     if (!clientResult.ok) {
+      enquiry.clientEmail = {
+        status: "failed",
+        error: clientResult.statusText || "Brevo rejected the email",
+      };
+      enquiry.status = "client-email-failed";
+      enquiry.updatedAt = new Date().toISOString();
+      await saveEnquiry(enquiry);
       console.error("Brevo client autoresponse failed", {
         status: clientResult.status,
         statusText: clientResult.statusText,
         details: clientResult.details,
-        sender: process.env.FROM_EMAIL,
-        clientEmail: email,
+        enquiryId: enquiry.id,
       });
 
       return wantsJson
-        ? res.status(502).json({
-            ok: false,
-            error: "Client autoresponse failed",
-            details: clientResult.details,
-          })
+        ? publicError(res, 502, "Your message was saved, but confirmation could not be sent. Please try again.")
         : formError(
             502,
             "Message could not be sent",
@@ -418,16 +597,36 @@ ${message}
           );
     }
 
-    return wantsJson ? res.status(200).json({ ok: true }) : redirect303();
+    enquiry.clientEmail = {
+      status: "accepted",
+      messageId: clientResult.messageId,
+    };
+    enquiry.status = "complete";
+    enquiry.updatedAt = new Date().toISOString();
+    await saveEnquiry(enquiry);
+    await linkMessage(clientResult.messageId, enquiry.id, "client");
+
+    return wantsJson
+      ? res.status(200).json({ ok: true, enquiryId: enquiry.id })
+      : redirect303();
   } catch (err) {
+    const statusCode = err?.statusCode || 500;
     return wantsJson
       ? res
-          .status(500)
-          .json({ ok: false, error: err?.message || "Server error" })
+          .status(statusCode)
+          .json({ ok: false, error: statusCode === 413 ? "Request too large" : "Server error" })
       : formError(
-          500,
+          statusCode,
           "Message could not be sent",
           "Something went wrong while sending the message. Please try again or contact Sara directly by email or WhatsApp.",
         );
+  } finally {
+    if (submissionLockKey) {
+      await deleteValue(submissionLockKey).catch((error) => {
+        console.error("Contact submission lock cleanup failed", {
+          message: error?.message,
+        });
+      });
+    }
   }
 }

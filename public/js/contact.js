@@ -3,6 +3,53 @@ const statusEl = document.getElementById("contactStatus");
 const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const phoneRe = /^\+?[0-9\s().-]{7,20}$/;
 const isoDateRe = /^\d{4}-\d{2}-\d{2}$/;
+const submissionStorageKey = "venus-hour-contact-submission-id";
+let isSubmitting = false;
+let memorySubmissionId = null;
+const fieldLimits = {
+  name: 120,
+  email: 254,
+  phone: 30,
+  eventDate: 10,
+  manyServices: 100,
+  location: 240,
+  readyFor: 100,
+  "your-message": 4000,
+};
+
+if (form) {
+  Object.entries(fieldLimits).forEach(([name, maxLength]) => {
+    const field = form.elements.namedItem(name);
+    if (field && "maxLength" in field) field.maxLength = maxLength;
+  });
+}
+
+function createSubmissionId() {
+  if (window.crypto?.randomUUID) return window.crypto.randomUUID();
+  const random = window.crypto?.getRandomValues
+    ? window.crypto.getRandomValues(new Uint32Array(4)).join("-")
+    : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+  return `contact-${random}`;
+}
+
+function getSubmissionId() {
+  let id = memorySubmissionId;
+  try {
+    id = sessionStorage.getItem(submissionStorageKey) || id;
+  } catch {
+    // Some privacy modes disable sessionStorage; the in-page value still works.
+  }
+  if (!id) {
+    id = createSubmissionId();
+    memorySubmissionId = id;
+    try {
+      sessionStorage.setItem(submissionStorageKey, id);
+    } catch {
+      // Keep the in-page fallback.
+    }
+  }
+  return id;
+}
 
 function serialize(formEl) {
   const data = Object.fromEntries(new FormData(formEl).entries());
@@ -30,6 +77,12 @@ function isValidFutureDate(v) {
 
   const selected = new Date(`${v}T00:00:00`);
   if (Number.isNaN(selected.getTime())) return false;
+  const normalized = [
+    selected.getFullYear(),
+    String(selected.getMonth() + 1).padStart(2, "0"),
+    String(selected.getDate()).padStart(2, "0"),
+  ].join("-");
+  if (normalized !== v) return false;
 
   const today = new Date();
   today.setHours(0, 0, 0, 0);
@@ -99,12 +152,28 @@ function validatePayload(payload) {
   if (!payload.message) {
     errors.push(["your-message", "Please enter your message."]);
   }
+  const valuesByField = {
+    name: payload.name,
+    email: payload.email,
+    phone: payload.phone,
+    eventDate: payload.eventDate,
+    manyServices: payload.manyServices,
+    location: payload.location,
+    readyFor: payload.readyFor,
+    "your-message": payload.message,
+  };
+  Object.entries(fieldLimits).forEach(([field, maxLength]) => {
+    if ((valuesByField[field] || "").length > maxLength) {
+      errors.push([field, `Please use no more than ${maxLength} characters.`]);
+    }
+  });
 
   return errors;
 }
 
 form?.addEventListener("submit", async (e) => {
   e.preventDefault(); // we handle submit via fetch; fallback works without JS
+  if (isSubmitting) return;
   clearInvalidFields();
 
   const payload = serialize(form);
@@ -126,18 +195,29 @@ form?.addEventListener("submit", async (e) => {
   }
 
   statusEl.textContent = "Sending…";
+  isSubmitting = true;
+  const submitButton = form.querySelector('[type="submit"]');
+  if (submitButton) submitButton.disabled = true;
 
   try {
+    const submissionId = getSubmissionId();
     const res = await fetch(form.action, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
+        "Idempotency-Key": submissionId,
       },
       body: JSON.stringify(payload),
     });
 
     if (res.ok) {
+      memorySubmissionId = null;
+      try {
+        sessionStorage.removeItem(submissionStorageKey);
+      } catch {
+        // Nothing else is required after a successful submission.
+      }
       // Respect the redirect target defined in the form action
       const url = new URL(form.action, window.location.origin);
       const redirect =
@@ -151,5 +231,8 @@ form?.addEventListener("submit", async (e) => {
       "Sending failed: " + (data.error || "please try again.");
   } catch (err) {
     statusEl.textContent = "Network error. Please try again.";
+  } finally {
+    isSubmitting = false;
+    if (submitButton) submitButton.disabled = false;
   }
 });
