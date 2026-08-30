@@ -99,7 +99,7 @@ Payload wysyłany do właściciela zawiera między innymi:
     email: email,
     name: name,
   },
-  subject: `New enquiry: ${name}${occasion ? " – " + occasion : ""}`,
+  subject: `${name} – ${occasion}`,
   htmlContent: ownerHtml,
   textContent: ownerText,
 }
@@ -121,7 +121,7 @@ Nie należy ustawiać adresu klienta jako `From`. Wiadomość jest technicznie w
 
 Prawidłowa procedura:
 
-1. Otwórz wiadomość `New enquiry: ...` w Outlooku.
+1. Otwórz wiadomość o temacie `Imię i nazwisko – okazja` w Outlooku.
 2. Użyj natywnego przycisku **Reply**.
 3. Sprawdź, czy Outlook ustawił jako adresata e-mail klienta z formularza.
 4. Napisz odpowiedź i wyślij ją normalnie z Outlooka.

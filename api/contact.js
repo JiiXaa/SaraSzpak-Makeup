@@ -497,7 +497,7 @@ ${message}
         },
       ],
       replyTo: { email, name },
-      subject: `New enquiry: ${name}${occasion ? " – " + occasion : ""}`,
+      subject: `${name} – ${occasion}`,
       htmlContent: ownerHtml,
       textContent: ownerText,
       tags: ["website-enquiry", `enquiry-${idempotencyKey.slice(0, 24)}`],

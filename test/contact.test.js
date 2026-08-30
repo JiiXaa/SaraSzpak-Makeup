@@ -76,6 +76,7 @@ test("sends owner email and autoresponder with correct Reply-To headers", async 
   assert.equal(res.statusCode, 200);
   assert.equal(calls.length, 2);
   assert.equal(calls[0].replyTo.email, "client@example.com");
+  assert.equal(calls[0].subject, "Test Client – Wedding");
   assert.equal(calls[1].replyTo.email, "owner@example.com");
 });
 
