@@ -67,15 +67,16 @@ Zmienne środowiskowe używane przez mechanizm:
 - `BREVO_API_KEY` — klucz API Brevo;
 - `FROM_EMAIL` — zweryfikowany adres nadawcy używany przez Brevo;
 - `OWNER_EMAIL` — skrzynka otrzymująca enquiry;
-- `OWNER_NAME` — opcjonalna nazwa właściciela.
+- `OWNER_NAME` — opcjonalna nazwa właściciela;
 - `KV_REST_API_URL` i `KV_REST_API_TOKEN` (lub odpowiedniki `UPSTASH_REDIS_REST_*`) — trwały zapis i limity;
-- `BREVO_WEBHOOK_SECRET` — uwierzytelnienie zdarzeń dostarczenia.
+- `BREVO_WEBHOOK_SECRET` — wymagany tylko dla skonfigurowanego webhooka dostarczenia.
 
 Każda wiadomość ma wersję HTML (`htmlContent`) oraz tekstową (`textContent`). Dzięki temu treść pozostaje czytelna także w programach pocztowych, które nie wyświetlają HTML.
 
-Przed wysyłką poprawne enquiry jest zapisywane w Upstash Redis na 365 dni.
-Zapis obejmuje treść formularza i osobne stany wiadomości do właściciela oraz
-klienta.
+Jeżeli skonfigurowano dane Redis, przed wysyłką poprawne enquiry jest zapisywane
+w Upstash Redis na 365 dni. Zapis obejmuje treść formularza i osobne stany
+wiadomości do właściciela oraz klienta. Bez Redis działa pamięć procesu, chyba
+że `REQUIRE_DURABLE_CONTACT_STORAGE=true` wymusza trwały zapis.
 
 ## Wiadomość do właściciela
 
@@ -162,7 +163,8 @@ Po zaakceptowaniu wiadomości do właściciela backend wysyła osobną wiadomoś
 - nie zawiera sztucznego przycisku odpowiedzi na enquiry;
 - ma `Reply-To` ustawione na `OWNER_EMAIL`, dlatego jego zwykła odpowiedź trafia do właściciela.
 
-Zmiana mechanizmu odpowiadania właściciela nie zmienia treści ani adresata autorespondera.
+Adresatem autorespondera pozostaje klient; jego `Reply-To` kieruje odpowiedź do
+skrzynki właściciela.
 
 ## Obsługa błędów
 
@@ -171,12 +173,15 @@ Najpierw wysyłana jest wiadomość do właściciela. Jeśli Brevo jej nie zaakc
 Następnie wysyłany jest autoresponder klienta. Jeśli jego wysyłka się nie powiedzie, backend również zwraca błąd. Szczegóły błędów Brevo są zapisywane w logach serwera i nie są ujawniane przeglądarce.
 
 Jeśli wiadomość właściciela została już zaakceptowana, ponowienie tego samego
-zgłoszenia wysyła tylko brakujący autoresponder. Równoczesne kopie żądania są
-blokowane krótką blokadą w Redis.
+zgłoszenia z tym samym identyfikatorem wysyła tylko brakujący autoresponder.
+Frontend zachowuje ten identyfikator dla ponowienia w tej samej karcie.
+Równoczesne kopie żądania są blokowane krótką blokadą w Redis lub pamięci
+procesu.
 
-Akceptacja API Brevo jest zapisywana jako `accepted`. Endpoint
-`/api/brevo-webhook` aktualizuje ją później do `delivered`, `deferred`, bounce,
-blocked albo error.
+Akceptacja API Brevo jest zapisywana jako `accepted`. Dopiero poprawnie
+skonfigurowany endpoint `/api/brevo-webhook` aktualizuje ją później do
+`delivered`, `deferred`, bounce, blocked albo error. Bez webhooka status
+pozostaje `accepted` i finalny wynik należy sprawdzać w logach Brevo.
 
 Po sukcesie żądanie AJAX otrzymuje JSON `{ ok: true }`, a klasyczne wysłanie formularza odpowiedź `303` prowadzącą do strony podziękowania.
 

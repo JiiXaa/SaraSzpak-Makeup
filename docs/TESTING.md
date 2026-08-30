@@ -10,10 +10,10 @@ It intentionally avoids claiming checks that were not re-run against the current
 The following was verified directly against the repository:
 
 - static pages are served from `public/`
-- local API routes exist in `api/contact.js` and `api/google-reviews.js`
+- local API routes exist for contact submission, Brevo webhooks, and Google reviews
 - local development uses `scripts/dev-server.js`
 - SCSS builds successfully with `npm run build:css`
-- `npm run build` is only a placeholder and does not produce deploy artifacts
+- `npm run build` compiles SCSS to `public/css/style.css`
 - contact handler regression tests pass with `npm test`
 
 ## Manual Testing Checklist
@@ -48,7 +48,7 @@ Run these checks before client sign-off and before production deploy.
 - Confirm a failed autoresponder can be retried without duplicating the owner email
 - Confirm the sixth new enquiry from one IP inside 15 minutes returns HTTP 429
 - Confirm Upstash contains the enquiry and both message states
-- Confirm a Brevo delivery webhook updates `deliveryStatus`
+- If the webhook is configured, confirm it updates `deliveryStatus`
 
 ### Responsive Check
 
@@ -67,18 +67,29 @@ remain manual.
 That means release confidence depends on:
 
 - manual browser checks
-- a real contact form submission in Preview
+- a real contact form submission in the target deployment environment
 - verification of Brevo and Google API configuration
 
-## Recommended Pre-Production Pass
+## Recommended Release Pass
 
-Before production approval, do one clean Preview deployment and confirm:
+Prefer a clean Preview deployment before Production. If deploying directly to
+Production, perform the same checks immediately after deployment:
 
 1. homepage loads correctly
 2. Google reviews work with production env vars
 3. contact form sends both emails
 4. redirect to confirmation page works
 5. email headers show SPF, DKIM, and DMARC pass
+
+## Production smoke check (2026-08-30)
+
+- production served the new idempotent `contact.js`;
+- a honeypot POST returned `303` and redirected locally to
+  `/form-submitted.html` without sending email;
+- the owner email and client autoresponder were reported working in a live test;
+- the Google Reviews endpoint returned `{ "fallback": true }` during the check;
+- Upstash record creation and Brevo webhook delivery events still require
+  explicit confirmation in their provider dashboards.
 
 ## Notes
 

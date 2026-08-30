@@ -10,7 +10,8 @@ Project scripts from `package.json`:
   Watches `scss/main.scss` and rebuilds `public/css/style.css` on every change.
 - `npm run dev:app`
   Starts the custom local server from `scripts/dev-server.js` on port `3000`.
-  This server serves static files from `public/` and local API routes from `api/`.
+  This server serves static files from `public/` and the contact, Brevo webhook,
+  and Google Reviews API routes from `api/`.
   It now loads `.env.local` automatically when the file exists.
 - `npm run dev:serve`
   Starts `live-server` on port `5500` for static-only preview.
@@ -19,7 +20,8 @@ Project scripts from `package.json`:
 - `npm run build:css`
   One-off SCSS build to `public/css/style.css`.
 - `npm run build`
-  Placeholder only. There is no build pipeline for the site itself.
+  Runs `npm run build:css` and writes the compiled stylesheet to
+  `public/css/style.css`. Vercel uses this as the project build command.
 - `npm run start`
   Placeholder only. Production runtime on Vercel is handled by static hosting plus `/api/*`.
 
@@ -49,17 +51,37 @@ Important:
 
 For local API testing create `.env.local` in the project root.
 
-Required variables:
+Required for contact email delivery:
 
 ```bash
 BREVO_API_KEY=your_brevo_key
-FROM_EMAIL=Contact@saraszpak.com
-OWNER_EMAIL=hello@venus-hour.co.uk
-OWNER_NAME=VenusHour
+FROM_EMAIL=verified-sender@example.com
+OWNER_EMAIL=business-inbox@example.com
+OWNER_NAME=Business Name
+```
+
+Required for durable contact storage and global rate limiting:
+
+```bash
 KV_REST_API_URL=https://your-database.upstash.io
 KV_REST_API_TOKEN=your_upstash_token
+```
+
+Recommended production safety switch after storage has been verified:
+
+```bash
 REQUIRE_DURABLE_CONTACT_STORAGE=true
+```
+
+Required only when the Brevo delivery webhook is configured:
+
+```bash
 BREVO_WEBHOOK_SECRET=generate-a-long-random-secret
+```
+
+Required for live Google reviews:
+
+```bash
 GOOGLE_PLACES_API_KEY=your_google_places_key
 GOOGLE_PLACE_ID=your_google_place_id
 ```
@@ -68,6 +90,10 @@ Behavior without env vars:
 
 - `/api/google-reviews` returns an empty `reviews` array when Google config is missing.
 - `/api/contact` needs Brevo env vars to actually send emails.
+- without Redis credentials, `/api/contact` uses process memory unless
+  `REQUIRE_DURABLE_CONTACT_STORAGE=true`, in which case it returns `503` before sending;
+- without `BREVO_WEBHOOK_SECRET`, `/api/brevo-webhook` rejects every request
+  and accepted messages are not promoted to final delivery statuses in Upstash.
 
 If you want to call Google APIs directly from terminal, first export env vars manually:
 
@@ -132,8 +158,10 @@ Current behavior:
 - autoresponder goes to the client email address
 - `Reply-To` is set to the client, so Sara can reply directly
 - `Reply-To` on the autoresponder is set to `OWNER_EMAIL`
-- one submission ID is reused after a partial failure, preventing duplicate owner emails
-- enquiry and delivery state are retained for 365 days when Upstash is configured
+- JavaScript submissions reuse one submission ID after a partial failure,
+  preventing duplicate owner emails during an in-page retry
+- enquiry and sending state are retained for 365 days when Upstash is configured;
+  final delivery state is added only by a configured Brevo webhook
 
 ### Contact storage and rate limiting
 
@@ -141,16 +169,17 @@ Create one free Upstash Redis database through Vercel Marketplace and connect it
 to this project. Depending on the integration version, Vercel provides
 `KV_REST_API_URL` and `KV_REST_API_TOKEN` or the equivalent
 `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN`. The code accepts both.
-Set
-`REQUIRE_DURABLE_CONTACT_STORAGE=true` in Preview and Production after the
-variables are present.
+Set `REQUIRE_DURABLE_CONTACT_STORAGE=true` in Preview and Production only after
+a real submission has confirmed that records appear in Upstash. Without the
+switch, configured Redis is still used; the switch only disables the
+non-durable memory fallback.
 
 The store is used for:
 
 - a durable copy of every validated enquiry before email sending starts;
 - idempotency and continuation after a partial failure;
 - limits of 5 new submissions per IP and 3 per email address per 15 minutes;
-- Brevo accepted/delivered/bounce status.
+- Brevo API acceptance status, plus final delivery/bounce status when the webhook is configured.
 
 Without Upstash, local development uses process memory. That fallback is not
 durable and is not a global rate limiter across Vercel instances.
@@ -170,9 +199,10 @@ Subscribe it to `delivered`, `deferred`, `softBounce`, `hardBounce`, `blocked`,
 X-Brevo-Webhook-Secret: the same value as BREVO_WEBHOOK_SECRET
 ```
 
-The endpoint records the latest real delivery event against the saved enquiry.
-An API acceptance is stored as `accepted`; only the webhook changes it to
-`delivered` or a bounce/block status.
+When both the secret and the Brevo webhook are configured, the endpoint records
+the latest real delivery event against the saved enquiry. An API acceptance is
+stored as `accepted`; only webhook events change it to `delivered` or a
+bounce/block status.
 
 Expected Brevo result after one valid submission:
 
@@ -189,8 +219,8 @@ Set these variables in Vercel for both Preview and Production:
 - `OWNER_NAME`
 - `KV_REST_API_URL` (or `UPSTASH_REDIS_REST_URL`)
 - `KV_REST_API_TOKEN` (or `UPSTASH_REDIS_REST_TOKEN`)
-- `REQUIRE_DURABLE_CONTACT_STORAGE`
-- `BREVO_WEBHOOK_SECRET`
+- `REQUIRE_DURABLE_CONTACT_STORAGE` (recommended after Redis verification)
+- `BREVO_WEBHOOK_SECRET` (only with a configured Brevo webhook)
 - `GOOGLE_PLACES_API_KEY`
 - `GOOGLE_PLACE_ID`
 
@@ -211,7 +241,7 @@ In the received email source check:
 - SPF: PASS
 - DKIM: PASS
 - DMARC: PASS
-- `From`: `Contact@saraszpak.com`
+- `From`: exact verified sender configured in `FROM_EMAIL`
 - `Reply-To`: client email from the form
 
 If DNS changes were made recently, wait 15 to 60 minutes and retest.
@@ -254,4 +284,20 @@ CAPTCHA is intentionally not used.
 
 `/api/google-reviews` sends a 12-hour CDN cache header, with 24 hours of stale
 content allowed while refreshing. Error fallbacks are cached for 5 minutes.
-This avoids one billable Google Places request for every homepage view.
+These directives are intended to prevent a separate billable Google Places
+request for every homepage view; verify the effective CDN response headers after
+deployment.
+
+## Production status (2026-08-30)
+
+- commit `e4ffef5` was deployed from `main`;
+- the current contact JavaScript and safe local redirect were confirmed on the
+  production domain;
+- a honeypot POST returned `303` without sending email;
+- Upstash `KV_*` variables were connected to Preview and Production according
+  to the deployment setup;
+- live owner email and client autoresponder were reported working;
+- `REQUIRE_DURABLE_CONTACT_STORAGE` and the Brevo delivery webhook were not yet
+  confirmed as enabled;
+- `/api/google-reviews` returned the built-in fallback during the deployment
+  smoke check, so live Google reviews still need a separate configuration check.
