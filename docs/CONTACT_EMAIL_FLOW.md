@@ -78,6 +78,9 @@ w Upstash Redis na 365 dni. Zapis obejmuje treść formularza i osobne stany
 wiadomości do właściciela oraz klienta. Bez Redis działa pamięć procesu, chyba
 że `REQUIRE_DURABLE_CONTACT_STORAGE=true` wymusza trwały zapis.
 
+Instrukcja otwierania historii w panelu, lista kluczy i komendy Redis znajdują
+się w sekcji **View saved enquiry history in Upstash** w `docs/DEV.md`.
+
 ## Wiadomość do właściciela
 
 Payload wysyłany do właściciela zawiera między innymi:

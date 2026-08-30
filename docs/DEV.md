@@ -184,6 +184,64 @@ The store is used for:
 Without Upstash, local development uses process memory. That fallback is not
 durable and is not a global rate limiter across Vercel instances.
 
+### View saved enquiry history in Upstash
+
+Upstash contains form submissions, not a copy of the Outlook mailbox or later
+email replies. Only enquiries submitted after Redis was connected to the active
+Vercel environment can appear here.
+
+Dashboard steps:
+
+1. Open the `sara-szpak-makeup` project in Vercel.
+2. Open **Storage** and select the connected Upstash Redis resource.
+3. Choose **Open in Upstash**, then open **Data Browser** or **Data**.
+4. Search for keys beginning with `contact:enquiry:`.
+5. Select a key to view its JSON value, including `contact`, `ownerEmail`,
+   `clientEmail`, `createdAt`, `updatedAt`, and the overall `status`.
+
+The sorted set `contact:enquiries` is the chronological index. In the Upstash
+Redis console, list enquiry IDs from newest to oldest with:
+
+```text
+ZRANGE contact:enquiries 0 -1 REV
+```
+
+Then retrieve one record with:
+
+```text
+GET contact:enquiry:<ID_FROM_THE_LIST>
+```
+
+Related keys:
+
+- `contact:enquiry:<id>` — full form data and sending/delivery states;
+- `contact:message:<brevo-message-id>` — maps a Brevo message to an enquiry;
+- `contact:enquiries` — chronological enquiry index;
+- `contact:rate:*` — temporary hashed rate-limit counters;
+- `contact:lock:*` — very short-lived concurrent-submission locks.
+
+Important status meanings:
+
+- `saved` — the enquiry was stored before email sending;
+- `owner-email-accepted` — Brevo accepted the owner email, but the autoresponder
+  is not complete yet;
+- `client-email-failed` — the owner email was accepted but the autoresponder failed;
+- `complete` — Brevo accepted both API requests;
+- `ownerEmail.status` / `clientEmail.status` equal to `accepted` do not prove
+  final inbox delivery;
+- `deliveryStatus: delivered` appears only after the Brevo webhook is configured
+  and successfully matches the Brevo message ID.
+
+If no `contact:enquiry:*` keys appear after a new successful form submission:
+
+1. confirm `KV_REST_API_URL` and the writable `KV_REST_API_TOKEN` apply to the
+   same Vercel environment as the deployment being tested;
+2. redeploy after changing environment variables;
+3. submit one new enquiry, because older emails are not imported retroactively;
+4. inspect Vercel Function logs for `Contact store returned HTTP ...`;
+5. leave `REQUIRE_DURABLE_CONTACT_STORAGE` disabled until storage is confirmed,
+   then enable it to prevent future email sends without a durable backup.
+
 ### Brevo delivery webhook
 
 Create a transactional webhook in Brevo pointing to:
